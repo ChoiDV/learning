@@ -16,6 +16,7 @@ public class Quiz5 {
 		System.out.print("수학 점수를 입력하시오 : ");
 		int math = sc.nextInt();
 		
+		
 		System.out.println("국어 점수 : " + korean + "점");
 		System.out.println("영어 점수 : " + english + "점");
 		System.out.println("수학 점수 : " + math + "점");
