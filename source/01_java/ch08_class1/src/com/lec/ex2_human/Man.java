@@ -22,6 +22,8 @@ public class Man {
 //			height = age;
 //		}
 //	}
+	// 생성자 함수는 절대 리턴값이 있으면 안된다 즉 void 절대 사용 금지. 왜? 생성자함수는 내가 메소드를 사용할것인데 리턴값만 받으면 안돼니까.
+	
 	public Man(int age) {  
 		this.age = age;
 		System.out.println("파라미터가 1개짜리 생성자 함수 호출. ");
@@ -40,9 +42,19 @@ public class Man {
 		this.weight = weight;
 		this.phoneNum = phoneNum;
 		System.out.println("파라미터가 4개짜리 생성자 함수 호출. ");
-
+	} 
+	// 메소드 
+	
+	public double calculateBMI() {
+		double result = weight/((height/100.0) * (height/100.0));
+		return result;	
 	}
-
+	public void method() {
+		System.out.println("method");
+	}
+	
+	// setter&getter
+	
 	public int getAge() {
 		return age;
 	}

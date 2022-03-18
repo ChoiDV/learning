@@ -11,7 +11,11 @@ public class ManTest {
 		System.out.println(choi.getHeight()+ " cm ");
 		System.out.print(choi.getWeight()+ " kg \t");
 		System.out.println("전화번호 : " +choi.getPhoneNum());
-
-	} // Man 매개변수에 String name 도 넣어서 이름까지 해보기 .
+		System.out.println(choi.calculateBMI());
+		
+		Woman park = new Woman();
+		
+		
+	} 
 
 }
