@@ -52,7 +52,7 @@ public class Book implements ILendable {
 		if(state==STATE_NORMAL) {
 			System.out.println(bookNo + "\t"+bookTitle+"("+writer+" 지음 ) 대출가능");
 		} else if(state==STATE_BORROWED) {
-			System.out.println(bookNo + "\t"+bookTitle+"("+writer+" 지음 ) 대출가능");
+			System.out.println(bookNo + "\t"+bookTitle+"("+writer+" 지음 ) 대출불가");
 		} else {
 			System.out.println(bookNo + "\t"+bookTitle+"("+writer+" 지음 ) 이상해");
 		}

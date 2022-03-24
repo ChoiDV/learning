@@ -48,7 +48,18 @@ public class TestMain {
 				} 
 				break;
 			case 2:
-				System.out.println("반납");
+				System.out.print("반납하고자 하는 책 이름은? : ");
+				bTitle = sc.next();
+				for (idx = 0; idx < books.length; idx++) {
+					if (books[idx].getBookTitle().equals(bTitle)) {
+						break;
+					} 				
+				}
+				if( idx == books.length) {
+					System.out.println("해당 도서는 본 도서관의 책이 아닙니다.");
+				} else {
+					books[idx].checkIn();
+				}
 				break;
 			case 3:
 				System.out.println("책 리스트는 다음과 같습니다.");

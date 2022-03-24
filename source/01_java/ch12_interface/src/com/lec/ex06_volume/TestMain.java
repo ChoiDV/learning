@@ -10,6 +10,7 @@ public class TestMain {
 			temp.volumeUp(45);
 			temp.volumeDown(10);
 			temp.volumeDown(20);
+			temp.setMute(true); // 인터페이스를 추상클래스처럼 만들어주는거 default 사용해서 
 		}
 
 	}
