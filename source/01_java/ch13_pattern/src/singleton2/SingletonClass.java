@@ -24,5 +24,4 @@ public class SingletonClass {
 		this.i = i;
 	}
 
-	
-}	
+}
