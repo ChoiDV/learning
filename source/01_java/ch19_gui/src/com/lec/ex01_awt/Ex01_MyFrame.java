@@ -19,7 +19,7 @@ public class Ex01_MyFrame extends Frame {
 		//pack(); // 최소한의 사이즈로  사이즈 지정
 		setSize(new Dimension(300,200));
 		setVisible(true);
-		setLocation(100,50);
+		setLocation(100,50); 
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {			
