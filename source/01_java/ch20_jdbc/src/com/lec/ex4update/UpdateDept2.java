@@ -24,7 +24,7 @@ public class UpdateDept2 {
 			// 입력한 부서번호가 있는지 없는지 체크
 			String selectSQL = "SELECT * FROM DEPT WHERE DEPTNO="+deptno;
 			rs = stmt.executeQuery(selectSQL);
-			if( !rs.next()) {
+			if( !rs.next()) {  
 				System.out.println("그런부서번호는 없습니다.");
 			} else {			
 			System.out.print("수정할 부서명을 입력하세요 : ");
