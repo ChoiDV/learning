@@ -73,8 +73,13 @@ public class Person {
 							int eng = rs.getInt("eng");
 							int mat = rs.getInt("mat");
 							int sum = rs.getInt("sum");
-							System.out.println(rank + "\t" + pname + "\t" + jname + "\t" + kor + "\t" + eng + "\t" + mat
+							if(pname.length() >= 7) {
+								System.out.println(rank + "\t" + pname + "\t" + jname + "\t" + kor + "\t" + eng + "\t" + mat
 									+ "\t" + sum);
+							} else {
+								System.out.println(rank + "\t" + pname + "\t\t" + jname + "\t" + kor + "\t" + eng + "\t" + mat
+										+ "\t" + sum);
+							}
 						}
 					} else {
 						System.out.println("해당 직업의 사람이 데이터베이스에 없습니다.");

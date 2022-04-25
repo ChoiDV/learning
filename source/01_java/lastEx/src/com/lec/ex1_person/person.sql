@@ -41,7 +41,7 @@ INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'최진영',(SELECT jNO FROM JOB WHE
 -- 2번 : 직업명을 입력받아 등수, 이름(pNO), 직업명, 국어, 영어, 수학, 총점을 출력 ( 총점기준으로 내림차순 정렬)
 SELECT PNAME||'(' ||PNO ||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM
     FROM PERSON P, JOB J
-        WHERE P.JNO = J.JNO AND JNAME = '배우' 
+        WHERE P.JNO = J.JNO AND JNAME = '가수' 
             ORDER BY SUM DESC; -- FROM 절의 서브쿼리 
             
 SELECT ROWNUM RANK, A.*
@@ -61,6 +61,9 @@ SELECT * FROM PERSON;
 SELECT * FROM JOB;
 commit;
 rollback;
+
+-- 콤보 박스에 들어갈 직업명 list
+SELECT JNAME FROM JOB;
 
 
 
