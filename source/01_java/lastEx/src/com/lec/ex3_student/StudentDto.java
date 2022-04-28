@@ -9,7 +9,10 @@ public class StudentDto {
 	
 	public StudentDto() {
 	}
-
+	
+	public StudentDto(int sno) {		
+		this.sno = sno;		
+	}
 	
 	// ют╥б©К
 	public StudentDto(String sname, String mname, int score) {		
@@ -46,7 +49,7 @@ public class StudentDto {
 	@Override
 	public String toString() {		
 		if( rank != null) {
-			return rank+"\t"+sno+"\t"+sname+"\t"+mname+"\t"+score;
+			return rank+"\t"+sname+"\t"+mname+"\t"+score;
 		} else {
 			return sno+"\t"+sname+"\t"+mname+"\t"+score;
 		}

@@ -43,7 +43,7 @@ SELECT sNO, sNAME, mNAME, SCORE
             AND sNAME ='배수지';
             
 --  전공 검색
-SELECT ROWNUM RANK, A.*
+SELECT ROWNUM || '등' RANK, A.*
     FROM (SELECT sNAME|| '(' || sNO|| ')'  sNAME, mNAME, SCORE
     FROM STUDENT S , MAJOR M
         WHERE S.mNO = M.mNO AND mNAME = '빅데이터학'
@@ -77,6 +77,9 @@ SELECT ROWNUM || '등'  RANK, sNAME, mNAME|| '(' || mNO || ')'  mNAME, SCORE
         WHERE S.mNO = M.mNO
             AND sEXPEL != 0
             ORDER BY SCORE DESC) A;
+DELETE FROM STUDENT
+    WHERE SNAME='155';
+    COMMIT;
 
 
             

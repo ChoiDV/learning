@@ -78,7 +78,7 @@ SELECT SUBSTRB('ORACLE',3,2) FROM DUAL;  -- 3번째 바이트부터 2바이트 추출 = AC
 SELECT SUBSTR ('데이터베이스',4,3) FROM DUAL; -- 4번째 글자부터 3글자 추출 = 베이스
 SELECT SUBSTRB('데이터베이스',4,3) FROM DUAL; -- 4번째 바이트부터 3바이트 추출 (XE버전에서 한글 1글자는 3BYTE) 
 SELECT SUBSTRB('홍길동',3,4) FROM DUAL;   -- BYTE로 출력할때는 계산 잘해서 추출해야함 한글은 
-SELECT SUBSTR('ABCDXD',-1,1) FROM DUAL;  -- 맨 끝에 글자 가져오기할때는 -1 에서 1글자 
+SELECT SUBSTR('ABCDXD',-1,4) FROM DUAL;  -- 맨 끝에 글자 가져오기할때는 -1 에서 1글자 
 SELECT SUBSTR(123,2,1) FROM DUAL;   -- 숫자도 알아서 바꿔서 가져옴
 
         -- ex. 9월에 입사한 사원의 모든 필드 ( 단 , date 출력 format 'RR/MM/DD')

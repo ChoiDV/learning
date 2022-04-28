@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class StudentDao {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
@@ -36,8 +37,8 @@ public class StudentDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;		
 		StudentDto dto = null;
-		String sql = "SELECT sNO, sNAME, mNAME, SCORE \r\n" + "   FROM STUDENT S, MAJOR M\r\n"
-				+ "        WHERE S.mNO = M.mNO\r\n" + "            AND sNO = ? ";
+		String sql = "SELECT sNO, sNAME, mNAME, SCORE " + "   FROM STUDENT S, MAJOR M"
+				+ "        WHERE S.mNO = M.mNO" + "            AND sNO = ? ";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
@@ -77,8 +78,8 @@ public class StudentDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT sNO, sNAME, mNAME, SCORE\r\n" + "    FROM STUDENT S , MAJOR M \r\n"
-				+ "        WHERE S.mNO = M.mNO\r\n" + "            AND sNAME = ? ";
+		String sql = "SELECT sNO, sNAME, mNAME, SCORE" + "    FROM STUDENT S , MAJOR M "
+				+ "        WHERE S.mNO = M.mNO" + "            AND sNAME = ? ";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
@@ -117,20 +118,21 @@ public class StudentDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT ROWNUM || '등' RANK, A.* "
-				+ "    FROM (SELECT sNAME|| '(' || sNO|| ')'  sNAME, mNAME, SCORE " + "    FROM STUDENT S , MAJOR M "
-				+ "        WHERE S.mNO = M.mNO AND mNAME = ? " + "            ORDER BY SCORE DESC) A;";
+		String sql = "SELECT ROWNUM || '등' RANK, sName, mName, SCORE " + 
+				"    FROM (SELECT sNAME|| '(' || sNO|| ')'  sNAME, mNAME, SCORE " + 
+				"    FROM STUDENT S , MAJOR M " + 
+				"        WHERE S.mNO = M.mNO AND mNAME = ? " + 
+				"            ORDER BY SCORE DESC) A";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mname);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				String rank = rs.getString("rank");
-				int sno = rs.getInt("sno");
+				String rank = rs.getString("rank");				
 				String sname = rs.getString("sname");
 				int score = rs.getInt("score");
-				students.add(new StudentDto(rank, sno, sname, mname, score));
+				students.add(new StudentDto(rank, sname, mname, score));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -157,8 +159,8 @@ public class StudentDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO STUDENT (sNO,sNAME,mNO,SCORE) VALUES "
-				+ "    (TO_CHAR(SYSDATE,'YYYY') || TRIM(TO_CHAR(STD_SEQ.NEXTVAL,'000')), ? ,(SELECT mNO FROM MAJOR WHERE mNAME= ? ), ? );";
+		String sql = "INSERT INTO STUDENT (sNO,sNAME,mNO,SCORE) VALUES " + 
+				"    (TO_CHAR(SYSDATE,'YYYY') || TRIM(TO_CHAR(STD_SEQ.NEXTVAL,'000')), ? ,(SELECT mNO FROM MAJOR WHERE mNAME= ? ), ? )";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
@@ -300,8 +302,8 @@ public class StudentDao {
 		return students;
 	}
 
-	// 8번 제직처리 업데이트
-	public int updateSexple(StudentDto dto) {
+	// 8번 제적처리 업데이트
+	public int updateSexple(int sno) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -309,7 +311,7 @@ public class StudentDao {
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, dto.getSno());
+			pstmt.setInt(1, sno);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -328,5 +330,41 @@ public class StudentDao {
 		return result;
 
 	}
+	// 9번 전공 리스트 조회 ( return Vector<String>
+		public Vector<String> mnameList(){
+			Vector<String> mnames = new Vector<String>();
+			mnames.add("");  // 0번째 index에 빈스트링 넣기 
+			// 직업명 리스트를 DB에서 검색한후 jnames에 add (2~7단계)
+			Connection conn = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			String sql = "SELECT MNAME FROM MAJOR";
+			try {
+				conn = DriverManager.getConnection(url,"scott","tiger");
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(sql);
+				while(rs.next()) {
+					String mname = rs.getString("mname");
+					mnames.add(mname);		
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if (rs != null) {
+						rs.close();
+					}
+					if (stmt != null) {
+						stmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return mnames;
+		}
 
 }
