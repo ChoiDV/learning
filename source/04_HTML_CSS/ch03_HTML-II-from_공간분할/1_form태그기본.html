@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        td{
+            text-align:center;  /* 글씨 가운데 정렬*/
+            padding: 5px;  /* 안여백 */           
+        }
+
+    </style>
+</head>
+<body>                              <!-- input은 무조건 form태그 안에서 사용해야함 안그러면 안넘어옴 -->
+    <form action="#" method="get">    <!-- method="get"은 안써도 default값  / action은 밑에서 실행시 실행할것을 꼭 지정해줘야함-->
+        <table>                           
+            <caption>로그인</caption>
+            <tr>
+                <td>아 이 디</td>
+                <td><input type="text" name="uid"/> </td>      <!-- name="이름(파라미터)" 꼭 지정해주기 안그러면 다음가는곳에서 받아올수 없음-->
+            </tr>
+            <tr>
+                <td>비 밀 번 호</td>
+                <td><input type="password" name="upw"</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="로그인"    <!-- 로그인 누르면 form에서 지정한 곳으로 감-->
+                </td>
+            </tr>
+             
+        </table>
+    </form>
+</body>
+</html>
