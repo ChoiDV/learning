@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>
+                필드에 입력형식의 힌트를 주고 pattern체크하는 사용자 인터페이스</legend>
+            <!-- 정규 표현식 : 정규표현식 연습장을 통해 만들어진 정규표현식 test (http://www.regexr.com) 사이트 
+                [0-9] : 0~9 사이 중 한문자
+                [a-zA-Z] : 알파벳 중 한문자
+                [가-힣] : 한글 중 한글자
+                [가-힣ㄱ-ㅎㅏ-ㅣ] : 한글,자음,모음 중 한문자
+                {n} : n번 반복
+                {n,m} : 최소 n번, 최대 m번 반복(0<n<=m) 이여야함.
+                \d : 숫자 [0-9]와 동일
+                \w : 문자(숫자와 알파벳) 중 한문자
+                + : 1번이상 반복
+                * : 0번이상 반복
+                . : '\n'을 제외한 임의의 한문자 자리수
+                \. : .문자
+                -->
+                     
+            <ul>
+                <!-- 전화번호 정규표현식 -->
+                <li>
+                    연락처<input type="text" name="tel" placeholder="000-0000-0000/xx-xxxx-xxxx"
+                              pattern="\d{2,3}[ .-]{0,1}\d{3,4}[ .-]{0,1}[0-9]{4}"
+                              title="전화번호 형식(000-0000-0000/xx-xxxx-xxxx)을 지켜주세요." />
+
+                </li>
+                <!--카드번호에 일치되는 값만 입력 가능하도록-->
+                <li>
+                    카드<input type="text" name="cardno" placeholder="0000-0000-0000-0000"
+                             pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}"  
+                             title="카드번호 형식(0000-0000-0000-0000)을 지켜주세요."/>
+                </li>
+                <li>
+                    <!--메일형식에 일치되는 값만 입력 가능하도록 hong@hong.com -->
+                    <!-- 정규표현식에서 .을 한문자 말고 진짜 .을 특정할때는 \. 역슬래시 쩜 을 사용하면 된다.-->
+                    이메일<input type="email" name="email"
+                              pattern="[a-zA-Z0-9][a-zA-Z0-9_.]+@[a-zA-Z]\w+(\.[a-z]+)+"
+                              title="이메일 형식을 지켜주세요" />
+                    <!-- 이메일 정규표현식 : [a-zA-Z0-9][a-zA-Z0-9_.]+@[a-zA-Z]\w+(\.[a-z]+){1,2}-->
+                </li>
+            </ul>
+            <center><input type="submit" /><input type="reset" /></center>
+        </fieldset>
+    </form>
+
+</body>
+</html>

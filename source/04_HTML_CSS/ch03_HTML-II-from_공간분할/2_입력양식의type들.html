@@ -19,7 +19,7 @@
                 <td>아 이 디</td>
                 <td>
                     <input type="text" name="id" size="9" />
-                    <input type="button" value="중복확인" />
+                    <input type="button" value="중복확인" onclick="alert('중복확인 test');" />
                    </td>
                 </tr>
                 <tr>
@@ -85,7 +85,7 @@
             <tr>
                 <td>자기소개</td>
                 <td>
-                    <textarea name="intro" cols="25" rows="3"> 저는  </textarea> <!-- 저는 쓰는곳에 쓰는말은 textarea에 기본적으로 출력됨-->
+                    <textarea name="intro" cols="25" rows="3"> 저는z  </textarea> <!-- 저는 쓰는곳에 쓰는말은 textarea에 기본적으로 출력됨-->
                 </td>
             </tr>
             <tr>
@@ -108,6 +108,7 @@
             <tr>
                 <td colspan="2">
                     <input type="submit"  value="회원가입"/>
+                    <input type="reset" value="초기화" />  <!-- 초기화 버튼 -->
                 </td>
              </tr>
         </table>
