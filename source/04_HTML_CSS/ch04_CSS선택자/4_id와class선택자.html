@@ -41,9 +41,9 @@
             width:200px;
         }
         #footer{
-            clear:both;
-            width:600px;
-            margin: 0 auto;
+            clear:both;   /* float 속성을 제거 역할  ( 근데 이거 안해도됨 위에 사이즈 600지정하고 600가득 채워서 끝남 */
+            width:600px; /* 가로사이즈 600px */ 
+            margin: 0 auto;  /* header를 브라우저의 가운데로 */
             background-color:yellow;
             text-align:center;
         }
@@ -58,7 +58,7 @@
         <div id="content">
             <h2>content</h2>
             <ul>
-                <li class="menu1">menu1</li>
+                <li class="menu1 menu">menu1</li>  <!-- class 이름은 여러개 쓸수있고 스페이스바로 구분한다.  그래서 class이름은 menu1 과 menu 두개이다.-->
                 <li class="menu2">menu2</li>
                 <li class="menu1">menu3</li>
                 <li class="menu4">menu4</li>
