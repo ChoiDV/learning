@@ -13,26 +13,26 @@
 </head>
 <body>  
     <form action="#"
-           method="get">
+          method="get">
         <table>
             <tr>
                 <td>아 이 디</td>
                 <td>
                     <input type="text" name="id" size="9" />
                     <input type="button" value="중복확인" onclick="alert('중복확인 test');" />
-                   </td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td><input type="password" name="pw" /></td>>
-                </tr>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td><input type="password" name="pw" /></td>>
+            </tr>
             <tr>
                 <td>전화번호</td>
                 <td>
                     <input type="tel" name="phone1" size="1" /> -
                     <input type="tel" name="phone1" size="1" /> -
                     <input type="tel" name="phone1" size="1" />
-                </td>      
+                </td>
             </tr>
             <tr>
                 <td>경력</td>
@@ -48,13 +48,15 @@
             </tr>
             <tr>
                 <td>성별</td>
-                <td><input type="radio" name="gender" value="m" checked="checked"/>남
+                <td>
+                    <input type="radio" name="gender" value="m" checked="checked" />남
                     <input type="radio" name="gender" value="f" />여 <!-- name(파라미터) 값을 같게 해줘야지 하나만 선택가능함-->
-                           </td>
+                </td>
             </tr>
             <tr>
                 <td>사용언어</td>
-                <td><input type="checkbox" name="lang" value="kor" checked="checked" />한국어
+                <td>
+                    <input type="checkbox" name="lang" value="kor" checked="checked" />한국어
                     <input type="checkbox" name="lang" value="eng" />영어
                     <input type="checkbox" name="lang" value="chi" />중국어
                     <input type="checkbox" name="lang" value="ind" />인도어
@@ -64,7 +66,7 @@
                 <td>국적</td>
                 <td>
                     <select name="nation">
-                        <option value="kor">대한민국</option> 
+                        <option value="kor">대한민국</option>
                         <option>미국</option>  <!-- option에 value를 생략하면 value=미국 -->
                     </select>
                 </td>
@@ -107,12 +109,12 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <input type="submit"  value="회원가입"/>
+                    <input type="submit" value="회원가입" />
                     <input type="reset" value="초기화" />  <!-- 초기화 버튼 -->
                 </td>
-             </tr>
+            </tr>
         </table>
 
-        </form>
+    </form>
 </body>
 </html>
