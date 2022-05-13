@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        document.write('1.pow(4, 2) = ' + pow(4, 2) + '<br>');
+        document.write('2.pow(3, 2, 2) = ' + pow(3, 2, 2) + '<br>')  // 매개변수 3개짜리 pow 함수는 없지만 스크립트에서는 그냥 무시해준다
+                                                                    // 즉 선언된 매개변수보다 많은 매개변수를 넣어서 호출시 뒷 부분은 무시
+        
+        // 선언된 함수의 매개변수보다 적은 매개변수로 호출 : 
+        document.write('3.pow(4) = ' + pow(4) + '<br>');
+        // 이렇게 실행하면 y가 undefined 가 되서 i와 undefined는 비교할수 없어서 for문이 false 한번도 실행 안되서 result값 1이 리턴된다.
+
+        // 매개변수가 없이 함수를 호출 : undefined로 됨.
+        document.write('4.pow() = ' + pow());  // 얘도 위에와 같이 for문이 false 한번도 실행 안되서 1이 리턴.
+
+
+        function pow(x, y) { // x의 y승을 리턴하는 함수 : pow(4,2)  : 4의2승을 리턴해주는 함수 
+            var result = 1;
+            for (var i = 1; i <= y; i++) {  // y번 반복
+                result *= x; // x제곱해주는법
+            }
+            return result;  // 리턴을 안해주면 함수를 호출한곳에 아무것도 안가기 때문에 undefined가 된다.
+        }
+        // 함수의 오버로딩이 안됨.  함수의 오버로딩 :  다른 매개 변수를 가진 같은 이름의 여러 함수를 만들 수 있는 기능
+        // 자바처럼 매개변수 개수로 함수가 나뉘어지지 않음
+        // 만약에 pow라는 함수를 매개변수 2개짜리랑 3개짜리를 만들면 자바에서는 두개가 다 있지만 스크립트에서는 더 나중에 선언된 함수만 있고 먼저 선언된 함수는 사라진다
+        //  즉  먼저 2개짜리선언 그다음 3개짜리 선언하면 3개짜리만 남아있고 2개짜리는 사라진다.
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
