@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            width:900px;
+            margin:0 auto;
+        }
+    </style>
+    <script>
+        var out = ['img/0out.jpg', 'img/1out.jpg', 'img/2out.jpg', 'img/3out.jpg'];
+        var over = ['img/0over.jpg', 'img/1over.jpg', 'img/2over.jpg', 'img/3over.jpg'];
+        function change(n) {
+            // 마우스가 사진 위로 올라왔을때니까 
+            var img = document.getElementsByTagName('img');
+            img[n].src = over[n];
+        }
+        function origin(n) {
+            // 마우스가 사진 위로 올라왔을때니까 
+            var img2 = document.getElementsByTagName('img');
+            //img2[n].src = out[n];
+            img2[n].setAttribute('src', out[n]);
+        }
+
+        
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <span>
+            <img src="img/0out.jpg"  onmouseover="change(0)" onmouseout="origin(0)"/>
+            <img src="img/1out.jpg"  onmouseover="change(1)" onmouseout="origin(1)"/>
+            <img src="img/2out.jpg"  onmouseover="change(2)" onmouseout="origin(2)"/>
+            <img src="img/3out.jpg"  onmouseover="change(3)" onmouseout="origin(3)"/>
+        </span>
+    </div>
+</body>
+</html>

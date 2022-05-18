@@ -26,15 +26,14 @@
             }
         };
         function showMessage(n) {
-            var p = document.getElementsByTagName('p');
-            for (var i = 0; i < td.length; i++) {
-                p[0].innerHTML = 'zz';               
-            }         
+            var h1 = document.createElement('h1');
+            var textNode = document.createTextNode('야호 출력할 메시지 입니다.');
+            h1.appendChild(textNode);
+            document.body.appendChild(h1);
+            h1.document.style.color = color[n];
         };
-        function removeMessage() {
-            var p = document.getElementsByTagName('p');
-            document.body.removeChild(p[0]);
-            document.style.backgroundColor = color[7];
+        function removeMessage() {          
+            
         };
         
     </script>
