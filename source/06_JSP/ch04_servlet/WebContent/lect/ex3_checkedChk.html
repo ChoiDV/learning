@@ -16,12 +16,14 @@
   				// cnt = cnt + hobby[i].checkd; 이거하면 체크되어있으면 cnt에 +1  안되어있으면  +0
   				cnt = cnt+ hobby[i].checked; 				
   				}
+  			}
+  			
   				if (!cnt){
   					alert('취미를 한개 이상 선택하셔야 합니다');
   					return false;
   				}
   				return true;
-  			}
+  			
   		};
   	};
   </script>
