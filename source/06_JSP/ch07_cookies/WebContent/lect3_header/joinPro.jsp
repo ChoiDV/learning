@@ -34,9 +34,7 @@
 		alert('회원가입이 완료되었습니다. 감사합니다');
 		location.href="login.jsp";	
 	</script>
-	<%
-		
-	%>
+
      
  </body>
 </html>
