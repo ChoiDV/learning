@@ -2,6 +2,9 @@
 -- DDL (제약조건, 시퀀스 없음)
 -- DML (outer join, AND= && , OR=||, 일부 단일행 함수)
 show databases;
+use kimdb;
+select * from personal; -- jsp에서 출력
+
 -- ★ ★ ★ DCL (계정 생성, 권한부여, 권한 박탈, 계정 제거)
 create user user01 identified by 'password'; -- 패스워드만 '' 붙여주기 -- 계정 생성
 grant all on *.* to user01; -- 권한부여 
