@@ -65,6 +65,13 @@ private Connection getConnection() throws SQLException {
 } 을 DAO에 추가한뒤 
 conn 객체는 getConnection() 으로 생성하면 커넥션 풀을 이용할 수 있다.
 
+DataSource ds = (DataSource) ctx.lookup("java:comp/env/커넥션풀 이름");
+
+ds는 DataSource 타입이고
+
+ctx.lookup(); 은 객체이기 때문에
+DataSource로 형변환 해주어야함.
+
 
 
 
