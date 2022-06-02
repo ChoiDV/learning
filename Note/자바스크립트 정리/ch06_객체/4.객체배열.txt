@@ -1,0 +1,106 @@
+<객체와 배열을 사용한 데이터 관리>
+[객체 배열]
+var student[];
+student.push( { name: '홍길동' , kor: 87, mat: 78 , eng: 88, sci:75});
+student.push( { name: '유길동' , kor: 77, mat: 88 , eng: 98, sci:95});
+student.push( { name: '김길동' , kor: 97, mat: 98 , eng: 100, sci:85});
+
+객체 배열 내의 객체에 함수 추가하기.
+
+for(var idx in students){
+	students[idx].getSum = function(){
+	return this.kor + this.mat + this.eng+ this.sci;
+	};    kor,mat,eng,sci 의 총점을 구해주는 함수 추가하기.
+	
+	students[idx].getAvg = function(){
+	return Math.round(this.getSum() / 4);
+	};    kor,mat,eng,sci 의 평균을 구해주는 함수 추가하기.
+	
+	students[idx].toString = function(){
+	var output = '';
+	for(var key in this){
+	if (key != 'getSum' && key != 'getAvg' && key != 'toString'){
+	  output += key + ' : ' + this[key] + '<br>';
+	} else if (key == 'getSum' || key == 'getAvg') {
+	  output += key.substring(3).toUpperCase() + ' : ' + this[key]() + '<br>';
+	}
+	return output;   // 객체 배열 내의 객체들의 toString 함수 추가하기.
+	};
+     };
+
+*< 함수를 이용해서 객체 배열 생성하기>*
+function makeStudent(name, kor, mat, eng, sci) {
+            var resultObj = {
+                name: name,     // name : 매개변수 name
+                kor: kor,           // kor : 매개변수 kor
+                mat: mat,
+                eng: eng,
+                sci: sci,
+                getSum: function () {
+                    return this.kor + this.mat + this.eng + this.sci;},
+                getAvg: function () {
+                    return Math.round(this.getSum() / 4);
+                },
+                toString: function () {
+                    var output = '';
+                    for (var key in this) {
+                        if (key != 'getSum' && key != 'getAvg' && key != 'toString') {
+                            output += key + ' : ' + this[key] + '<br>';
+                        } else if (key == 'getSum' || key == 'getAvg') {
+                            output += key.substring(3).toUpperCase() + ' : ' + this[key]() + '<br>';
+                        }
+                    }
+                    return output;
+                },
+            }
+            return resultObj;
+        }
+makeStudent라는 함수를 만든뒤 매개변수로 이름, 국어, 수학, 영어, 과학 점수를 받는다.
+name: 매개변수 name
+kor : 매개변수 kor
+mat : 매개변수 mat
+eng : 매개변수 eng
+sci : 매개변수 sci
+getSum :
+getAvg :
+toString :   은 매개변수로 받은 값들로 각각의 함수들을 실행한다.
+이렇게 함수를 이용해서 객체를 생성하면 
+생성할때 간편해진다.
+var students = [];
+        students.push(makeStudent('홍길동', 100, 100, 100, 100));
+        students.push(makeStudent('김길동', 90, 80, 70, 95));
+        students.push(makeStudent('유길동', 90, 99, 99, 99));
+이런식으로 각각의 속성변수와 속성값을 입력하지 않고,
+속성값만 차례차례 입력해주면 된다.
+
+
+
+<students 배열 출력 하기 : 일반 for문 사용>
+        var output = '';
+        for (var idx = 0; idx < students.length; idx++) {
+            output += idx + ' 번째 ' + '<br>';
+            output += students[idx].toString();   // .toString() 안해도 알아서 붙는다.
+        };
+        document.write(output);
+
+<students 배열 출력하기 : for-in문 사용>
+        var output = '';
+        for (var idx in students) {
+            output += idx + ' 번째 ' + '<br>';
+            output += students[idx].toString();  
+        };
+        document.write(output);
+
+<students 배열 출력하기 : forEach() 함수 사용>
+        students.forEach(function (data, idx) {
+            document.write(idx + '번째<br>');
+            document.write(data + '<hr>');
+        });
+
+
+
+
+
+
+
+

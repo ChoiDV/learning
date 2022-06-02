@@ -1,0 +1,31 @@
+<정렬>
+정렬을 할때는 .sort를 사용한다.
+배열.sort(); 을 하면 기본적으로 ascii 코드 순으로 정렬을 해준다. 
+문자를 정렬해줄때는 sort() 를 사용하면 되지만
+
+숫자를 정렬할때는 콜백함수를 활용해야 한다.
+숫자배열.sort(); 에서 sort 매개변수로 콜백함수를 활용한다.
+
+숫자배열.sort(function(left, right) {
+	return left-right;   
+});
+이렇게 하면 오름차순 정렬이 된다.
+  	return right-left; 는 내림차순 정렬이 된다.
+
+<객체배열의 정렬>
+객체배열의 숫자 정렬은
+똑같이 정렬하듯이 콜백함수를 사용해서
+객체배열.sort(콜백함수) 를 넣어서 정렬한다.
+    다른점에는 return left.비교할객체내의속성 - right.비교할객체내의속성;
+		을 해주면 된다.
+
+객체배열의 문자열 정렬은
+students.sort(function (left, right) {  
+            if (left.name <= right.name) {
+                return -1;  // return 음수면 left가 앞에
+            } else if (left.name > right.name) {
+                return 1; // return 양수면 right가 앞에
+            } else {
+                return 0; // return 0이면 위치 그대로 
+            }           
+        });   이런 방식으로 객체배열의 문자열을 정렬할 수 있다.

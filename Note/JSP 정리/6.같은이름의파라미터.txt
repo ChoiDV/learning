@@ -1,0 +1,20 @@
+<같은 이름의 파라미터>
+
+같은이름의 파라미터가 여러개인 경우
+
+(html에서 select 나 checkbox의 값을 받을때는 같은이름의 파라미터가 여러개 들어올 수 있다.
+그래서 이런것들을 받을때는 배열로 받아야하고 values를 받아야한다.
+
+사용법은
+
+request.getParameterValues("파라미터이름") 으로 사용하고 배열로 받는다
+menu라는 select를 받는다면
+String[] menu = request.getParameterValues("menu");
+로 받으면 menu 배열안의 0번방에는 첫번째 값이 
+		         1번방에는 두번째 값이 들어온다.
+
+출력할때는 똑같이 스트림객체를 이용해서 출력한다.
+하지만 출력하기 전에 if문을 사용해 들어온 값이 null이 아닌것을 확인한뒤
+for문을 사용해서 출력한다.
+
+

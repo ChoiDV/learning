@@ -1,0 +1,37 @@
+< DB 연결 >
+MySql 연결 url
+ String driverMysql = "com.mysql.jdbc.Driver";
+ String ulrMysql = "jdbc:mysql://localhost:3306/kimdb";  
+ String uidMysql = "root";
+ String upwMysql = "mysql"; 
+이 url들은 고정이다.
+
+Oracle 연결 url
+ String driver = "oracle.jdbc.driver.OracleDriver";
+ String url = "jdbc:oracle:thin:@localhost:1521:xe";   // 127.0.0.1  이 localhost 를 의미 
+ String uid = "scott";
+ String upw = "tiger";
+
+연결법은 JAVA에서 DB와 연동하는 법과 동일하다.
+Connection conn = null;
+Statement stmt = null;
+ResultSet rs = null; 선언후 
+
+try-catch 문 안에서 DB 연결 7단계를 실행한다.
+1단계 : Class.forName(driver);   드라이버 로드
+
+2단계: conn = DriverManager.getConnection(url,uid,upw);  DB 연결 객체 (url, db아이디, db패스워드)
+
+3단계: stmt = conn.createStatement();  SQL 전송객체
+
+4,5 단계 : rs=stmt.executeQuery(sql문);   4단계 SQL문 전송 5단계 rs에 전송결과 받기
+
+6단계 : 결과를 이용해서 실행할 로직 수행
+
+7단계 : rs.close(), stmt.close(), conn.close();  연결해제시켜주기
+	이때 if문을 사용해 rs, stmt, conn이 null 이 아닐때 해제시켜준다.
+	닫는 순서는 열었던 순서 반대로 닫는다.
+
+이렇게 DB와 연결할 수 있다.
+
+

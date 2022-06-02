@@ -1,0 +1,52 @@
+<객체와 배열>
+배열은 여러가지 변수를 모아 놓은 객체이다.
+
+객체는 여러가지 변수와 키값을 모아 놓은 객체이다.
+
+
+자료형의 타입을 알려주는 함수는 typeof(); 이다.
+typeof(배열명); 을 하면 ()안의 타입을 알려준다.
+
+자료형의 타입은 object 타입이다.
+
+배열 내부에 있는 값은 요소라고 한다.
+객체 내부에 있는 값은 속성이라고 한다.
+
+객체는 속성과 data가 들어간다.
+var person = {
+         name : '홍길동',
+         age   :  22	
+};
+person은 객체이며 속성에는
+data: 홍길동 의 키값은 name
+data: 22 의 키값은 age 이다.
+
+<객체와 배열 출력>
+배열을 출력할 때는 일반 for, for-in, forEach() 를 모두 이용할 수 있다.
+
+객체를 출력할 때는 for-in 만 사용할 수 있다.
+
+
+배열 출력: 
+var arr = [1,2,300];
+for ( var idx in arr) {
+document.write(idx + " : " + arr[idx] + '<br>);
+}
+출력 결과 :
+1
+2
+300
+
+객체 출력:
+var obj = { name : 홍길동 , age : 20 ); 
+for ( var key in obj) {
+     document.write(key + " : " + obj[key] + '<br>');
+}
+출력 결과 :
+name : 홍길동
+age : 20
+
+
+
+
+

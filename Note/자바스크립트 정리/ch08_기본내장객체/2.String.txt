@@ -1,0 +1,35 @@
+<String>
+String 객체의 내장함수
+1. str.length
+: string 객체의 크기를 return 해준다.
+
+2. str.concat(str)
+: str과 매개변수로 들어오는 값과 연결해준다.
+
+3. str.substr( a , b )
+: str에서 a번째부터 b개 글자 추출해준다.
+
+4. str.substring( a, b )
+: str에서 a번째부터 b번째 앞까지 추출해준다.
+
+5. str.indexOf(' ')
+: 앞부터 매개변수로 들어온 문자열과 일치하는 위치를 찾아줌
+
+6. str.lastIndexOf(' ')
+: 뒤부터 매개변수로 들어온 문자열과 일치하는 위치를 찾아줌
+
+--< indexOf 함수들에서 없는 문자의 위치는 -1로 return 해준다.
+
+7.str.trim()
+: str에서 양쪽의 space를 없애준다.
+
+8. str.toUpperCase(), str.toLowerCase()
+: 대문자, 소문자로 변환시켜준다.
+
+9.split(separaotr, limit)
+: separator로 문자열을 잘라서 배열을 리턴해준다.
+limit은 자를 개수의 한계이다. (필수조건이 아니다. 적지않으면 전부 다 분할해준다.)
+
+10.slice(start, end)
+: 특정 위치의 문자열을 추출해 리턴해준다.
+

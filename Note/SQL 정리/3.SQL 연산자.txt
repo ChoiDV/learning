@@ -1,0 +1,20 @@
+<SQL 연산자>
+DISTINCT : 필드 중복제거 
+
+BETWEEN a AND b : a부터 b (a,b 값 포함. a가 작은 값)
+
+IN(list) : list의 값 중 어느 하나와 일치한다.
+
+LIKE pattern : 검색하고자 하는 값을 정확히 모를 경우 pattern 과 일치하는지를 검색하며 pattern에는 다음의 두가지
+		와일드카드가 사용된다.
+		% : 문자가 없거나, 하나 이상의 문자가 어떤 값이 와도 상관없다.
+		_  : 하나의 문자가 어떤 값이 와도 상관없다.
+IS NULL : null 값을 가졌다.
+
+NOT BETWEEN a and b : a와 b 사이에 있지 않다. ( a,b 값이 포함되지 안음)
+
+NOT IN(list) : list의 값과 일치하지 않는다.
+
+NOT LIKE pattern : 문자형태가 pattern과 일치하지 않는다.
+
+NOT IS NULL : null값을 갖지 않다.

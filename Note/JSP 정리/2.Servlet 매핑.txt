@@ -1,0 +1,21 @@
+<Servlet 매핑>
+Servlet파일의 매핑 방식에는 2가지가 있다.
+
+1. Servlet 파일을 생성시 
+@WebServlet(name = " " , urlPatterns = { " /  "}) 이 있다.
+name에는 Servlet의 이름
+urlPatterns에는 /url 을 입력해준다.
+이렇게 매핑을 하는 방법이 '어노테이션' 매핑 방식이다.
+
+2. 프로젝트 밑에 WebContent 밑에 WEB-INF 밑에 web.xml 파일에서
+<welcom-file-list> 태그가 끝난뒤에 
+<servlet> 태그를 열고 그 안에서 매핑을 할수도 있다.
+이 방식을 web.xml 에서 매핑하는 방식이고 방법은:
+ <servlet>
+  <servlet-name> servlet 이름 </servlet-name>
+  <servlet-class> 매핑할 클래스 파일명을 패키지명을 포함하여 입력한다 </servlet-class>
+ </servlet>
+  <servlet-mapping>
+    <servlet-name> servlet 이름</servlet-name>
+    <url-pattern>  매핑할 url 반드시 / 을 붙여서 적는다.</url-pattern> 
+  </servlet-mapping>

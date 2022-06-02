@@ -1,0 +1,70 @@
+< DDL >
+DDL : Data Definition Language ; 데이터와 그 구조를 정의	
+	CREATE : 데이터 베이스 객체 생성
+	DROP : 데이터 베이스 객체를 삭제
+	ALTER : 기존에 존재하는 데이터베이스 객체를 다시 정의
+	TRUNCATE : 데이터베이스 객체 내용 삭제
+
+1.CREATE TABLE 로 테이블 구조 정의하기
+
+(1). 데이터형 : 데이터베이스에는 문자, 숫자, 날짜, 이미지 등과 같은 다양한 형태의 데이터가 저장됩니다. 
+
+오라클에서 제공되는 데이터 형의 종류:
+CHAR(size) ; 고정 길이 문자 데이터. VARCHAR2와 동일한 형태의 자료를 저장할 수 있고, 입력된 자료의 길이와는 상관없이 정해진 길이만큼 저장 영역 차지. 최소 크기는 1
+VARCHAR2(size) ; Up to 4000 Bytes 가변 길이 문자 데이터. 실제 입력된 문자열의 길이만큼 저장 영역을 차지. 최대 크기는 명시해야 하며, 최소 크기는 1
+NUMBER ; Internal Number Format 최고 40자리까지의 숫자를 저장할 수 있습니다. 이때 소수점이나 부호는 길이에 포함되지 않는다
+NUMBER(w) ; W자리까지의 수치로 최대 38자리까지 가능하다. (38자리가 유효 숫자이다.)
+NUMBER(w, d) ; W는 전체 길이, d는 소수점 이하 자릿수이다. 소수점은 자릿수에 포함되지 않는다.
+DATE : BC 4712년 1월 1일~AD 4712년 12월 31일까지의 날짜
+LOB : 2GB까지의 가변 길이 바이너리 데이터를 저장시킬 수 있습니다. 이미지 문서, 실행 파일을 저장할 수 있습니다
+
+(2) CREATE TABLE로 테이블 구조 정의하기
+- CREATE TABLE Book(
+	bokid NUMBER,
+	bookname VARCHAR2(20),
+	publisher VARCHAR2(20),
+	price NUMBER,
+	rdate DATE,
+	PRIMARY KEY(bookid));
+
+- drop table book;
+
+- CREATE TABLE BOOK(
+    bookid number primary key,
+    bookname varchar2(20),
+    publisher varchar2(20),
+    rdate DATE,
+    price number);
+
+2. ALTER TABLE
+●ALTER TABLE 명령문은 기존 테이블의 구조를 변경하기 위한 DDL 명령문입니다. 테이블에 대한 구조 변경은 컬럼의 추가, 삭제, 컬럼의 타입이나 길이를 변경할 때 사용합니다. 
+●  테이블의 구조를 변경하게 되면 기존에 저장되어 있던 데이터에 영향을 주게 됩니다.
+●ALTER TABLE로 칼럼 추가, 수정, 삭제하기 위해서는 다음과 같은 명령어를 사용합니다.
+	-ADD COLUMN 절을 사용하여 새로운 칼럼을 추가한다.
+	-MODIFY COLUMN 절을 사용하여 기존 칼럼을 수정한다.
+	-DROP COLUMN 절을 사용하여 기존 칼럼을 삭제한다
+●ALTER TABLE ADD 문은 기존 테이블에 새로운 컬럼을 추가합니다. 새로운 컬럼은 테이블 맨 마지막에 추가되므로 자신이 원하는 위치에 만들어 넣을 수 없습니다. 
+	또한 이미 이전에 추가해 놓은 로우가 존재한다면 그 로우에도 컬럼이 추가되지만, 컬럼 값은 NULL 값으로 입력됩니다
+
+
+3. DROP TABLE
+● DROP TABLE문은 기존 테이블을 제거한다.
+DROP TABLE 테이블이름; 을 하면 제거할 수 있다.
+
+4. TRUNCATE
+: 기존에 사용하던 테이블의 모든 로우를 제거하기 위한 명령어로 TRUNCATE가 제공됩니다
+TRUCATE TABLE TABLE_NAME;
+
+5. RENAME
+: 기존에 사용하던 테이블의 이름을 변경하기 위한 명령어로 RENAME이 있다.
+	RENAME old_name TO new_name
+
+
+
+
+
+
+
+
+
+

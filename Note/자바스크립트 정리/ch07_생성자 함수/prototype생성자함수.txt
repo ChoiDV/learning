@@ -1,0 +1,24 @@
+<prototype을 이용한 생성자 함수>
+일반 함수를 사용하여 객체를 만든 것과 생성자 함수를 사용하여 객체를 만드는 것의 차이점은 없다.
+하지만 속성은 모든 객체가 다른 속성을 가지지만 메소드는 모두 같을 경우 각 객체를 생성할 때 마다
+동일한 함수를 계속 생성하게 되고 이러한 문제를 해결하고자 프로토타입을 이용한다.
+
+!!! 즉 동일한 행동을 반복하지 않기위해 프로토타입을 이용한다. !!!
+
+function Student(name, kor, mat, eng, sci) {
+            this.name = name;
+            this.kor = kor;
+            this.mat = mat;
+            this.eng = eng;
+            this.sci = sci;
+}; 이렇게 만들어준뒤
+Student.prototype.getSum = function(){} 
+Student.prototype.getAvg  = function(){}
+Student.prototype.toString = function(){}
+
+이렇게 prototype 이라는 공용공간에 속성들을 만들어준다.
+이렇게 생성하면 Student라는 객체는 모두 getSum, getAvg, toString을 사용할 수 있다.
+
+
+
+        

@@ -1,0 +1,63 @@
+<open 함수>
+window.open() 이지만 window는 생략 가능하다.
+open() 함수의 매개변수는 모두 옵션이다.
+open( URL, name, features, replace) 새로운 window객체를 생성해준다.
+URL : 열고자 하는 HTML페이지의 url
+name : 윈도우 간 통신하는데 사용하는 윈도우 이름 또는 target 속성
+features : 윈도우 출력 모양을 지정하는 옵션
+
+생성 ex)
+var child = open(' ', ' ', 'width=450,height=500);
+실행시 가로450 세로 500의 크기인 새창이 열린다.
+
+윈도우 이름을 쓸 경우에는 
+var child = open('','childWin', 'widht=300,height=300'); 실행시
+childWin이란 이름을 가진 크기 300,300 의 윈도우 창이 열린다.
+
+윈도우 이름을 쓴 응용 ex)
+위처럼 childWin을 만든뒤
+<a href="https://www.google.com" target="childWin"> 이란 a태그를 body에 만들어준다.
+a태그의 target은 창을 어떻게 띄울까를 정하는 옵션이다.
+그 target에 위에서 만든 childWin을 넣어주면 
+a태그를 클릭스 childWin이 구글로 이동하게 된다.
+
+이런 용도로 사용한다.
+
+<URL을 지정한뒤 사용할 경우>
+var child = open('ex.html','','widht=10,height=10');
+실행시 파일 내의 ex.html 파일을 찾아서 실행시켜준다.
+
+
+<페이지 이동 함수>
+페이지를 location 객체의 함수를 사용해서 이동시켜줄수 있다.
+
+location 함수에는 
+- .href(link) : (속성)히스토리를 남긴다.
+
+- .assign(link) : (함수)다음 페이지로 이동하면서 현재 페이지를 히스토리에 남긴다.
+
+- .replace(link) : (함수)다음 페이지로 이동하면서 현재 페이지를 히스토리에 남기지 않는다.
+등 이 있다.
+replace는 뒤로가기로 이전 페이지로 가는 것을 차단하거나, 방문 히스토리를 남기지 않아햐
+하는 경우에만 사용한다.
+
+location 함수를 사용한 ex는 
+홈페이지에 들어간뒤 버튼이나, 일정 시간이 지난 뒤
+지정한 페이지로 이동하게 해주는 기능이다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

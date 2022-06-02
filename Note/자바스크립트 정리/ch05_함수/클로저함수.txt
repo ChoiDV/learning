@@ -1,0 +1,24 @@
+<클로저함수>
+
+function test(name) {
+var output = 'Hello'+name+'남';
+}
+alert(output);
+위의 경우에는 output이 지역번수 이므로 함수 외부에서 사용할 수 없다.
+그래서 이 문제를 해결하기 위해서 클로저 함수를 사용한다.
+
+function test(name) {
+var output = 'Hello'+name+' 님 ';
+    return function() {
+	alert(output);
+    }
+}
+
+test('홍길동')(); 이렇게 실행하면 test함수에 매개변수를 '홍길동'으로 보내서
+output = Hello 홍길동 님 이 된다.
+return을 alert(output)을 함수로 리턴해주면 
+test('홍길동')() 은 alert(output)이 되기때문에 
+Hello 홍길동 님   이 출력된다.
+
+
+

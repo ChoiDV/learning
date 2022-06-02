@@ -1,0 +1,30 @@
+<선택자로 문서 객체 가져오기>
+선택자에는
+-  querySelector(선택자)
+: querySelector는 선택자로 가장 '처음' 선택되는 문서 객체를 가져온다.
+
+-  querySelectorAll(선택자)
+: querySelectorAll는 선택자로 선택되는 문서 객체를 배열로 가져온다.
+
+가 있다. 둘의 차이는 하나만 가져오느냐, 전체를 가져오느냐의 차이다.
+
+<문서객체 제거하기>
+자바 스크립트에서 문서객체 가져오기를 이용해 문서객체를 제거하는법이다.
+
+첫번째로 문서객체를 똑같이 불러온다.
+var h1 = document.getElementsByTagName('h1);
+
+두번째
+반복문을 이용해 .removeChild(); 를 해준다.
+ for (var idx = h1.length - 1; idx >= 0; idx--) {
+                document.body.removeChild(h1[idx]);
+}
+이렇게 삭제를 해줄수 있다.
+
+
+
+
+
+
+
+

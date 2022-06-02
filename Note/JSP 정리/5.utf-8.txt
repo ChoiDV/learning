@@ -1,0 +1,22 @@
+<UTF-8>
+utf-8 은 유니코드를 위한 가변 길이 문자 인코딩 방식이다.
+
+
+doPost 방식으로 Servlet에서 HTML을 받을때 
+request.setCharacterEncoding("utf-8"); 을 꼭 사용해야한다.
+
+톰캣이 post방식으로 파라미터를 받을때 utf-8을 사용하지않기때문에
+한글 깨짐 현상이 발생한다.
+그래서 post방식으로 파라미터를 받을때는 꼭
+utf-8로 인코딩 처리한다.
+
+<utf-8> 을 사용해야하는 경우
+
+- response.setContentType("text/html; charset=utf-8");
+응답처리객체의 text를 hteml로 문자는 utf-8로 처리를 해라.
+
+
+- request.setCharacterEncoding("utf-8");
+doPost방식으로 파라미터를 받을때 utf-8로 받아서 한글 처리를 한다.
+
+

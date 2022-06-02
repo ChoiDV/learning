@@ -1,0 +1,30 @@
+<문서객체생성>
+태그를 자바스크립트에서 이용할 수 있는 객체로 만든 것이 문서 객체이다.
+
+방법 1)
+1. h1태그 생성
+2. 태그에 들어갈 textNode 생성
+3. h1태그와 textNode 연결
+4. h1태그를 body에 추가
+1.  var h1 = document.createElement('tagName') : 'h1'
+2.  var textNode = document.createTextNode('h1태그 안 들어갈 text');
+3.  만든 h1 과 textNode를 합쳐줘야한다. h1에 textNode를 넣어준다.
+     h1.appendChild(textNode);
+4.  마지막 body에 넣어주기
+document.body.appendChild(h1);
+
+방법 2)
+1. img 태그 생성
+2. src 속성 setting
+3. img태그를 body에 추가
+
+var img(임시변수) = document.createElement('tagName')  : 'img'
+img.setAttribute('img 태그의 속성값들을 set해준다.'); : 'src','img/red.jpg'
+마지막 body에 넣어주기
+document.body.appendChild(img);
+
+
+방법 3)
+1. innerHTML을 이용
+: innerHTML을 사용하려면 
+innerHTML += '  ' ;  완벽한 html 문장을 써주어야한다.

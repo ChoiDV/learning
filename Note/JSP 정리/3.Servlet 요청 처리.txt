@@ -1,0 +1,20 @@
+<Servlet의 통신>
+Servlet파일을 만들면 
+  doGet 과 doPost 라는 함수를 오버라이드 하게된다.
+1. doGet 함수는 html에서 submit을 get방식으로 처리하게 되면
+   doGet함수가 실행이 된다.
+이때 첫번째 매개변수 HttpServletRequest request
+      두번째 매개변수 HttpServletResponse response 가 들어간다.
+HttpServletRequest request  : 요청처리객체
+HttpServletResponse response : 응답처리객체
+
+request는 요청을 하는 객체이고
+response는 응답을 하는 객체이다.
+
+request는 클라이언트로부터 오는 정보를 갖고 올 수 있다. 예를 들어
+로그인 페이지에 들어가서 아이디와 패스워드를 넣고 버튼을 누르면 그 결과에 맞는 페이지로 가도록 한다.
+
+response는 회원이 맞는지 아닌지 결과값을 response객체에 실어 보낸다.
+
+그렇게 doGet이나 doPost 함수를 이용해 웹 브라우저의 요청 정보를 읽어 오던가
+	응답을 전송할 수 있다.

@@ -1,0 +1,45 @@
+<Servlet 웹 프로그래밍>
+Servlet의 특징
+1. 동적 웹 어플리케이션 컴포넌트이다. JSP와 같다.
+2. java확장자이다.  JAVA언어를 사용하여 웹 프로그램을 제작하는 것이다.
+	Servlet (Interface)
+	↑ (구현)
+	GenericServlet (abstract)
+	↑ (상속)
+	HttpServlet
+	↑ (상속)
+	작성한 서블릿 클래스
+
+3. 클라이언트의 요청에 동적으로 작동하고, 응답은 html을 이용한다.
+4. java thread를 이용하여 동작한다. 서블릿을 이용하는 가장 큰 장점이다.
+   컴포넌트를 구성하는 다른 언어에 비해, 
+   *'요청이 많이 들어와도 서버의 부하가 많이 걸리지않는 장점'*이 있다.
+5. MVC 패턴에서 cONTROLLER 부분에 이용된다.
+
+
+<Servlet 파일 생성>
+서블릿 생성하기
+
+1.프로젝트안의 Java Resources 밑의 src에 Servlet 생성을 누른다.
+
+2.  Java package:  패키지 이름을 적어준다.
+    Class name: 클래스 이름을 적어준다.
+
+    Next를 누른 뒤
+
+    Name: 서블릿 이름  (  보통 클래스이름과 서블릿이름을 통일한다.)
+    URL mappings : 에는 url 이름이 들어간다. 원하는 url로 edit를 눌러 수정한다.
+
+    Next를 누른 뒤
+    건드리지말고 default 값으로 Finish를 누른다.
+
+3. 생성완료.
+
+
+
+
+
+
+
+   
+

@@ -1,0 +1,123 @@
+<SQL 문장 작성>
+SQL 문장은 대소문자를 구별하지 않는다.
+SQL 문장은 한 줄 또는 여러 줄에 입력될 수 있다.
+SQL 문장은 대문자로 사용하는것을 추천.
+명렁어의 끝은 ;
+주석처리는 --
+
+<SQL 문장 실행>
+SELECT * FROM TAB;  은 사용자(scott)가 소유하고 있는 table을 전부 보여준다.
+
+SELECT * FROM EMP;  EMP테이블의 데이터 전체 보기
+
+DESC DEPT;   DEPT 테이블의 구조보기
+
+<SELECT>
+SELECT문이란?
+하나 또는 그 이상의 테이블에서 데이터를 추출하는 SQL의 데이터 조작언어(DML)언어 중 하나이다.
+데이터베이스 중 하나 또는 그 이상의 테이블에서 데이터를 추출하기 위한 명령이다.
+
+SELECT문은 기본적으로 
+SELECT a FROM b 의 형태로 이루어져 있다.
+a : 참조할 열의 정보
+b : 참조할 테이블의 이름을 입력한다.
+* 는 모든 열을 참조한다는 뜻이며 alias는 컬럼명의 이름을 별칭으로 칭하고싶을 경우 사용한다.
+
+demo.sql 기준
+
+SELECT EMPNO, ENAME, SAL, JOB FROM EMP; 을 실행하면
+:EMP 테이블에서 EMPNO, ENAME, SAL, JOB 을 추출해서 보여준다.
+
+SELECT EMPNO AS "사번", ENAME AS "이름", JOB AS "직업" FROM EMP;
+: EMP 테이블에서 EMPNO, ENAME, JOB을 추출해서 보여준다.
+이때 AS는 alias를 의미하며 뒤에오는 사번, 이름, 직업이 별칭으로 지정된다.
+즉 
+EMPNO 대신 사번으로
+ENAME 대신 이름으로
+JOB 대신 직업으로 출력이 된다.
+
+
+<WHERE>
+WHERE는 조건이다.
+
+SELECT문을 사용해서 데이터들을 추출할때 WHERE 조건을 써서
+원하는 조건에 맞는 데이터들만 출력할 수 있다.
+
+ex) 부서번호가 10번인 사원들의 모든정보 출력을 한다면
+SELECT * FROM EMP WHERE DEPTNO=10;
+을 실행하면 부서번호(DEPTNO)가 10번인 사원들의 모든정보가 추출되어 출력이 된다.
+이때 문자열은 ' ' 을 사용하여 넣어준다.
+
+<SQL의 비교연산자>
+1. = : 같다
+2. >= : 크거나 같다.
+3. <= : 작거나 같다.
+4.   <> 
+     ^=
+      !=   : 다르다.
+
+<SQL의 논리연산자>
+1. AND
+2. OR
+3. NOT
+
+<SQL의 산술표현식>
+ex)
+SELECT ENAME, SAL, SAL+300 AS "올릴월급" FROM EMP;
+
+SELECT ENAME, SAL, COMM, SAL*12 AS 월급합, SAL*12+COMM 연봉 FROM EMP;
+
+이렇게 산술표현도 가능하다. 
+위의 문장들을 실행하면 SAL에 300을 더한값이 올릴월급으로 출력이되고,
+SAL에 *12를 한뒤 COMM 을 더한값이 연봉으로 출력이 된다.
+
+alias를 사용할때는 AS를 생략 해도 된다.
+
+NULL : null값은 행이 특정열에 대한 데이터값이 없다면 그 값은 null이 된다.
+
+위의 문장에서 
+null값을 포함한 산술표현식 결과는 NULL이된다. COMM이 있는 열도 있지만 NULL인 열들도 있다.
+실행시 COMM이 NULL인 열들을 연봉이 NULL로 출력이 되기때문에 이 문제를 위한 함수가 있다.
+
+<NVL 함수>
+NVL 함수는 
+NVL(expr1, expr2 ) expr1은 null값을 포함하고 있는 컬럼이나 표현식
+	             expr2는 null 변환을 위한 목표값 이다.
+		이때 expr1과 expr2는 같은 타입이여야 한다.
+즉 위의 문장에서 연봉이 null로 출력 되지 않게하기위해서는
+SAL*12+NVL(COMM,0) 이렇게 작성해야한다.
+
+
+<연결 연산자>
+열이나 문자를 다른 열에 연결하는 연산자 이다.  ||  연결할 열 사이에 || 를 넣는다.
+ex)
+SELECT ENAME || ' 의 연봉 : ' || (SAL*12+NVL(COMM,0)) FROM EMP;
+를 실행시 
+ENAME의 연봉 : (연봉) 이 출력된다.
+
+<중복제거>
+DISTINCT; 를 사용한다.
+SELECT DISTINCT DEPTNO FROM EMP; 
+: DISTINCT 를 사용해서 DEPTNO를 출력하면
+중복되는 부서번호들을 제거한뒤 출력을 해준다.
+
+
+
+
+	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

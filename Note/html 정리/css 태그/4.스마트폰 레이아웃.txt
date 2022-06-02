@@ -1,0 +1,33 @@
+<스마트폰 레이아웃>
+
+viewport : 웹 브라우저의 HTML문서에 특정한 정보를 나타내기 위한 태그로 meta 태그가 있다.
+스마트폰 단말기의 화면이 작던 크던 항상 꽉 차게 보여진다. 그래서 디바이스의 특정정보를 나타내기 위해,
+뷰포트 meta태그를 사용한다.
+
+viewport 속성들
+
+- width: 화면의 너비
+
+- height: 화면의 높이
+
+- initial-scale : 초기 확대 비율
+
+- user-scalable : 확대 및 축소 가능 여부
+
+- minimum-scale : 최소 비율
+
+- maximum-scale : 최대 비율
+
+사용법
+<meta charset="utf-8"
+	name="viewport" content="width=device=width, initial-scale=1.0, maximum-scale-2.0" > 으로 사용한다.
+
+name="viewport"로 viewport 속성을 지정한뒤
+content="width=device=width 는 width는 디바이스의 width이다. 를 지정
+initial-scale=1.0 은 초기 확대 비율
+maximum-scale-2.0 은 최대 비율이 2배까지 가능하다는 의미이다.
+
+
+스마트폰레이아웃은 크기 조절을 할때 px을 사용하지않고 %로 사용한다.
+기기마다 크기가 다 다르기때문에 고정적인 px말고 유동적인 %로 화면의 n%로 사용한다.
+

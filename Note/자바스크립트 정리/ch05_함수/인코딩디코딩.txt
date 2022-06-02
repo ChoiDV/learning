@@ -1,0 +1,26 @@
+<인코딩 | 디코딩 >
+인코딩 : 은 문자를 컴퓨터에 저장하거나 통신에 사용할 목적으로 부호화하는 방법이다.
+웹에서는 통신할 때 한글 같은 유니코드 문자가 오작동을 일으킬 수 있으므로 인코딩을 해야한다.
+
+문자를 부호화하는 것이 인코딩
+그 반대로 돌리는 것이 디코딩 이다.
+
+encodeURIComponent(URIConponent); 
+대부분의 문자를 모두 인코딩 한다.
+
+// URI 는 uri 이다.
+
+decodeURIComponent(encodedURI);
+대부분의 문자를 모두 디코딩 한다.
+
+var str='자바';
+var str1 = '%EC%9E%90%EB%B0%94'; // 자바를 인코딩한것이다.
+
+-사용법-
+var encodeStr = encodeURIComponent(str);
+// str을 인코딩해서 encodeStr에 넣어주었다.
+
+var decodeStr = decodURIComponent(encodeStr);
+// encodeStr을 디코딩해서 decodeStr에 넣어주었다.
+
+

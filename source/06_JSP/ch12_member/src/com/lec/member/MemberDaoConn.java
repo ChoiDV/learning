@@ -8,7 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-public class MemberDao {
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+public class MemberDaoConn {
 	public static final int SUCCESS = 1; // 회원가입, 정보수정시 성공 리턴값
 	public static final int FAIL = 0; // 회원가입, 정보수정시 실패 리턴값
 	public static final int MEMBER_EXISTENT = 0; // 중복된 ID일때 리턴 값
@@ -16,24 +21,18 @@ public class MemberDao {
 	public static final int LOGIN_SUCCESS = 1; // 로그인 성공시 리턴값
 	public static final int LOGIN_FAIL_ID = -1; // 로그인시 id 오류릴때 리턴값
 	public static final int LOGIN_FAIL_PW = 0; // 로그인시 PW오류일 때 리턴값
-
-	// 싱글톤
-	private static MemberDao instance; // 자기가 자기 클래스 참조
-
-	public static MemberDao getInstance() {
-		if (instance == null) {
-			instance = new MemberDao();
-		}
-		return instance;
-	}
-
-	private MemberDao() {
-	}
-
+	
 	// conn 객체 리턴하는 함수
-	private Connection getConnection() throws Exception {
-		Class.forName("oracle.jdbc.OracleDriver");
-		Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
+	private Connection getConnection() throws SQLException {
+		// 커넥션 풀의 DataSource안의 conn객체 이용 
+		Connection conn = null;
+		try {
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
+			conn = ds.getConnection();			
+		} catch (NamingException e) {
+			System.out.println("커넥션풀 이름 오류 : "+ e.getMessage());
+		}	
 		return conn;
 	}
 

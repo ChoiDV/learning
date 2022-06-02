@@ -1,0 +1,50 @@
+<Servlet로 출력하기>
+
+1. doGet이나 doPost 함수안에서
+html에서 받을 값의 변수를 선언한뒤 그변수에 받는 문장을 사용한다. 
+String numStr = request.getParameter(" ? "); 을 사용한다.
+
+Servlet으로 요청이 들어오게 되면, 요청 파라미터라는 것이 같이 오게 된다.
+이것에 대한 분석을 getParameter("") 를 사용해서 파악을 한다.
+request는 요청처리객체 getParameter는 파라미터이름에 해당하는 값을 가져온다.
+그래서 ? 에는 파라미터이름을 적어준다. 
+이때 input의 type이 text이면  받는 값은 String으로 받게된다.
+
+2. numStr에 값을 받은뒤 출력을 하려면
+response.setContentType("text/html; charset=utf-8); 을 사용한다.
+이 문장은 HTML이  utf-8 형식이라는 것을 브라우저에게 전달하는 문장이다.
+이 문장을 사용하지 않으면 한글 깨짐 현상이 발생한다.
+
+3. 스트림객체를 생성 해준다.
+위의 request로 요청처리를 받은것을 응답을 해주기 위해서는 응답처리객체에
+응답할것들을 실어줘야한다.
+여기서 응답으로 텍스트를 기록해야 하는데 이때 스트림이 필요하다.
+
+응답 스트림에 텍스트를 기록하기 위해서는 
+response.getWriter(); 를 호출해야 한다.
+
+PrintWriter 는 문자 출력 스트림이다.
+
+그래서 요청을 받고 응답 할것들을 문자로 출력하려면 
+
+응답할 텍스트들을 response.getWriter()로 기록을 한뒤
+문자출력 스트림인 PrintWriter out을 이용해 웹 브라우저에 전송해주는 출력 스트림이다.
+
+즉 PrintWriter out = response.getWriter(); 는
+JSP 페이지의 결과를 웹 브라우저에 전송해주는 출력 스트림이다.
+
+4. 생성한 스트림객체를 이용해 출력을 한다.
+ex) 
+out.println("<h1>Hello World</h1>");
+out.println("<h2>Nice to meet you</h2>");
+출력할것들을 모두 한뒤에는 
+out.close(); 로 꼭 닫아준다.
+
+5. 결과
+
+실행시
+h1 태그로  Hello World
+h2 태그로 Nice to meet you 이 출력된다.
+
+
+

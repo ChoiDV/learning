@@ -1,0 +1,64 @@
+<타이머 함수>
+기본함수
+1. setTimeout(function, milliseond);
+: 일정시간 후 함수를 한번 실행
+일정시간은 millisecond     
+
+2. setInterval(function, millisecond);
+: 일정시간마다 함수를 반복실행
+일정시간은 millisecond 
+타이머함수를 중지 하려면 반드시 var 에 넣어서 만들어주어야 중지 시킬수 있다.
+
+millisecond는 1000= 1초 이다.
+
+3. clearTimeout(id);
+: setTimeout 중지 
+
+4. clearInterval(id);
+: setInterval 중지
+
+
+
+- setInterval 사용법-
+var id = setInterval(function () {
+	document.write(new Date() + '<br>);
+}, 1000 ); 
+// id는 1000millisecond 즉 1초마다 실행시켜주는 함수이고
+id의 함수안에 실행내용은 현재의 시간을 출력시켜주고 개행 시키는 내용이다.
+그래서 실행하면 1초마다 현재의 시간을 무한으로 출력시켜준다.
+
+- setTimeout 사용법 - (clear 까지 이용하기)
+setTimeout(function () {
+	clearInterval(id);
+	document.write('DONE');
+}, 10000 );
+// setTimeout 함수의 매개변수에
+중지시키는 함수와 , 시간을 넣고 실행을 시키면
+시간 만큼 뒤에 함수를 실행시킨다.
+
+위의 setTimeout 함수는
+10000millisecond 후(10)초후에
+clearInterval 함수를 실행시키는데 매개변수로 들어온 함수를 중지시키는데
+매개변수로 들어온 함수는 현재시간을 출력시켜주는 함수이다.
+즉 10초후에 id함수를 중지시켜준다.
+
+타이머 함수들은 맨 마지막에 실행이 된다.
+alert('A');
+setTimeout(function () { alert('B') }, 0) ;
+alert('C');
+를 실행시키면 실행되는 순서는 A -> C -> B 의 순서로 실행된다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

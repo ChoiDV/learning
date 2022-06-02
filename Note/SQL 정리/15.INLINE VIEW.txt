@@ -1,0 +1,11 @@
+<INLINE VIEW>
+SQL문장 내의 서브쿼리는 SELECT 절에도, FROM절에도 WHERE절에도 어디든 사용 가능.
+FROM 절 상의 서브쿼리를 inline view라 하며, FROM 절에 오는 서브쿼리는 VIEW 처럼 작용한다.
+
+<문법>
+SELECT column_list
+    FROM (Sub Query) alias
+      WHERE condition
+
+
+
