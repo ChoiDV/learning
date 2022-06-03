@@ -137,7 +137,4 @@ public class BoardDto {
 				+ re_step + ", re_indent=" + re_indent + ", ip=" + ip + ", rdate=" + rdate + "]";
 	}
 	
-	
-	
-	
 }
