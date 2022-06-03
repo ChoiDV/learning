@@ -1,0 +1,28 @@
+<Timer, TimerTask >  클래스
+Timer 객체는 일정한 시간이 되면, TimerTask 객체가 작동되도록 하거나 일정 시간마다
+TimerTask객체가 작동되도록 한다. 단, TimerTask클래스는 추상클래스 이므로,
+TimerTask클래스를 상속받는 클래스를 만들어서 사용해야 합니다.
+
+public class TimerTaskEx1 extends TimerTask {
+	public void run() {
+		System.out.println("TimerTaskEx 1 : 1의 작업이 실행 중 ☏");
+	}
+}
+
+public class TimerTaskEx2 extends TimerTask{
+	public void run() {
+		System.out.println("TimerTaskEx 2 : 2의 작업이 실행 중 ♨");
+	}
+}
+
+public static void main(String[] args) throws InterruptedException {
+	System.out.println("START");
+	Timer timer = new Timer(true);
+	TimerTask t1 = new ExTimerTask1();
+	TimerTask t2 = new ExTimerTask2();
+	timer.schedule(t1, 2000);		//2초후 실행
+	timer.schedule(t2, 1000, 500);	//1초후 0.5초마다 실행
+	Thread.sleep(11000);
+	System.out.println("Done");
+}
+이런식으로 사용한다.

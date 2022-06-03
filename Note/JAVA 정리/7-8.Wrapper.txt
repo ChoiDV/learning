@@ -1,0 +1,33 @@
+API-III-Wrapper
+
+Wrapper : 기초 데이터를 객체 데이터로 변환해주는 클래스
+
+기초데이터에 상응하는 객체 데이터 클래스
+
+기초데이터	|	객체데이터
+byte		|	Byte
+short		|	Short
+int		|	Integer
+long		|	Long
+float		|	Float
+boolean		|	Boolean
+char		|	Char
+
+Wrapper클래스의 기본적인 사용방법
+Integer iObj = new Integer(10);
+Integer jObj = 10;       위의 선언방식과 밑의 선언방식 같음
+			
+iObj 와 jObj는 같은 값 이지만 객체이기 때문에 다른 주소값을 갖는다.
+
+#Wrapper 클래스의 static 메소드와 상수#
+
+String을 기초데이터로 반환하는 메소드
+- Byte.parseByte("1");
+- Short.parseShort("23");
+- Integer.parseInt("123456");
+- Long.parseLong("123456");
+- Float.parseFloat("1.5");
+- Double.parseDouble("1.00005");
+- Boolean.parseBoolean("true")
+
+Wrapper 클래스에는 이렇게 String을 각각의 기초데이터로 반환시켜주는 메소드들이 있다.

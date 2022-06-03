@@ -1,0 +1,21 @@
+<Scanner>
+Scanner : 키보드에서 타이핑 하는 문자열 또는 입출력 프로그래밍에서 값을 읽어올 때,
+	무엇인가를 얻어 올때 사용
+
+사용방법 1. Scanner 객체를 생성해준다.
+		Scanner scanner = new Scanner(System.in);
+
+	2. Scanner 클래스는 java.util에 있는 클래스이기 때문에 사용하기 위해선
+	   import 해줘야 한다.  
+		import java.util.Scanner;  혹은  Ctrl+Shift+O 를 눌러주면 자동으로 import 해준다.
+
+	3. 콘솔창에 띄울 메시지를 만들어준다.
+		System.out.print("콘솔창에 띄울 메시지");
+
+	4. 키보드로 입력한 값을 읽어온다.
+	    int 값 	  :  int age = scanner.nextInt();
+	  String 값 :  String str1 = scanner.next();
+
+	5. 받은값을 필요한곳에 사용한다.
+	      ex)    System.out.println(age);
+		  System.out.println(str1);
