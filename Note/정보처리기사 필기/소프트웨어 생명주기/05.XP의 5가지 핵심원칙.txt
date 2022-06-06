@@ -1,0 +1,14 @@
+"2022-06-06"
+
+<XP>
+
+XP의 5자기 핵심원칙
+1. 의사 소통 (Communication)
+2. 단순성 (Simplicity)
+3. 용기 (Courage)
+4. 존중 (Respect)
+5. 피드백 (FeedBack)
+
+의단용존피
+
+XP = 의단용존피
