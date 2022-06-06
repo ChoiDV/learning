@@ -1,0 +1,26 @@
+<Collection>
+Collection 컬렉션이란?
+우리말로 쉽게 말하면 자료구조 이다.
+다수의 데이터, 즉 데이터 그룹을 의미한다.
+데이터 군을 저장하기 위해서 배열을 사용했었다. 배열과 비슷한 구조에다가
+다수의 데이터를 쉽게 처리할 수 있는 메소드를 제공하는 API이다.
+
+<Collection 자료 구조 >
+자바에서 제공되는 Collection 자료 구조 :
+(1) List (순서, 중복 허용)
+	- ArrayList
+	- Vector
+	- LinkedList
+
+(2) Set ( 순서X, 중복 X )
+	- HashSet
+	- TreeSet
+
+(3) Map ( key, value )
+	- HashMap
+	- Properties
+
+
+
+
+

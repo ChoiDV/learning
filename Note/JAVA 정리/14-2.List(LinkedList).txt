@@ -1,0 +1,12 @@
+<List>
+<LinkedList>
+LinkedList는 ArrayList와 거의 비슷하다.
+ArrayList는 접근시간은 빠르나 데이터를 추가하거나 삭제하는데 많은 데이터를
+옮겨야 해서 시간이 많이 걸린다는 단점이 있다.
+이점을 보완한 것이 LinkedList 이다.
+
+즉,
+불연속적으로 존재하는 데이터를 연결, 순차적으로 데이터를 추가/삭제 할 경우
+ArrayList가 빠르고
+
+비순차적으로 데이터를 추가/삭제 하는 경우 LinkedList가 빠르다.

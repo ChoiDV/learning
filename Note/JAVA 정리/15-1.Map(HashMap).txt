@@ -1,0 +1,29 @@
+<Map>
+<HashMap>
+Map 계열의 자료 구조는 인덱스 대신 키 값으로 데이터를 액세스 한다.
+
+List계열과 달리 인덱스가 없고, 키와 값만 있다.
+그리고 키는 유니크 해야한다. 
+우리가 값을 관리하고자 한다면 키를 이용해서 값을 관리할 수 있다.
+
+<사용법>
+HashMap<키 타입, 값 타입> hashmap_name = new HashMap<키 타입, 값 타입>();
+으로 선언하며,
+값을 넣을때는
+hashmap_name.put( 키 , 데이터 ); 로 넣는다.
+
+.remove()
+.clear()
+
+
+<Iterator>
+Iterator는 인터페이스이며 iterator는 반복자 이다.
+Iterator는 데이터를 반복적으로 검색하는데 아주 유용한 인터페이스이다.
+HashMap에서 전체 자료 구조를 검색할때 Iterator를 사용해서 검색할 수 있다.
+
+<사용법>
+Iterator<키 타입> iterator_name = set.iterator();
+while( iterator_name.hasNext() ) {
+ 키 타입 key = iterator.next();
+	hashMap.get(key); 로 데이터 전체 검색을 할 수 있다.
+}
