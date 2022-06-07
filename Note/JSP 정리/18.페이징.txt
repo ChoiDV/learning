@@ -1,0 +1,40 @@
+<페이징>
+페이징 가능한 게시판 만들기
+
+Dao의 list() 메소드를 list(startRow, endRow)으로 오버로딩한뒤
+매개변수 들어간 list()에 Top-N 구문을 추가한다.
+
+<페이징을 위한 Top-N 구문 >
+1단계
+ : SELECT * FROM BOARD ORDER BY REF DESC, RE_STEP;
+
+2단계
+: SELECT ROWNUM RN, A.* FROM
+	(SELECT * FROM BOARD ORDER BY REF DESC, RE_STEP) A;
+
+3단계
+: SELECT * FROM 
+(SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY REF DESC, RE_STEP ) A )
+	WHERE RN BETWEEN ? AND ? ; 
+최종 TOP-N 구문 
+?에 startRow와 endRow를 넣어서 실행하면 된다.
+
+
+<페이징에 필요한 변수>
+pageNum : 현재 페이지 ( String)
+currentPage : 현재 페이지 (int)
+
+startRow : 시작번호-  현재 페이지에서 맨앞에 올 글 번호(num) : (페이지번호 -1) * 페이지당 개수 +1
+endRow : 끝 번호 -  현재 페이지에서 맨뒤에 올 글 번호(num) : 시작번호(startRow) + 페이지당 개수-1
+		 
+pageCnt : 전체 페이지 수
+
+PAGESIZE : 한 페이지당 글 수 : 10개 
+BLOCKSIZE : 블록당 페이지 수 : 10개
+이 사이즈들은 클라이언트의 마음 한페이지에 몇개씩 띄워주고싶은가?
+		페이지 블록에 몇페이지씩 넣고싶은가?
+
+startPage : 시작 페이지 : 현재 페이지블록에 맨앞에 올 페이지번호
+ : ( (현재페이지 -1)/블록당페이지수)*블록당 페이지수 +1
+endPage : 끝 페이지 : 현재 페이지블록에 맨뒤에 올 페이지 번호
+ : 시작페이지(startPage) + 블록당페이지 수 -1 
