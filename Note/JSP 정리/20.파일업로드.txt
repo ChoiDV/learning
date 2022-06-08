@@ -1,0 +1,72 @@
+<파일 업로드>
+
+<파일 업로드 라이브러리 설치>
+1. 파일 업로드 구현을 위해 파일 업로드와 관련된 라이브러리 다운로드 및 설치가 필요하다.
+
+2. http://www.servlets.com 접속 후 좌측의 COS File Upload Library(com.oreilly.servlet) 클릭 후,
+	cos-22.05.zip 다운로드 후 압축 해제
+
+3. 다운로드 받은 라이브러리(cos.jar)를 WEB-INF>lib에 복사한다.
+	이렇게 이클립스 프로젝트 안에 라이브러리를 넣어야 파일업로드 기능을 구현할 수 있다.
+모든 프로젝트에서 파일첨부를 할거면 톰캣폴더에 복사해놓으면 되지만
+	그렇게 하지 않을거라서 특정 프로젝트에만 복사한다.
+
+<파일 업로드 프로그래밍><fileup>
+1. form 태그를 만들 때는 무조건 post방식으로 만들어야 한다.
+	파일을 올릴때 get방식으로는 파일 첨부가 안된다.
+
+2. 파일을 올렸다고 해서 무조건 서버에 집어 넣으면 안된다.
+    첫번째 파일이 날라가고 두번째 파일로 대체된다.
+	이럴땐 ! enctype을 multipart/form-data 설정을 해준다.
+	이 설정을 하면 덮어쓰기가 되지않는다.
+<form action="#" method="post" enctype="multipart/form-data>
+
+3. input 타입에 file 넣고, 파일 업로드 폼 만들기
+
+4. 데이터베이스에는 파일 이름만 저장되고, 서버에만 파일을 올려놓는다.
+	(파일을 가지고 오는데 시간이 오래 걸리기 때문에)
+
+<파일 업로드 프로그래밍> <fileupPro>
+1. fileUpFolder에 첨부한 파일을 업로드 하기 위해 path를 설정해주어야한다.
+
+2. 업로드 maxSize를 지정해주기 ( 1024 * 1024 )*10 즉 10MB로 지정
+
+3. String filename="";  // 서버에 저장될 파일 이름
+   만약에 사용자1이 h.jpg 파일을 업로드하고 다음날 사용자2가 똑같은 파일
+   이름을 써서 업로드를 하면?
+      -- 사용자2 컴퓨터에는 h2.jpg로 자동으로 저장되게끔 하지만 뜨는건 h.jpg로 뜰 수 있도록
+      -- originalFileNmae(업로드한 오리지널 파일이름) 과 filename(서버에 저장될 이름)을 따로 설정해두어야 함
+
+4. MultipartRequest 객체 생성해주기 ( multipartRequest는 매개변수 없는 생성자 함수 없음)
+-- 첫번째 매개변수에 request객체
+-- 두번째 매개변수에 save directory
+-- 세번째 매개변수에 post방식으로 들어왔을때 maxSize
+-- 네번째 매개변수에 한글이 깨질수도 있으니 인코딩 해주는 변수
+-- 다섯번째 매개변수에 new DefaultFileRenamePolicy() 같은 이름의 파일이 있을경우
+	rename을 자동적으로 해주는 아이 : 1.jpg > 11.jpg 같은
+
+5. 이대로 fileUpform을 실행시키고, 동일한 파일을 계쏙 업로드 하면 자동적으로
+	filename에 1이 붙어 생성이 된다.
+
+6. 만약 소스를 바꾸거나 서버 재실행시 저장된 사진들이 없어진다. 
+          왜? db에는 파일이름만 저장하고 파일은 서버에만 저장하기 때문이다
+	그렇기 때문에 데이터들을 다른 곳에 복사해놓아야 한다.
+
+7. 데이터베이스에 올릴 filename과 originalname을 받아와야한다.
+	//파일이름이 데이터베이스에 들어가야하고, 게시판에는 originalfile이름이 들어가야한다.
+	// 그래서 db에는 filename과 originalfilename이 둘다 들어가야한다.
+Enumeration<String> paramNames = multipartRequest.getFileNames();  // 파라미터 이름들 받아오기
+// paramNames가 file이라는 파라미터를 이제 가르키게 된다.
+String param = paramNames.nextElement();  // 파라미터 이름 'file' 받아오는것
+filename = multipartRequest.getFilesystemName(param);  // 파라미터 이름으로 저장된 파일 이름
+originalFilename = multipartRequest.getOriginalFileName(param);  // 오리지날 파일 이름
+// 첨부를 하지 않으면 filename, originalFilename에는 null이 들어오게됨
+
+-- 고객에게 뿌릴건 : 오리지널 파일 이름
+-- 서버에 저장시킬걸 : filename
+-- 데이터베이스에는 이 두개다 넣어야 하기 때문에 이름을 뽑는 과정이 필요
+
+
+
+
+
