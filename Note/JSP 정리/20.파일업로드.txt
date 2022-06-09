@@ -63,8 +63,43 @@ originalFilename = multipartRequest.getOriginalFileName(param);  // 오리지날
 // 첨부를 하지 않으면 filename, originalFilename에는 null이 들어오게됨
 
 -- 고객에게 뿌릴건 : 오리지널 파일 이름
--- 서버에 저장시킬걸 : filename
+-- 서버에 저장시킬건 : filename
 -- 데이터베이스에는 이 두개다 넣어야 하기 때문에 이름을 뽑는 과정이 필요
+
+8. 서버에 업로드한 파일을 소스의 폴더로 file copy
+-- InputStream과 OutputStream 을 이용해서
+-- filename이 null이 아니면(첨부를 했을경우) 복사 하기.
+-- 복사될 파일(원본)은 inputstream에 담고, 복사가 된 파일은 outputstream에 담아주기.
+
+byte[] bs = new byte[(int)serverfile.length()];
+// 파일을 읽어올때 필요한 과정
+// 서버파일의 크기만큼 바이트로 읽어내겠다 라는 뜻.
+
+
+<여러개의 파일을 첨부받을때>
+여러개의 파일을 첨부받을때는
+Enumeration<String> paraNames = mRequest.getFileNames(); // 똑같이 파라미터이름들 받아온뒤
+int idx=0;
+while(paramNames.hasMoreElements()){   // paramNames에서 다음요소가 있느냐? 있으면 true, 없으면 false
+    String param = paramNames.nextElement(); // paramNames에서 파라미터 이름 하나 받아오기
+    filename[idx] = mRequest.getFilesystemName(param); // 그 파라미터 이름으로 저장된 파일을 가지고 온다.
+    originalFilename[idx] = mRequest.getOriginalFileName(param); // 해당 파라미터 이름으로 첨부된 오리지널 파일 이름 가지고온다.
+    idx++;  
+    // 이렇게 하면 처음 while문이 돌았을때 처음 요소를 받아와 
+    // filename, originalFilename 0 번방에 파일이름들을 가져온뒤 idx++
+    // 두번째 while문이 true여서 또 실행되면 1번방에 파일이름들을 가져오고 idx++
+    //  이렇게 다음 요소가 없을때까지 while문이 실행되면서 파일이름들을 가져온다.
+}
+단!
+첨부된 파일이 여러개일경우  *순서가 반대로 들어오게 된다.*
+즉,
+file1, file2, file3 의 순서라면
+0번방 : file3
+1번방 : file2
+2번방 : file1 이렇게 들어오게 된다.
+
+
+
 
 
 
