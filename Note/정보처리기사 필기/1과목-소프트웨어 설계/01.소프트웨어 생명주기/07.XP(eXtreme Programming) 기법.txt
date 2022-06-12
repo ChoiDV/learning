@@ -1,0 +1,5 @@
+<XP (eXtrem Programming) 기법 >
+
+① XP (eXtrem Programming )
+: 수시로 발생하는 고객의 요구사항에 유연하게 대응하기 위해 
+	고객의 참여와 개발 과정의 반복을 극대화 하여 개발 생산선을 향상시키는 방법.
