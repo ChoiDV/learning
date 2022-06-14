@@ -1,0 +1,91 @@
+< EL (Expression Language ) >
+표현식 또는 액션태그를 대신해서 값을 표현.
+
+① EL(Expression Language)란
+- 표현식( <%= ~ %> ) 을 조금 더 간략하게 대신해서 값을 표현하는 언어.
+- 액션 태그를 조금 다르게(간략하게) 표현한 것.
+
+- 표현식 ( <%= value %> )  →  EL 표기법 :  ${value } 
+
+
+② EL 연산자 ( EL 표기법 안에서 아래의 연산자들을 사용할 수 있다. )
+- ① 산술 : + - * / %
+- ② 관계 : ==(eq)  !=(ne) <(lt) >(gt) <= >=
+- ③ 조건: a ? b : c 
+- ④ 논리 && ||
+- ⑤ $ {empty 값} 공백이거나 null일 때 true
+- ⑥ ${not empty 값} 공백이거나 null이 아닐 때 ture
+
+
+③ EL 표기법
+- 산술연산 : 10+1 = ${10+1 } 
+- 산술연산 : 10/0 = ${10/0 } 
+- 관계연산 : 1 > 2 = ${ 1 gt 2 }
+- 관계연산 : 1 > 2 = ${ 1 > 2 }
+- 관계연산 : 1 &lt; 2 = ${ 1 lt 2 }
+- 관계연산 : 1 &lt; 2 = ${ 1 < 2 }
+- 관계연산 : 1 == 2 = ${ 1 eq 2 } 
+- 관계연산 : 1 == 2 = ${ 1 == 2 } 
+- 논리연산 : (1>2) || (1&lt;2) = ${(1 gt 2) || (1 lt 2) }
+- 삼항연산 : ${( 1 > 2) ? "1>2입니다" : "1>2가 아닙니다" }
+- 로그인여부 : ${empty validMember ? "로그인전":"로그인후"}
+- 로그인여부 : ${not empty validMember? "로그인후":"로그인전" }
+- 파라미터 : ${not empty param.pageNum ? "pageNum 넘어옴" : "pageNum 안넘어옴"}
+
+
+④ 액션 태그로 사용되는 EL 
+<jsp:getProperty name="member" property="name"/> 으로 사용되는 액션 태그를
+${member.name} 으로 표현 가능하다.
+
+
+⑤ 내장 객체
+Scope에 관한 객체
+- ①pageScope : page객체의 attributte를 참조하는 객체(page attribute의 집합) Map 타입
+- ②requestScope : request객체의 attribute를 참조하는 객체(rquest attribute의 집합) Map 타입
+- ③sessionScope : session객체의 attribute를 참조하는 객체(session attribute의 집합) Map 타입
+- ④applicationScope : application객체의 attribute를 참조하는 객체(application attribute의 집합) Map 타입
+pageContext : 현재 페이지를 벗어나면 없어지는 속성
+request : 새로운 request객체를 생성하면 없어지는 속성
+session : 브라우저를 닫으면 없어지는 속성
+application : 톰캣을 재실행 하면 없어지는 속성
+
+그 외 유용한 객체
+- param : 요청 파라미터를 참조하는 객체 Map 타입
+- paramValues : 요청 파라미터(배열)을 참조하는 객체( 같은 이름의 데이터가 여럿일 때 사용)
+- initParam : 초기화 파라미터를 참조하는 객체(웹 어플리케이션의 초기화 파라미터의 집합) Map 타입
+
+데이터 공유 : 여러 서블릿에서 데이터를 공유해야 할 경우 context Parameter를 이용해서
+web.xml에 데이터를 기술하고 공유하면서 사용할 수 있다.
+(서블릿과 컨테이너 간의 통신)
+
+web.xml에 데이터를 초기화
+<context-param>
+  	<param-name>contextId</param-name>
+  	<param-value>scott</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>contextPw</param-name>
+  	<param-value>tiger</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>contextPath</param-name>
+  	<param-value>d:/mega-IT/IDE</param-value>
+</context-param>
+
+한 뒤
+
+jsp에서
+${ initParam.contextId }
+${ initParam.contextPw }
+${ initParam.contextPath } 로 불러올 수 있다.
+
+
+
+
+
+
+
+
+
+
+
