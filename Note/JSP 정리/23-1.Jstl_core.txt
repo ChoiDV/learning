@@ -1,0 +1,41 @@
+<JSTL-core>
+
+<Core>
+- Core 라이브러리는 기본적인 라이브러리로 출력, 제어문, 반복문 같은 기능이 포함. JSP페이지에서 위의 prefix를 사용하기 위해서는 taglib 지시자를 이용해서 라이브러리의 URI 식별자와 접두어를 연결해야 한다. Taglib 지시자는 다른 지시자와 마찬가지로 <%@로 시작해서 %>로 끝난다. 아래와 같이 두개의 속성값을 써야 한다.
+
+가장 먼저 해야 할 일은 페이지 지시자에 태그라이브러리를 사용한다고 명시해 준다.
+<%@ taglib prefix=“c” uri=”http://java.sun.com/jsp/jstl/core” %>
+            	 	접두어      라이브러리를 식별하는 라이브러리
+
+<태그 종류>
+① 출력 태그 <c:out>
+<c:out value=“출력값” default=“기본값” escapeXml=“true or false”> false를 주면 특수기호를 해석
+
+② 변수 설정 태그 <c:set>
+<c:set var=“변수명” value=“설정값” target=“객체” property=“값” scope=“범위”>어떤 객체의 속성값을 변수로 지정
+
+③ 변수를 제거하는 태그 <c:remove>
+<c:remove var=“변수명” scope=“범위”>
+
+④ 예외 처리 태그 <c:catch>
+<c:catch var=“변수명”>
+
+⑤ 제어문(if)태그 <c:if>
+<c:if test=“조건” var=“조건 처리 변수명” scope=“범위”>
+JSTL 태그의 if문은 else문이 없다. 
+즉, if문을 사용할때 else문은 if문의 반대조건으로 if문을 한번더 실행시켜야한다.
+
+⑥ 제어문 태그 : <c:choose>
+<c:choose>
+    <c:when test=“조건1”> 처리 내용 </c:when>
+    <c:when test=“조건2”> 처리 내용 </c:when>
+    <c:when test=“조건3”> 처리 내용 </c:when>
+    <c:otherwise> 처리 내용 </c:otherwise>
+</c:choose>
+
+⑦ 반복문(for) 태그 : <c:forEach>
+<c:forEach items=“객체명” begin=“시작 인덱스” end=“끝 인덱스” step=“증감식” var=“변수명” varStatus=“상태변수”>
+<c:forTokens var=“변수명” item=전체스트링 delims=구분자>
+
+⑧ 페이지 이동태그 <c:redirect url=”url”>
+<c:redirect url=“url”>
