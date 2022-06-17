@@ -1,0 +1,59 @@
+< Front Controller 와 Command 구조 >
+mvc 패턴을 사용하려면 Front Controller와 Command 를 알아야 한다.
+난잡한 개발에서 체계화된 개발을 하려면 꼭 알아야 하고 중요하다.
+
+1. url-pattern
+(1) 디렉터리 구조 : 디렉터리 형태로 서버의 해당 컴포넌트(서블릿)를 찾아서 실행하는 구조. 서블릿을 만들고 서블릿의 긴 주소가 보안상 문제가 되거나 너무 길어, 매핑을 한다. xml이나 어노테이션을 이용해 매핑을 할 때 사용했던 방식
+① http://localhost:8181/ch18/EmpList  → /EmpList 서블릿
+	http://localhost:8181/ch17/servlet/com.tj.ex.Hello 서블릿의 긴 주소를 매핑한다.
+② http://localhost:8181/ch18/EmpSch    → /EmpSch  서블릿
+
+(2) 확장자 구조 : 확장자 형태로 서버의 해당 컴포넌트를 찾아서 실행하는 구조
+① http://localhost:8181/ch18/EmpList.do  ↘
+② http://localhost:8181/ch18/EmpSch.do  → *.do 서블릿
+
+2. FrontController : 클라이언트의 다양한 요청을 한곳으로 집중시켜, 개발 및 유지보수에 효율성을 극대화 
+위의 경우 컴포넌트들끼리 중복되는 코드가 있을 수도 있고, 파일이 여러 개라 집중성이 떨어질 수 있다.
+요청을 받는 창구를 하나로 집중시켰다 라고도 할 수 있다.
+
+
+요청 1 → 요청 1 처리 서블릿, JSP   ↘
+요청 2 → 요청 2 처리 컴포넌트      →  DAO
+요청 3 → 요청 3 처리 컴포넌트      ↗
+
+
+
+요청 1 ↘   
+요청 2 → 모든 요청을 처리하는 서블릿 = frontController      →  DAO
+요청 3 ↗       
+
+
+
+3. Command 구조 : 클라이언트로부터 받은 요청들에 대해서, 서블릿이 작업을 직접 처리 하지 않고,
+해당 클래스가 처리하도록 한다. FrontController 한 군데서 처리하면 소스가 또 너무 방대해지기 때문에
+FrontController에서는 큰 형태만 갖고 있고, 세부적인 처리는 command에서 처리한다.
+
+요청 1 ↘   
+요청 2 → 모든 요청을 처리하는 서블릿 = frontController      →  DAO
+요청 3 ↗       
+
+
+요청 1 ↘     	모든 요청을 	           ↗ 요청 1 해당 처리 class
+요청 2 →   받아 직접 처리하지 않고 command   → 요청 2 해당 처리 class
+요청 3 ↗       측에서 처리하도록 함	           ↘ 요청 3 해당 처리 class	
+insert.do		FrontController.java 	      InsertService.java
+delete.do
+
+직접 처리하지 않고 command 클래스를 하나씩 만들어 준다.
+
+
+
+
+
+
+
+
+
+
+
+
