@@ -45,15 +45,3 @@ insert.do		FrontController.java 	      InsertService.java
 delete.do
 
 직접 처리하지 않고 command 클래스를 하나씩 만들어 준다.
-
-
-
-
-
-
-
-
-
-
-
-

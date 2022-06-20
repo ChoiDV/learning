@@ -1,0 +1,37 @@
+< MVC 패턴 >
+
+*MVC 란*
+Model, View, Controller 을 뜻하는 용어로 개발 형태의 일종이다.
+
+- Model은 데이터베이스와의 관계를 담당한다. 클라이언트의 요청에서 필요한 자료를
+	데이터베이스로부터 추출하거나, 수정하여 Controller로 전달 합니다.
+- View는 사용자한테 보여지는 UI 화면 이다. 주로 jsp파일로 작성 하며,
+	Controller에서 어떤 View 컴포넌트를 보여줄지 결정한다.
+- Controller는 클라이언트의 요청을 받고, 적절한 Model에 지시를 내리며,
+	Model에서 전달된 데이터를 적절한 View에 전달 한다.
+
+- 이렇게 작업을 분할하면, 추후 유지보수에 좋다.
+
+	     Controller   →↘
+클라이언트 ↗        ↓    ↖	 Model     →   DataBase
+	   ↖       ↓         ↖↙	 ←
+	       View 
+
+- Model1 : MVC에서 View와 Controller가 같이 있는 형태
+
+- Model2 : MVC에서 Model, View 그리고 Controller가 모두 모듈화(부품화) 되어 있는 형태
+	
+
+즉,
+MVC는  요청을 받는곳,  DB와 관계를 담당하는곳, 사용자에게 보여지는 곳으로 나누어 
+	개발하는 개발형태이다.
+
+사용자에게 요청을 받으면 Controller에서 요청을 뽑아내
+그에 맞는 Model에 보내주고,
+
+요청에 맞는 로직들을 수행한뒤 다시 Controller로 보내준다.
+
+Controller에서 받은 결과물을 사용자에게 보여줄 수 있도록
+View단으로 보내준다. 
+
+그럼 사용자는 View단에서 요청에 대한 답을 볼수 있다.
