@@ -7,3 +7,7 @@ jq01 / 11_keyup_submit.html 참고하기.
 
 id 중복체크 확인하기 (ajax 이용하기 )
 jq03/ 1_get_post_ajax / 3개폴더 보기.
+
+id 중복체크 확인하기 (ajax_post방식 )
+jq03 / 1_get_post_ajax / 2_post함수.html 
+보고 마음에 드는방식 사용하기
