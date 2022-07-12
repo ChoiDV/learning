@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        table {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        td {
+            width: 100px;
+            height: 200px;
+            border: 1px solid white;
+        }
+       
+    </style>
+    <script>
+        var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet'];
+        window.onload = function () {
+            var td = document.getElementsByTagName('td');
+            for (var i = 0; i < td.length; i++) {
+                td[i].style.backgroundColor = color[i];
+            }
+        };
+        function showMessage(n) {
+            var h1 = document.createElement('h1');
+            var textNode = document.createTextNode('야호 출력할 메시지 입니다.');
+            h1.appendChild(textNode);
+            document.body.appendChild(h1);
+            h1.document.style.color = color[n];
+        };
+        function removeMessage() {          
+            
+        };
+        
+    </script>
+</head>
+<body>
+    <table>
+        <tr onmouseout="removeMessage()">
+            <td onmouseover="showMessage(0)"></td>
+            <td onmouseover="showMessage(1)"></td>
+            <td onmouseover="showMessage(2)"></td>
+            <td onmouseover="showMessage(3)"></td>
+            <td onmouseover="showMessage(4)"></td>
+            <td onmouseover="showMessage(5)"></td>
+            <td onmouseover="showMessage(6)"></td>
+        </tr>
+    </table>
+    <p>   </p>
+</body>
+</html>

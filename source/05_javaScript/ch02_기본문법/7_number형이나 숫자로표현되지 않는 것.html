@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        // NaN (타입은 number)
+        i = Number("a");
+        document.write('i=' + i + ' - i가 NaN인지 : ' + isNaN(i) + '<br>');
+        // Infirity ( 타입은 number ) 무한대
+        i = 10 / 0; // 자바스크립트에서 10/0 은  이런식으로 계산됨 10/0.0000000000000000000000000000000000000000000000000001 
+        document.write('i=' + i + ' - i가 유한수 인지 : ' + isFinite(i));  // isFinite 는 유한한 수인지 물어보는 함수 
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

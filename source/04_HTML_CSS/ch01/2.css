@@ -1,0 +1,5 @@
+﻿/* css 파일 디자인전용 파일 html과 분리해서 디자인따로 body 따로 하는 방법 */
+body {
+    background-color: yellow;
+    font-size: 30pt;
+}

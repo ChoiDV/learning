@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function chk() {
+            if (!frm.firstsu.value || isNaN(Number(frm.firstsu.value))) {  // !frm.firstsu.value 빈스트링이면 false  있으면 true   ( 빈스트링을 submit하면 false가 들어감  )
+                alert('첫번째 수를 다시 입력하세요.');
+                frm.firstsu.focus();
+                return false;   // 함수를 호출한곳에 false를 갖다줌 
+            }
+            su1 = Number(frm.firstsu.value);
+            if (!frm.secondsu.value || isNaN(Number(frm.secondsu.value))) {
+                alert('두번째 수를 다시 입력하세요.');
+                frm.secondsu.focus();
+                return false;              
+            }
+            su2 = Number(frm.secondsu.value);
+            if (su1 > su2) {
+                var msg = "<h3>첫번째 수가 " + (su1 - su2) + " 큽니다.</h3>";
+                document.body.innerHTML += msg;
+                msg1 = msg.substring(4);   // msg에서 4번째부터 끝까지 ( 사용하는 이유는 <h3> 을 빼기위해)
+                msg1 = msg1.substring(0, msg1.indexOf('</h3>'));   // <h3>을 뺀 msg에서 처음부터 </h3>이 나오는 위치 전까지 즉 양쪽 <h3>을 다 뺀 msg 
+                alert(msg1);
+                frm.firstsu.value = su1;
+                frm.secondsu.value = su2;
+                return false;
+            } else if (su1 < su2) {
+                var msg = "<h3>두번째 수가 " + (su2 - su1) + " 큽니다.</h3>";
+                document.body.innerHTML += msg;
+                msg1 = msg.substring(4);
+                msg1 = msg1.substring(0, msg1.indexOf('</h3>'));
+                alert(msg1);
+                frm.firstsu.value = su1;
+                frm.secondsu.value = su2;
+                return false;
+            } else if (su1 == su2) {
+                var msg = "<h3>두 수는 같습니다.</h3>";
+                document.body.innerHTML += msg;
+                msg1 = msg.substring(4);
+                msg1 = msg1.substring(0, msg1.indexOf('</h3>')); 
+                alert(msg1);
+                frm.firstsu.value = su1;
+                frm.secondsu.value = su2;
+                return false;
+            }
+                      
+        }
+
+
+    </script>
+    <style>
+        #body {
+            border:1px solid lightgray;
+            width:200px;
+            padding:10px;
+        }
+        #body table input[type="text"]{
+            border:1px solid navy;
+            width:100px;
+            margin-left:10px;
+            outline:none;
+        }
+        #body table input[type="submit"]{
+            background-color:lightgray;
+            border:1px solid navy;
+            cursor:pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <form name="frm" onsubmit="return chk()">   <!-- onsubmit=return chk() 는 chk에서 return받은 값으로 submit 여부를 정해줌 원래 아무것도 적지않으면 onsubmit=true 임 -->
+        <div id="body">
+            <table>
+                <tr>
+                    <td>첫번째수</td>
+                    <td><input type="text" name="firstsu" /></td>
+                </tr>
+                <tr>
+                    <td>두번째수</td>
+                    <td><input type="text" name="secondsu" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <center><input type="submit" value="결과" /></center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+</body>
+</html>

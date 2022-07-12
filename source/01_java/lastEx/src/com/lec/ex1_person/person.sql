@@ -1,0 +1,74 @@
+-- 연예인
+DROP TABLE JOB;
+DROP TABLE PERSON;
+
+CREATE TABLE JOB(
+    JNO NUMBER(2) PRIMARY KEY,
+    JNAME VARCHAR2(30) NOT NULL );
+
+CREATE TABLE PERSON(
+    PNO NUMBER(5) PRIMARY KEY,
+    PNAME VARCHAR2(30) NOT NULL,
+    JNO REFERENCES JOB(JNO),
+    KOR NUMBER(3),
+    ENG NUMBER(3),
+    MAT NUMBER(3) );
+
+DROP SEQUENCE PERSON_NO_SQ;
+CREATE SEQUENCE PERSON_NO_SQ
+    MAXVALUE 99999
+    NOCACHE
+    NOCYCLE;
+
+INSERT INTO JOB VALUES (10,'배우');
+INSERT INTO JOB VALUES (20,'가수');
+INSERT INTO JOB VALUES (30,'MC');
+
+
+INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'정우성',10,90,80,81);
+INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'박세영',10,80,90,80);
+INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'배수지',20,20,90,90);
+INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'설현',20,95,95,95);
+INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'송혜교',10,100,100,100);
+
+SELECT * FROM PERSON;
+SELECT * FROM JOB;
+COMMIT;
+
+-- 1번 pNAME, jNAME, KOR, ENG, MAT를 입력받아 INSERT
+INSERT INTO PERSON VALUES(PERSON_NO_SQ.NEXTVAL,'최진영',(SELECT jNO FROM JOB WHERE jNAME='배우'),100,100,100);
+    --                                                                                                    ?                ? = 직업이름 입력받음                                         ?   ?     ? 
+-- 2번 : 직업명을 입력받아 등수, 이름(pNO), 직업명, 국어, 영어, 수학, 총점을 출력 ( 총점기준으로 내림차순 정렬)
+SELECT PNAME||'(' ||PNO ||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM
+    FROM PERSON P, JOB J
+        WHERE P.JNO = J.JNO AND JNAME = '가수' 
+            ORDER BY SUM DESC; -- FROM 절의 서브쿼리 
+            
+SELECT ROWNUM RANK, A.*
+    FROM (SELECT PNAME||'(' ||PNO ||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM
+    FROM PERSON P, JOB J
+        WHERE P.JNO = J.JNO AND JNAME = '배우'
+            ORDER BY SUM DESC) A;
+        
+-- 3번 : 모든행의 등수, 이름(pNO), 직업명, 국어, 영어, 수학, 총점을 출력(총점기준으로 내림차순 정렬)
+SELECT ROWNUM RANK, A.*
+    FROM (SELECT PNAME||'(' ||PNO ||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT "SUM"
+    FROM PERSON P, JOB J
+        WHERE P.JNO = J.JNO
+            ORDER BY SUM DESC) A;
+
+SELECT * FROM PERSON;
+SELECT * FROM JOB;
+commit;
+rollback;
+
+-- 콤보 박스에 들어갈 직업명 list
+SELECT JNAME FROM JOB;
+
+
+
+
+
+
+
+

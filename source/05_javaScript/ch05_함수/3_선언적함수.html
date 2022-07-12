@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        fun(); // #웹브라우저는 script 태그 내부의 내용을 읽기전에 선언적 함수부터 읽는다.#
+                // 그래서 선언적 함수의 위치에 상관없이 함수를 사용할 수 있다.
+
+        //var fun = function () { alert('함수 a') }; // 익명함수     // 익명함수는 변수에 넣는거기때문에 꼭 ; 을 사용해야한다.
+        //fun(); 
+        function fun() {  // 선언적 함수
+            alert('함수 A');
+        }  // 선언적 함수는 선언하면 위든 아래든 어디서든 사용가능하다.
+        // 선언적함수는 함수선언이기 때문에 ; 을 쓰지않아도 된다.
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

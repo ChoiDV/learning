@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <title>Insert title here</title>
+ <style>
+ 	td {
+ 		width:100px;
+ 		height:100px;
+ 		background-color: #AAFFAA;
+ 	}
+ 	.red {
+ 		background-color:red;
+ 	}
+ 	.dduck {
+ 		background-image: url("img/dduk.jpg");
+ 		background-size:100%;
+ 	}
+ </style>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+ 	$(document).ready(function(){
+ 		var random = Math.floor((Math.random()*9)+1);
+ 		$('td').each(function(idx,item){
+ 			$(this).click(functiodinnern(){
+ 				$('td').removeClass('red');			
+ 				if((idx+1) == random){
+ 					$(this).addClass('dduck');
+ 					$('.result').html('<b>축하축하</b>');
+ 					$('input[name="answer"]').val('추카포카포카칩');
+ 					$('td').off();
+ 				} else {
+ 					$(this).addClass('red');
+ 				};
+ 			});
+ 		});
+	});
+ 	
+ </script>
+</head>
+ <body>
+	<h1> 떡이 있는 곳을 맞춰바!!!!!!!!!!!</h1>
+	<table>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	<p class="result"> &nbsp; &nbsp;</p>
+	<input type="text" name="answer">
+	<button onclick="location.href='dduck.html'">다시하기</button>
+ </body>
+</html>

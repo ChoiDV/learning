@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        input {color:blue;}
+        input[type= password] { color:black;} /* input 태그중에 type 속성이 password인 요소  */
+         /*   type='password'  도 가능  ="password" 도 가능 */
+
+        input[type ^= 'te'] { /* input 태그중에 type 속성이 te로 시작하는 요소들 */
+                color: orange;
+                width: 300px;
+            } 
+
+         input[name $= 'me' ]{  /* input 태그중에서 name 속성이 me로 끝나는 요소들 */
+            border:1px solid black;
+            padding:10px;
+            background-color:lightyellow;
+         }
+         img[alt]{ /* img 태그중에서 alt 속성이 있는 요소*/
+            width:50px;
+         }
+        
+    </style>
+</head>
+<body>
+    <form>
+       이름 <input type="text" name="name" /><br />
+       아디 <input type="text" name="id" /><br />
+       비번 <input type="password" name="pw" /><br />
+       전화 <input type="tel" name="tel" /><br />
+       <img src="0503/miyeon.jpg" />
+       <img src="0503/woogi.jpg" alt="우기 사진" />
+        <input type="submit" />
+
+    </form>
+
+</body>
+</html>
