@@ -36,8 +36,7 @@
 	 	</tr>
 	 	<tr>
 	 		<th>평균 : </th>
-	 		<td>
-	 		<fmt:formatNumber value="${avg }" pattern="#,###.00" /></td>
+	 		<td><fmt:formatNumber value="${avg }" pattern="#,###.00" /></td>
 	 	</tr>
 	 </table>
   </body>
