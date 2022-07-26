@@ -15,4 +15,6 @@ public class Book {
 	private String binfo;
 	private int startRow;
 	private int endRow;
+	private String schItem;
+	private String schWord;
 }

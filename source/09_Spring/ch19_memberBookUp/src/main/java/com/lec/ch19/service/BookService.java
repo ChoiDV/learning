@@ -10,9 +10,9 @@ public interface BookService {
 	// 모든 책 리스트
 	public List<Book> mainList();
 	// 모든 책 가나다 순 페이징 출력
-	public List<Book> bookList(String pageNum);
+	public List<Book> bookList(String pageNum, Book book);
 	// 모든 책 개수
-	public int totCntBook();
+	public int totCntBook(Book book);
 	//  특정 책 상세보기
 	public Book getDetailBook(int bnum);
 	// 책 등록하기

@@ -20,16 +20,44 @@
 	</select>
 
 	<!-- 책이름 가나다순으로 PAGING처리 -->
-	<select id="bookList" parameterType="Book"
-		resultMap="BookResult">
-		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM
-		BOOK order by btitle) A)
-		WHERE RN BETWEEN #{startRow} AND #{endRow}
+	<select id="bookList" parameterType="Book" resultMap="BookResult">
+		<if test="schItem == 'all'">
+			SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK WHERE BTITLE LIKE '%'||#{schWord}||'%' OR BWRITER LIKE '%'||#{schWord}||'%' ORDER BY BTITLE) A)
+    			WHERE RN BETWEEN #{startRow} AND #{endRow}			
+		</if>
+		<if test="schItem == 'btitle'">
+			SELECT * FROM (SELECT ROWNUM RN, A.*
+			FROM ( SELECT * FROM BOOK WHERE BTITLE LIKE '%'||#{schWord}||'%' ORDER BY BTITLE) A)
+				WHERE RN BETWEEN #{startRow} AND #{endRow}
+			
+		</if>
+		<if test="schItem == 'bwriter'">
+			SELECT * FROM (SELECT ROWNUM RN, A.*
+				FROM ( SELECT * FROM BOOK WHERE BWRITER LIKE '%'||#{schWord}||'%' ORDER BY BTITLE) A)
+					WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="schItem == '' or schItem == null">
+			SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOOK ORDER BY BTITLE) A)
+    		WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		
 	</select>
 
 	<!-- 페이징 때 쓰려고 등록된 책 갯수 -->
-	<select id="totCntBook" resultType="int">
-		SELECT COUNT(*) FROM BOOK
+	<select id="totCntBook" parameterType="Book" resultType="int">
+		<if test="schItem=='all'">
+			SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||#{schWord, jdbcType = VARCHAR}||'%' or BWRITER LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem=='btitle'">
+			SELECT COUNT(*) FROM BOOK WHERE BTITLE LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem=='bwriter'">
+			SELECT COUNT(*) FROM BOOK WHERE BWRITER LIKE '%'||#{schWord}||'%'
+		</if>
+		<if test="schItem=='' or schItem == null">
+			SELECT COUNT(*) FROM BOOK
+		</if>
+
 	</select>
 
 	<select id="getDetailBook" parameterType="int" resultType="Book">
