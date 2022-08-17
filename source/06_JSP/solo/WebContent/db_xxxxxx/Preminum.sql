@@ -1,0 +1,14 @@
+-- 프리미엄 애니멀 테이블
+-- DROP & CREATE
+DROP TABLE PREMINUM_ANIMAL;
+
+CREATE TABLE PREMINUM_ANIMAL(
+    PID NUMBER(6) PRIMARY KEY,  -- 프리미엄 동물 아이디
+    PNAME VARCHAR2(30) NOT NULL,   -- 프리미엄 동물 이름 
+    PANIMALNO REFERENCES PANIMAL(PANIMALNO) NOT NULL, -- 동물 종류 번호
+    PGENDER VARCHAR2(2) NOT NULL,  -- 동물 성별
+    PBIRTH DATE NOT NULL,  -- 동물 생년월일
+    PPRICE NUMBER(9) NOT NULL,  -- 동물 분양가
+    PRDATE DATE NOT NULL,  -- 동물 들어온날
+    PRR_CHECK NUMBER(1) DEFAULT 1 NOT NULL  -- 분양 예약여부 DEFAULT 1 , 예약완료시 0 
+);

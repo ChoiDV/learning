@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        //for (var key in obj) {
+          //  document.write(key + ' : ' + obj[key] + '<br>');
+        //}
+
+        // var cnt = 0;
+        //for (var key in window) {
+         //   document.write(++cnt + ' . ' + key + ' : ' + window[key] + '<br>');
+        //}
+        // 임시변수로 내가 만든것도 window에 잡힌다.
+        var cnt = 0;
+        // var chk = function(){}; // 익명함수
+        function chk() { };
+        window.onload = function () { alert('윈도우 로드');};
+        for (var key in window) {
+            if (key == 'onload' || key == 'chk' || key == 'cnt') {
+                document.write(key + ' : ' + window[key] + '<br>');
+            }          
+        }
+        
+        // window가 load될 때 수행할 함수
+        
+        
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

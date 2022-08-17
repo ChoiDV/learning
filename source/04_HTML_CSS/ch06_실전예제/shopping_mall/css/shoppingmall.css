@@ -1,0 +1,191 @@
+﻿* {
+    margin:0;
+    padding:0;  
+}
+a {
+    text-decoration:none;   
+}
+ul {
+    list-style:none;
+}
+#header .gnb{    
+    width:1000px;
+    background-color:black;
+    height:30px;
+    line-height:30px; 
+    margin:0 auto;
+}
+#header .gnb ul {
+    width:1000px;
+    margin:0 auto;
+    overflow:hidden;     
+}
+#header .gnb ul li{
+    float:left;     
+    width:90px;
+    margin:0 5px;
+}
+#header .gnb ul li a{
+    color:white;
+}
+#header .logo {
+    height: 200px;   
+      
+}
+#header .logo > div {
+    width:200px;
+    height:100px;
+    font-size:30px;
+    text-align:center;
+    line-height:100px;
+    border: 1px solid lightgray;
+    margin:75px auto;
+}
+#header .hitmenu {
+   width:1000px;
+   margin:0 auto;
+    
+}
+#header .hitmenu ul{
+    overflow:hidden;
+}
+#header .hitmenu ul li{
+    float:right;    
+    padding: 10px 30px;
+    border:1px solid lightgray;  
+    font-weight:bold;   
+}
+#header .hitmenu ul li a{
+    color:black;
+}
+#header .hitmenu ul li:first-child {
+    border-radius:0 15px 15px 0;
+}
+#header .hitmenu ul li:last-child{
+    border-radius: 15px 0 0 15px;
+}
+#header .lnb {
+    width:1000px;
+    margin: 5px auto;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+    padding:10px;   
+}
+#header .lnb ul{
+    overflow:hidden;
+    
+}
+#header .lnb ul li{
+    float:left;      
+    width:12.5%;
+    margin:0 auto;
+    text-align:center;
+    font-weight:bold;   
+}
+#header .lnb ul li a{
+    text-decoration:none;
+    color:black;
+}
+
+#content .section1 {
+    width:1000px;
+    height:400px;
+    margin: 0 auto;
+    overflow:hidden;
+}
+#content .section1 .slide_banner {
+    width:700px;
+    height: 400px;
+    border: 1px solid lightgray;
+    box-sizing:border-box;
+    float:left;
+    text-align:center;
+    line-height:398px;
+}
+#content .section1 .side_banner {
+    width:300px;
+    height: 400px;
+    
+    border: 1px solid lightgray;
+    box-sizing:border-box;
+    float:left;
+    text-align:center;
+    line-height:398px;
+}
+#content .section2 .hit_product {
+    width:1000px;
+    height:400px;
+    border:1px solid lightgray;
+    margin: 0 auto;
+    box-sizing:border-box;
+}
+#content .section2 .hit_product ul {
+    overflow:hidden; 
+    margin: 0 7px;
+       
+}
+#content .section2 .hit_product ul li {
+    float:left;   
+    border:1px solid lightgray;
+    box-sizing:border-box;
+    width:25%;
+    height:400px;
+    text-align:center;
+    line-height:400px;
+}
+#content .section2 .hit_product ul li a {
+    color:black;
+}
+
+#content .section2 .md_product{
+    width:1000px;
+    height:400px;
+    border:1px solid lightgray;
+    margin: 0 auto;
+    box-sizing:border-box;   
+}
+#content .section2 .md_product ul{
+    overflow:hidden;
+    margin: 0 7px;
+}
+#content .section2 .md_product ul li {
+    float:left;
+    border: 1px solid lightgray;
+    box-sizing: border-box;
+    width:25%;
+    height: 400px;
+    text-align:center;
+    line-height:400px;
+}
+#content .section2 .md_product ul li a {
+    color: black;
+}
+#footer {
+    overflow:hidden;
+    width:1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height:160px;
+}
+#footer div:nth-child(1),  
+#footer div:nth-child(2),
+#footer div:nth-child(3){
+    float:left;
+    box-sizing: border-box;
+    border:1px solid lightgray;
+    width: 333px;
+    height:100px;
+    margin-bottom:10px;
+}
+
+#footer .copyright {
+    clear:both;  
+    background-color:black;
+    color:white;
+    height:50px;
+    line-height:50px;
+    text-align:center;     
+}
+
+
+

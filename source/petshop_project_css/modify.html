@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .form{
+            width: 600px;
+            margin:150px auto;
+            height: 500px;
+        }
+        .form caption {
+            font-size:2em;
+            font-weight:bold;
+            margin:10px 0 50px 0px;
+        }
+        .form form{
+           width:600px;
+           margin:0 auto;
+        }
+        .form table {
+            width:600px;
+            text-align:center;
+        }
+        .form #checkPassword td, .form #checkPassword th {
+           width:200px;
+           font-size:1.5em;
+           margin-bottom:10px;
+        }
+        .form #checkPassword input {
+            font-size:1.2em;            
+        }
+
+        .form #cheeckPassword input[type="submit"]{
+            background-color: #ffd1dc;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="form">
+        <form action="${conPath }/modifyAllView.do" method="post">
+            <input type="hidden" id="chk" name="chK" value="${param.modify }">
+            <table id="checkPassword">
+                <caption>비밀번호 확인</caption>
+                <tr>
+                    <th>비밀번호</th>
+                    <td>
+                        <input type="password" name="mpw">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="확인">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

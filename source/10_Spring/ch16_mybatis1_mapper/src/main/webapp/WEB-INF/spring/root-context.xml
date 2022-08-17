@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:property-placeholder location="classpath:META-INF/property/db.properties"/> <!--  db.properties파일 읽기 -->
+	
+	<!--  dataSource 빈 생성 -->  <!--  데이터베이스 연결 정보? -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driverClassName}"/>
+		<property name="url" value="${db.url}"/>
+		<property name="username" value="${db.username}"/>
+		<property name="password" value="${db.password}"/>
+	</bean>
+	
+	<!--  sqlSessionFactoryBean 빈 생성   ( 얘는 mapper에 있는 id랑 sql 짝을 이룬것을 갖고있음  그래서 Template빈이 FactoryBean을 의존 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:META-INF/sqlmap/config/mybatis-config.xml"/>  <!--  얘가  xml파일들을 다 파싱해서 구분을 다해주는애 -->
+	</bean>
+	<!--  sqlSessionTemplate 빈 생성  (어제는 jdbcTemplate 빈을 사용) -->  <!--  얘가 a쿼리 실행해! b쿼리 실행해! 하는애 --> <!-- 정말 dao에서 쓸애 -->
+	<bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
+</beans>

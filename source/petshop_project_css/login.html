@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+ #content_form {
+	width: 1600px;
+	margin: 0 auto;
+	text-align: center;
+	
+}
+#content_form #login_form {
+    width:700px;
+    margin: 200px auto;
+	box-shadow:0 8px 20px 0 rgba(0,0,0,0.15);
+}
+#content_form table {	
+	width: 700px;
+	height: 300px;
+}
+
+#content_form table th {
+	font-size: 1.6em;
+	color: saddlebrown;
+}
+
+#content_form table td {
+    width: 350px;
+}
+
+#content_form input {
+	width: 300px;
+	height: 40px;
+	border: 1px solid white;
+    font-weight:bold;
+    padding:10px;
+    border-bottom:1px solid black;
+    outline:none;
+}
+
+#content_form input[type="submit"], #content_form input[type="button"] {
+	width: 100px;
+	margin: 10px;
+	background-color: #ffd1dc;
+	color: black;
+	font-weight: bold;
+    border:none;
+}
+
+#content_form .idpwsearch {
+	font-size: 0.8em;
+	margin-left: 160px;
+}
+
+#content_form caption a{
+	font-weight: bold;
+	font-size: 3em;
+	color: #ffd1dc;
+	margin-bottom: 30px;
+    text-shadow:-1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+	text-decoration:none;
+}
+#content_form {
+    width:1600px;
+    height:800px;
+    border:1px solid white;
+    margin-top:50px;
+
+}
+    </style>
+</head>
+<body>
+	<div id="content_form">
+		<div id="login_form">
+			<form action="${conPath }/login.do" method="post">
+				<table>
+					<caption><a href="../main/main.jsp">Companion</a></caption>
+					<tr>
+						<td>
+							<input type="text" name="mid" required="required" placeholder=" 아이디" value="${mid }">
+						</td>
+					</tr>
+					<tr>
+
+						<td>
+							<input type="password" name="mpw" required="required" placeholder=" 비밀번호">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="idpwsearch">아이디/비밀번호 찾기</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" class="bt" value="로그인" />
+							<input type="button" class="bt" value="회원가입" onclick="location.href='${conPath}/joinAgree.do'" />
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

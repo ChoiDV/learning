@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+         *{
+            margin:0;
+            padding:0;
+         }
+        #dogContent_Form {
+            background-color: #ffd1dc;
+            width:1200px;
+            margin:150px auto 50px auto;
+            text-align:center;   
+            padding-bottom:50px;
+        }
+        #mainContent {
+            width: 700px;
+            margin: 0 auto;
+            background-color: #E2E2E2;
+            box-shadow: 0 8px 20px 0 rgba(0,0,0,0.15);
+        }
+
+        #mainContent th {
+            width:200px;
+            height:50px;
+        }
+        #mainContent td {
+            width:300px;
+            height:50px;
+            line-height:50px;
+            padding:0 10px;
+        }
+        .dogfoot {
+            width:50px;
+            height:30px; 
+            margin-top:10px;
+            margin-left: 10px;
+        }
+        td span, td img {
+            display:block;
+            float:left;
+            margin-left:70px;
+            
+        }
+        td {
+            overflow: hidden;
+        }
+
+        .dogimage {
+            margin: 0px auto;
+            margin-top: 50px;
+            width: 700px;
+            height: 300px;
+            box-shadow: 0 8px 20px 0 rgba(0,0,0,0.15);
+        }
+        .dogimage img {
+            width:700px;        
+            height:300px;
+            
+        }
+        #profile {
+            font-weight: bold;
+            font-size: 2em;
+            margin-top:50px;
+            
+            
+        }
+        #profile_eng {
+            font-weight: bold;
+            font-size: 2.5em;
+            text-shadow: -1px 0 #000;
+        }
+        #CuteDog {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px;
+            color: lightgray;
+            text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+        }
+        button {
+            background-color: #ffd1dc;
+            border: none;
+            margin: 10px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: gray;
+            text-shadow: -1px 0 #000;
+            cursor: pointer;
+        }
+        #dogContent_Form #bar {
+            width: 700px;
+            margin: 0 auto;
+            border: 1px solid black;
+            background-color: #ffd1dc;
+
+        }
+        #dogContent_Form #bar td {
+                border: 1px solid black;
+            }
+        #dcontent {
+            width:900px;
+            margin:50px auto;
+            text-align: center;
+            font-weight: bold;
+            font-size: 2.5em;
+            text-shadow: -1px 0 #fff, -1px 0 #fff;
+        }
+
+        /*********************************/
+        .reply {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .reply form {
+            width:1000px;
+            margin:0 auto;
+            /*height */
+        }
+        .reply form table {
+            width:1000px;
+            text-align:center;
+            margin-bottom:20px;
+            
+        }
+        .reply form table caption {
+            font-size:2em;
+            font-weight:bold;
+            margin:20px;
+        }
+        .reply form table input[type="text"]{
+            width:700px;
+            font-size:2em;
+        }
+        .reply form table input[type="submit"]{
+            width:200px;
+            font-size:1.7em;
+            background-color: #ffd1dc;
+            border:none;
+            font-weight:bold;
+            box-shadow: 0 8px 20px 0 rgba(0,0,0,0.15);        
+        }
+
+
+
+        .reply_content {
+
+            width: 1200px;
+            margin-bottom: 10px;
+        }
+        .reply_content tr {
+            height:70px;
+            font-weight:bold;
+            box-shadow: 0 8px 20px 0 rgba(0,0,0,0.15);    
+        }
+        .reply_content td {
+              
+
+            
+        }
+        .reply_content td:nth-child(1){
+            width:100px;
+
+            text-align:center;
+        }
+         .reply_content td:nth-child(2){
+             width:180px;
+
+             text-align:center;
+         }
+          .reply_content td:nth-child(3){
+              width:500px;
+
+              text-indent:20px;
+          }
+           .reply_content td:nth-child(4){
+               width:200px;
+               text-align:center;
+           }
+            .reply_content td:nth-child(5) {
+                width:200px;
+                text-align:center;
+            }
+            .reply_content td:nth-child(5) .rbtn {
+                margin:3px;
+                width:80px;
+                text-align:center;
+                color:black;
+            }
+
+
+
+        
+    </style>
+</head>
+<body>
+    <div id="dogContent_Form">
+        <table id="bar">
+            <tr>
+                <td>
+                    글번호 : 5
+                </td>
+                <td>
+                    등록일자 : 2022-06-24
+                </td>
+                <td>
+                    조회수 : 50
+                </td>
+            </tr>
+        </table>
+        <div id="profile"> 프로필</div>
+        <div id="profile_eng"> All PET PROFILE </div>
+        <div class="dogimage">  <img src="img/견종별 모아보기.jpg" alt="dimage1" /></div>
+        <div class="dogimage">  <img src="img/견종별 모아보기.jpg" alt="dimage2" /></div>
+        <div class="dogimage">  <img src="img/견종별 모아보기.jpg" alt="dimage3" /></div>
+        <div id="CuteDog"> Cute Dog </div>
+        <table id="mainContent">
+            <tr>
+                <th>이름</th>
+                <td>
+                    밤비
+                </td>
+            </tr>
+            <tr>
+                <th>견종</th>
+                <td>
+                    포메라니안
+                </td>
+            </tr>
+            <tr>
+                <th>담당 브리더</th>
+                <td>
+                    강아지 브리더1 님
+                </td>
+            </tr>
+            <tr>
+                <th>성별</th>
+                <td>
+                    <span>남아</span><img src="img/dogM.jpg" alt="강아지 발자국" class="dogfoot" />
+                    <img src="img/dogF.png" class="dogfoot" />
+                </td>
+            </tr>
+            <tr>
+                <th>생일</th>
+                <td>
+                    2020-10-06 출생 (1년1개월)
+
+                </td>
+            </tr>
+            <tr>
+                <th>건강기록</th>
+                <td>종합백신 1차/ 종합건강검진2회</td>
+            </tr>
+            <tr>
+                <th>분양가</th>
+                <td>
+                    1,600,000 만원
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button>분양받기</button>
+                    <button>예약하기</button>
+                    <button>목록</button>
+                </td>
+            </tr>
+        </table>
+        <div id="dcontent">
+            <pre> 귀여운 빈이에요 욞8ㄴㅇ롬낭험ㄴㅇ9ㅑ럼ㄴ아ㅣ러먄ㅇ허 </pre>
+        </div>
+        <div class="dogimage">  <img src="img/견종별 모아보기.jpg" alt="dimage4" /></div>
+        <div class="dogimage">  <img src="img/견종별 모아보기.jpg" alt="dimage5" /></div>
+    </div>
+    <div class="reply">
+        <c:if test="${empty admin }">
+            <form action="${conPath }/catReplyInsert.do" method="post">
+                <input type="hidden" name="cnum" value="${catContent.cnum }">
+                <input type="hidden" name="pageNum" value="${pageNum }">
+                <table>
+                    <caption>빈이 에게 한마디</caption>
+                    <tr>
+                        <td>
+                            <input type="text" name="reply_content">
+                            <input type="submit" value="등록">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </c:if>
+        <table class="reply_content">
+            <tr>
+                <td>  1번 </td>
+                <td>작성자 id : chlwlsdud </td>
+                <td>이 강아지 너무너무 귀엽네요..ㅠㅠ</td>
+                <td>22.07.05 13:36</td>
+                <td>
+                    <button class="rbtn" onclick="location='${conPath }/modifyCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }&pageNum=${pageNum }'">수정</button>
+                    <button class="rbtn" onclick="location='${conPath }/deleteCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }'">삭제</button>
+                </td>
+            </tr>
+            <tr>
+                <td> 번호 2 </td>
+                <td>작성자 id : chlwlsdud </td>
+                <td>이 강아지 너무너무 귀엽네요..ㅠㅠ</td>
+                <td>22.07.05 13:36</td>
+                <td>
+                    <button onclick="location='${conPath }/modifyCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }&pageNum=${pageNum }'">수정</button>
+                    <button onclick="location='${conPath }/deleteCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }'">삭제</button>
+                </td>
+            </tr>
+            <tr>
+                <td> 번호 3  </td>
+                <td>작성자 id : chlwlsdud </td>
+                <td>이 강아지 너무너무 귀엽네요..ㅠㅠ</td>
+                <td>22.07.05 13:36</td>
+                <td>
+                    <button onclick="location='${conPath }/modifyCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }&pageNum=${pageNum }'">수정</button>
+                    <button onclick="location='${conPath }/deleteCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }'">삭제</button>
+                </td>
+            </tr>
+            <tr>
+                <td> 번호 4 </td>
+                <td>작성자 id : chlwlsdud </td>
+                <td>이 강아지 너무너무 귀엽네요..ㅠㅠ</td>
+                <td>22.07.05 13:36</td>
+                <td>
+                    <button class="rbtn" onclick="location='${conPath }/modifyCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }&pageNum=${pageNum }'">수정</button>
+                    <button class="rbtn" onclick="location='${conPath }/deleteCatReplyView.do?rno=${reply.rno }&cnum=${catContent.cnum }'">삭제</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

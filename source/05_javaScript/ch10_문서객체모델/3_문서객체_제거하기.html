@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        function append() {
+            document.body.innerHTML += '<h1>HEADER</h2>';
+        };
+        function remove(){
+            var h = document.getElementsByTagName('h1');
+            document.body.removeChild(h[0]);
+        };
+        function removeAll() {
+            var h = document.getElementsByTagName('h1');          
+            for (var idx = h.length - 1; idx >= 0; idx--) {
+                document.body.removeChild(h[idx]);
+            }
+            // cnt=h.lenght;  // 처음lenght를 저장해주는것 왜?  밑의 for문에 넣어버리면 처음에는 length가 5였다가 하나 지워지면서 4가 되버려서 결국엔 같이 줄어버리기 때문에 못지우는애 발생
+            // for(var i = 0; i < cnt; i++){
+            // document.body.removeChild(h[0]);
+            // }
+        };
+    </script>
+</head>
+<body>   
+        <button onclick="remove()">h1태그 제거하기</button>
+        <button onclick="append()">h1태그 추가하기</button>
+        <button onclick="removeAll()">h1태그 전체 제거하기</button>
+        <h1>HEADER</h1>
+        <h1>HEADER</h1>
+</body>
+</html>

@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            background-color: white;
+            cursor:pointer;
+        }
+        
+        a {
+            color:black;
+        }
+        header {
+            width: 1600px;
+            margin:0 auto;       
+        }
+        header #gnb {
+            overflow: hidden;
+            width:1600px;
+            margin:10px auto;
+        }
+        header #gnb #right_gnb{
+            float:right;
+        }
+        header #gnb #right_gnb ul li{
+            float:right;
+            margin:20px;
+        }
+
+        header #gnb #left_gnb ul{
+            float:left;
+        }
+        header #gnb #left_gnb ul li{
+            height:150px;
+            line-height:150px;
+            margin-left:50px;
+        }
+        header #gnb #left_gnb ul li input[type="text"] {
+            width:100px;
+            border:none;
+            border-bottom:1px solid black;
+            outline:none;        
+        }
+        
+        header #logo {
+            text-align:center;
+            width:300px;
+            height:150px;
+            margin:0 auto;
+            line-height:150px;
+
+        }
+        header #lnb {
+            height: 80px;
+            position:relative;
+        }
+        /* subMenu  hove           */
+        header #lnb ul li .subMenu {
+            display:none;
+            overflow:hidden;
+            float:left;
+        }
+        header #lnb ul li:hover .subMenu {
+            display:block;
+            float:left;
+        }
+        header #lnb ul li .subMenuBoard {
+            display:none;
+            overflow:hidden;
+            float:left;
+        }
+        header #lnb ul li:hover .subMenuBoard {
+            display:block;
+            float:left;
+        }
+
+        /*   ----------------------------    */
+
+        header #lnb {
+            width:1600px;
+            margin:0 auto;
+            height:80px;
+            font-size:20px;
+            font-weight:bold;
+        }
+        header #lnb ul li {
+            width:320px;
+            box-sizing:border-box;
+            text-align:center;
+            height:80px;
+            line-height:80px;
+            float:left;        
+        }
+        header #lnb ul li .subMenu{
+            overflow:hidden;
+            width:1600px;
+            box-sizing:border-box;      
+        }
+         header #lnb ul li .subMenuBoard{
+            overflow:hidden;
+            width:640px;
+            box-sizing:border-box;      
+        }
+
+        header #lnb ul li .subMenuBoard li{
+
+            width:320px;
+            margin:10px;
+            box-sizing:border-box;
+        }
+        header #lnb ul li .subMenu li {
+            float:left;
+            width: 320px;
+            margin:10px;
+            box-sizing:border-box;                
+        }
+        header #lnb ul li .subMenu .text{
+            height:30px;
+            line-height:30px;
+            font-size:0.8em;
+        }
+        header #lnb ul li .subMenuBoard .text{
+            height:30px;
+            line-height:30px;
+            font-size:0.8em;
+        }
+
+        #lnb {
+            position: relative;
+            border-top: 5px double lightgray;
+            border-bottom: 5px double lightgray;
+        }
+
+        .subMenu {
+            position:absolute;
+            left:0;
+            top:80px;
+            
+
+        }
+        .subMenuBoard {
+            position:absolute;
+            left:800px;
+            top:80px;
+        }
+
+        /* content *****************************/
+#content_form {
+	width: 1600px;
+	margin: 0 auto;
+	text-align: center;
+}
+#content_form #login_form {
+    width:700px;
+    margin: 200px auto;
+}
+#content_form table {	
+	width: 700px;
+	height: 300px;
+}
+
+#content_form table th {
+	font-size: 1.6em;
+	color: saddlebrown;
+}
+
+#content_form table td {
+    width: 350px;
+}
+
+#content_form input {
+	width: 300px;
+	height: 40px;
+	border: 1px solid white;
+    font-weight:bold;
+    padding:10px;
+    border-bottom:1px solid black;
+    outline:none;
+}
+
+#content_form input[type="submit"], #content_form input[type="button"] {
+	width: 100px;
+	margin: 10px;
+	background-color: #ffd1dc;
+	color: black;
+	font-weight: bold;
+    border:none;
+}
+
+#content_form .idpwsearch {
+	font-size: 0.8em;
+	margin-left: 160px;
+
+}
+
+#content_form caption {
+	font-weight: bold;
+	font-size: 3em;
+	color: #ffd1dc;
+	margin-bottom: 30px;
+    text-shadow:-1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+#content_form {
+    width:1600px;
+    height:800px;
+    border:1px solid white;
+    margin-top:50px;
+
+}
+
+        
+    
+        
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <div id="gnb">
+            <div id="right_gnb">
+                <ul>
+                    <li><a href="#">+BookMark</a></li>
+                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                </ul>
+            </div>
+            <div id="left_gnb">
+                <ul>
+                    <li><input type="text" name="search" /><button>이미지</button></li>
+                </ul>
+            </div>
+            <div id="logo">
+                <a href="#">로고</a>
+            </div>
+        </div>      
+        <div id="lnb">
+            <ul>
+                <li>
+                    회사 소개
+                    <ol class="subMenu">
+                        <li><a href="#"><img src="img/대표 인사말.png" /></a></li>
+                        <li><a href="#"><img src="img/회사소개.png" /></a></li>
+                        <li><a href="#"><img src="img/브리더소개.png" /></a></li>
+                        <li><a href="#"><img src="img/가맹문의.png" /></a></li>
+                        <li class="text">대표 인사말</li>
+                        <li class="text">회사 소개</li>
+                        <li class="text">브리더 소개</li>
+                        <li class="text">가맹 문의</li>
+                    </ol>
+                </li>
+                <li>
+                    Cute Dog
+                    <ol class="subMenu">
+                        <li><a href"#"><img src="img/전체보기.jpg" /></a></li>
+                        <li><a href="#"><img src="img/프리미엄.jpg" /></a></li>
+                        <li><a href="#"><img src="img/견종별 모아보기.jpg" /></a></li>
+                        <li><a href="#"><img src="img/지점별 모아보기.jpg" /></a></li>
+                        <li class="text">전체 보기</li>
+                        <li class="text">프리 미엄</li>
+                        <li class="text">견종별 모아보기</li>
+                        <li class="text">지점별 모아보기</li>
+                    </ol>
+                </li>
+                <li>
+                    Pretty Cat
+                    <ol class="subMenu">
+                        <li><a href"#"><img src="img/고양이전체보기.jpg" /></a></li>
+                        <li><a href="#"><img src="img/고양이프리미엄.jpg" /></a></li>
+                        <li><a href="#"><img src="img/묘종별모아보기.jpg" /></a></li>
+                        <li><a href="#"><img src="img/지점별 모아보기.jpg" /></a></li>
+                        <li class="text">전체 보기</li>
+                        <li class="text">프리 미엄</li>
+                        <li class="text">묘종별 모아보기</li>
+                        <li class="text">지점별 모아보기</li>
+                    </ol>
+                </li>
+                <li>
+                    입양 후기
+                    <ol class="subMenu">
+                        <!-- 입양 후기 게시판 -->
+                        <li></li>
+                        <li></li>
+                        <li><a href="#"><img src="img/실제분양후기.jpg" /></a></li>
+                        <li><a href="#"><img src="img/실제분양후기.jpg" /></a></li>
+                        <li class="text"></li>
+                        <li class="text"></li>
+                        <li class="text">실제분양후기</li>
+                        <li class="text">추가로 하나 넣기</li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="#">고객센터</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div id="content_form">
+        <div id="login_form">
+            <form action="#" method="post">
+                <table>
+                    <caption>Companion</caption>
+                    <tr>               
+                        <td>
+                            <input type="text" name="mid" required="required" placeholder=" 아이디">
+                        </td>
+                    </tr>
+                    <tr>
+                      
+                        <td>
+                            <input type="text" name="mpw" required="required" placeholder=" 비밀번호">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="idpwsearch">아이디/비밀번호 찾기</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="로그인" />
+                            <input type="button" value="회원가입" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

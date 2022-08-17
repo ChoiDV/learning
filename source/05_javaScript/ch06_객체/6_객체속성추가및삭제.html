@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var student = { 'name': '홍길동' , 'age' : 25 }; //   name = 속성변수,키 
+        document.write(student.name + ' ' + student['name']);
+        student.name = '김길동';
+        document.write(student.name + ' ' + student['name']);
+        student.kor = 100;   // 객체의 속성 추가 
+        // 스크립트는 객체를 만들고나서 속성을 추가할수 있다.
+        student.mat = 99;
+        student.hobby = '프로그래밍 구현';
+        document.write('<hr>' + student + '<br>');
+        // document.write(student.toString());  // toString을 재정의 해줘야 사용가능함.
+
+        student.toString = function () {  // 객체에는 함수도 추가할수 있으며 toString 재정의 하기
+            var output = '';
+            for (var key in this) {
+                if (key != 'toString') {   // toString이 아닌걸 출력하기.
+                output += key + ' : ' + this[key] + '<br>';
+            }
+        }
+            return output;
+        }
+        document.write(student + '<hr>');
+        // 객체 속성 제거
+        delete (student.hobby);
+        delete (student.age);
+        document.write('객체 속성 제거 후 : ' + student + '<br>');
+
+
+    </script>
+</head>
+<body>
+
+</body>
+
+
+</html>

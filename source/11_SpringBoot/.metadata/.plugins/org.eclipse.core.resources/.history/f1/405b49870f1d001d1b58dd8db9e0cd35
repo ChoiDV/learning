@@ -1,0 +1,11 @@
+package com.lec.hello.controller;
+
+import org.springframework.stereotype.Controller;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@Slf4j // 메세지 출력 sysout 대신할 아이 lombok
+public class HelloController {
+	
+}

@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        window.onclick = function () {
+            document.body.innerHTML = '<img src="img/car.gif"/><br>';       
+            document.body.innerHTML += '스크린좌표 : ' + event.screenX + ' , ' + event.screenY + '<br>';     // 내 컴퓨터 화면의 좌표 
+            document.body.innerHTML += 'offset좌표 : ' + event.offsetX + ' , ' + event.offsetY + '<br>';     // 브라우저창의 좌표
+            var img = document.getElementsByTagName('img')[0];
+            img.style.cssText = 'position:absolute;';
+            img.style.display = 'inline-block';
+            img.style.left = event.offsetX+'px';
+            img.style.top = event.offsetY + 'px';
+             
+        };
+     
+    </script>
+</head>
+<body>
+    <img src="img/car.gif" /><br>
+</body>
+</html>

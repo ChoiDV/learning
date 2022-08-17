@@ -1,0 +1,130 @@
+-- DROP & CREATE  TABLE,  SEQUENCE
+-- CUSTOMER
+DROP TABLE CUSTOMER CASCADE CONSTRAINTS;
+
+CREATE TABLE CUSTOMER(
+    CID VARCHAR2(30) PRIMARY KEY,
+    CPW VARCHAR2(30) NOT NULL,
+    CNAME VARCHAR2(30) NOT NULL,
+    CEMAIL VARCHAR2(50) NOT NULL,
+    CIMAGE VARCHAR2(100),
+    CBIRTH DATE NOT NULL,
+    CADDRESS VARCHAR2(100),
+    CRDATE DATE DEFAULT SYSDATE NOT NULL
+);
+
+DROP TABLE MANAGER;
+
+CREATE TABLE MANAGER(
+    MID VARCHAR2(30) PRIMARY KEY,
+    MPW VARCHAR2(30) NOT NULL,
+    MNAME VARCHAR2(30) NOT NULL
+);
+
+
+DROP TABLE FILEBOARD;
+DROP SEQUENCE  FILEBOARD_SEQ;
+
+CREATE SEQUENCE FILEBOARD_SEQ
+     MAXVALUE 9999999
+     NOCACHE
+     NOCYCLE;
+
+CREATE TABLE FILEBOARD(
+    FNUM NUMBER(7) PRIMARY KEY,
+    CID VARCHAR2(30) REFERENCES CUSTOMER(CID),
+    MID VARCHAR2(30) REFERENCES MANAGER(MID),
+    FSUBJECT VARCHAR2(250) NOT NULL,
+    FCONTENT VARCHAR2(4000),
+    FFILENAME VARCHAR2(50),
+    FHIT NUMBER(7) DEFAULT 0,
+    FREF NUMBER(7) NOT NULL,
+    FRE_STEP NUMBER(7) NOT NULL,
+    FRE_LEVEL NUMBER(7) NOT NULL,
+    FIP VARCHAR2(50) NOT NULL,
+    FRDATE DATE DEFAULT SYSDATE NOT NULL 
+);
+
+
+
+SELECT * FROM CUSTOMER;
+SELECT * FROM FILEBOARD;
+SELECT * FROM MANAGER;
+
+--        회원관련
+
+-- 회원가입
+INSERT INTO CUSTOMER (CID, CPW,CNAME, CEMAIL,CIMAGE,CBIRTH,CADDRESS)
+    VALUES ('aaa','111', '홍길동', 'hong@hong.com',null,'1999-12-03', null );
+INSERT INTO CUSTOMER (CID, CPW,CNAME, CEMAIL,CIMAGE,CBIRTH,CADDRESS)
+    VALUES ('bbb','111', '유길동', 'yu@hong.com',null,'1909-12-03', null );
+    
+-- 회원정보 수정
+UPDATE CUSTOMER SET CPW='111',
+                                                CNAME='홍홍홍',
+                                                    CEMAIL='Hong@hong.com',
+                                                        CIMAGE='yaho.jpg',
+                                                            CADDRESS='서울'
+                                    WHERE CID='aaa' AND CPW='111';
+-- 로그인 
+SELECT * FROM CUSTOMER
+    WHERE CID='aaa'     AND CPW='111';
+    
+--            게시판 
+
+-- 로그인 한 회원만 고객게시판에 원글 
+INSERT INTO FILEBOARD (FNUM,CID, FSUBJECT, FCONTENT, FFILENAME,  FREF, FRE_STEP, FRE_LEVEL, FIP )
+    VALUES (FILEBOARD_SEQ.NEXTVAL, 'aaa', '제목', '본문', '파일이름', FILEBOARD_SEQ.CURRVAL, 0,0,'192.168.10.30'); 
+INSERT INTO FILEBOARD (FNUM,CID, FSUBJECT, FCONTENT, FFILENAME,  FREF, FRE_STEP, FRE_LEVEL, FIP )
+    VALUES (FILEBOARD_SEQ.NEXTVAL, 'bbb', '제목2', '본문2', '파일이름2', FILEBOARD_SEQ.CURRVAL, 0,0,'192.168.20.30'); 
+
+
+-- 글 수정
+UPDATE FILEBOARD SET FSUBJECT='수정제목',
+                                                FCONTENT='수정본문2',
+                                                    FFILENAME='수정파일이름',
+                                                        FIP ='수정IP 168.10'
+                                    WHERE FNUM= 1;
+-- 글 삭제
+DELETE FILEBOARD WHERE FNUM=1;
+
+--연습장
+
+-- 글 전체 목록 
+SELECT *
+    FROM (SELECT ROWNUM RN, A.* 
+            FROM (SELECT FNUM, NVL2(CID, C.CNAME, M.MNAME) NAME, FSUBJECT, FHIT, FRDATE, FIP 
+                        FROM FILEBOARD F, (SELECT M.MNAME FROM FILEBOARD F, MANAGER M WHERE F.MID=M.MID ) M, (SELECT C.CNAME FROM FILEBOARD F, CUSTOMER C WHERE F.CID=C.CID ) C
+                        ORDER BY FREF DESC, FRE_STEP) A )
+    WHERE RN BETWEEN 1 AND 6;
+
+-- 글 상세보기
+SELECT * FROM FILEBOARD 
+    WHERE FNUM=1;
+    
+-- 글 조회수 올리기
+UPDATE FILEBOARD SET FHIT= FHIT+1
+        WHERE FNUM=1;
+
+
+--          관리자    
+
+-- 관리자 등록
+INSERT INTO MANAGER (MID, MPW, MNAME)
+    VALUES('AAA','111','관리자');
+
+-- 관리자 로그인
+SELECT * FROM MANAGER
+    WHERE MID='AAA' AND MPW='111';
+
+-- 관리자 답변글 쓰기
+-- 답변글 쓰기전 step A -- 1번글에 대한 답변글 쓰기 전작업
+UPDATE FILEBOARD SET fRE_STEP = fRE_STEP + 1 WHERE fREF=1 AND fRE_STEP>0;
+
+ -- 1번글의 답변
+INSERT INTO FILEBOARD (fNUM, MID, fSUBJECT, fCONTENT, fFILENAME,  fREF, fRE_STEP, fRE_LEVEL, fIP)
+    VALUES (FILEBOARD_SEQ.NEXTVAL, 'AAA', '답변글1-1제목' , '답변글 본문', null , 1 , 1, 1, '192.168.10.10');
+    
+
+
+

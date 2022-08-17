@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="ch14_mybatis1"/>
+<aop-project name="ch16_mybatis1_mapper"/>
+<aop-project name="ch17_mybatisBoard"/>
+<aop-project name="test"/>
+<aop-project name="ch18_mailSender"/>
+<aop-project name="ch19_memberBookUp"/>
+<aop-project name="ch16_mybatis2_mapper"/>
+<aop-project name="ch13_fileup"/>
+<aop-project name="ch15_mybatis2"/>
+<aop-project name="ch11_mvcboard"/>
+</aop-reference-model>

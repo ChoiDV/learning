@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #join_form {
+            width: 1000px;
+            height: 800px;
+            margin: 100px auto;
+            box-shadow: 0 8px 20px 0 rgba(0,0,0,0.15);
+        }
+        #join_form form{
+            height:800px;
+           
+        }
+        #join_form form table {
+             width:500px;
+            margin: 20px auto;
+            text-align:center;
+
+        }
+        #join_form form table th{
+
+        }
+        #join_form form table td{
+            padding:10px;
+            
+
+        }
+        #join_form form table td input:not(.btn) {
+            width:200px;
+            border: 1px solid white;
+            border-bottom:1px solid black;
+            outline:none;
+            margin:5px;          
+        }
+   
+        caption {
+            font-size:1.3em;
+            font-weight:bold;
+            margin:10px;
+        }
+        .bigCap {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            margin: 5px;
+            background-color: #ffd1dc;
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"], input[type="reset"], input[type="button"] {
+            width: 80px;
+            height:30px;
+            margin: 10px;
+            background-color: #ffd1dc;
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor:pointer;
+        }
+        input {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="join_form">
+        <form action="${conPath }/join.do" method="post">
+            <table>
+                <caption>회원가입</caption>
+                <caption class="bigCap">CREATE YOUR ACCOUNT</caption>
+                <tr>
+                    <th colspan="2">아이디<b> *</b></th>
+                    <td>
+                        <input type="text" name="mid" required="required">
+                        <div>아이디 중복체크 메시지</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">비밀번호<b> *</b></th>
+                    <td>
+                        <input type="password" name="mpw" placeholder="8~16자 영문, 숫자를 사용하세요" required="required">
+                        <div>비밀번호 메세지</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">비밀번호 재확인<b> *</b></th colspan="2">
+                    <td>
+                        <input type="password" name="mpwChk" required="required">
+                        <div>비밀번호 확인 메세지</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">이름<b> *</b></th>
+                    <td>
+                        <input type="text" name="mname" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">전화번호<b> *</b></th>
+                    <td>
+                        <input type="text" name="mtel" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">생년월일<b> *</b></th>
+                    <td>
+                        <input type="text" name="mbirth" placeholder=" 생년월일 6자리" required="required">
+                        <div>생년월일 6자리 메시지</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">이메일<b> *</b></th>
+                    <td>
+                        <input type="email" name="memail" required="required">
+                        <div>이메일 메시지</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">주소<b> *</b></th>
+                    <td>
+                        <input type="text" name="maddress" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">성별<b> *</b></th>
+                    <td>
+                        <input type="radio" name="mgender" value="M" class="btn">남성
+                        <input type="radio" name="mgender" value="F" class="btn">여성
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <input type="submit" value="회원가입" class="btn">
+                        <input type="button" value="뒤로가기" onclick="location.href='hisory.back()'" class="btn">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

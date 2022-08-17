@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            
+            width: 1600px;
+            margin: 150px auto;
+        }
+        #wrap #top_bar {
+            width:1200px;
+            margin:20px auto;   
+            font-size:1.2em;
+        }
+        #wrap #top_bar span {
+            display:inline-block;
+            border-right:3px solid white;
+            text-align:center;
+            background-color: #ffd1dc;
+            height:60px;
+            line-height:60px;
+        }
+        #wrap #top_bar span:first-child {
+            width:295px;      
+        }
+        #wrap #top_bar span:nth-child(2){
+            width:595px;
+           
+            
+        }
+        #wrap #top_bar span:nth-child(3){
+            width:295px;                      
+        }
+
+        /*************/
+        #wrap #file_bar{          
+            width:400px;          
+            height:120px;          
+            float:right;
+        }
+        #wrap #files_menu {
+            
+        }
+
+        #wrap caption {   
+            text-align:center;          
+            font-size:3em;
+            height:100px;
+            padding:30px;
+            background-color: #ffd1dc;
+            border-radius: 25px 25px 0 0;
+            font-weight:bold;   
+            text-shadow: +5px 0 white;
+        }
+        #wrap table {
+            width:1200px;
+            margin:0 auto;
+            background-color: #ffd1dc;
+            clear:both;
+
+            
+            
+        }
+        #wrap table th {
+            border:3px solid white;
+            width:300px;
+            height:70px;
+            
+            
+        }
+        #wrap table th:last-child {
+            
+        }
+        #wrap table tr:nth-child(3) {
+            border:1px solid blue;
+            height:300px;
+            
+        }
+        #wrap table td {
+            
+            width:900px;
+            padding-left:30px;
+            background-color:white;
+        }
+        #wrap table {
+           font-size:1.3em;
+        }
+        #wrap table tr:nth-child(4) {
+           height:80px;
+           text-align:center;
+        }
+        #wrap table td button {
+            width:100px;
+            height:60px;
+            font-size:0.9em;
+            border:1px solid white;
+            background-color:#ffd1dc;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="top_bar">
+            <span>글번호 : 1번 </span><span>작성일 : 2022-02-02 </span><span>조회수 : 50 </span>
+        </div>
+        <div id="file_bar">
+            <ul id="file_menu">
+                <li>
+                    첨부파일
+                    <ul id="files_menu">
+                        <c:if test="${freeContent.ffilename1 != null }">
+                            <li>${freeContent.ffilename1 }</li>
+                        </c:if>
+                        <c:if test="${freeContent.ffilename2 != null }">
+                            <li>${freeContent.ffilename2 }</li>
+                        </c:if>
+                        <c:if test="${freeContent.ffilename3 != null }">
+                            <li>${freeContent.ffilename3 }</li>
+                        </c:if>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <table>
+            <caption>View Details</caption>
+            <tr>
+                <th>작성자</th>
+                <td>최진영 (chlwlsdud)</td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td> 제목입니다 .</td>
+            </tr>
+            <tr>
+                <th>본문</th>
+                <td class="content">
+                    <pre>이것은 본문입니다. 본문본문
+                     본문 이에요.본문 이에요오오오오ㅗ오ㅗ</pre>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <c:if test="${member.mid eq freeContent.mid }">
+                        <button onclick="location.href='${conPath }/freeBoardModifyView.do?fnum=${freeContent.fnum }&pageNum=${pageNum }'">수정</button>
+                    </c:if>
+                    <c:if test="${member.mid eq freeContent.mid or not empty admin }">
+                        <button onclick="location.href='${conPath }/freeBoardDeleteView.do?fnum=${freeContent.fnum }&pageNum=${pageNum }'">삭제</button>
+                    </c:if>
+                    <button onclick="location.href='${conPath }/freeBoardReplyView.do?fnum=${freeContent.fnum }&pageNum=${pageNum }'">답변</button>
+                    <button onclick="location.href='${conPath }/freeBoardListView.do?pageNum=${pageNum }'">목록</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

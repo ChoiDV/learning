@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+ 
+/*/***********************************************************************************/
+        * {
+            margin:0;
+            padding:0;
+        }
+        .form {
+            width: 500px;       
+            margin: 300px auto;
+        }
+        .form .input_form  {
+            text-align:center;
+            border:1px solid black;
+         }
+        .form caption {
+            font-size:2em;
+            font-weight:bold;
+            margin:10px;
+        }
+        
+        .form .input_form th {
+            border:1px solid black;
+            width:300px;
+            height:100px;
+        }
+        .form .input_form td {
+            width:300px;
+            height:50px;
+            border:1px solid black;
+        }
+        .form .input_form input:not(.btn) {
+            width:200px;
+            height:40px;
+            font-size:1.5em;
+            text-indent:10px;
+        }
+        .form .input_form .btn {
+            width:100px;
+            height:40px;
+            border:none;
+            font-weight:bold;
+            background-color:#ffd1dc;
+        }
+
+
+    </style>
+</head>
+<body>
+  
+    <div class="form">
+        <form action="${conPath }/modifyAllView.do" method="post">
+            <input type="hidden" id="chk" name="chK" value="${param.modify }">
+            <table class="input_form">
+                <caption>비밀번호 확인</caption>
+                <tr>
+                    <th>비밀번호</th>
+                    <td>
+                        <input type="password" name="mpw">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="확인" class="btn">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

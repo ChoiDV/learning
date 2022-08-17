@@ -1,0 +1,335 @@
+DROP TABLE 숙소예약;
+create table 숙소예약(  -- 숙소예약 완료 테이블  ( 예약번호, 회원아이디, 체크인, 체크아웃, 숙소이름, ...
+    예약번호 number(6) PRIMARY KEY, --시퀀스
+    MID VARCHAR2(30),  -- 회원id
+    완료체크인 DATE,  -- 체크인 날짜
+    완료체크아웃 DATE,  -- 체크아웃 날짜
+    숙소번호 REFERENCES 숙소(숙소번호)
+);
+DROP TABLE 숙소; 
+CREATE TABLE 숙소 (  -- 숙소 테이블 (숙소이름],숙소 주소, 숙소 전화번호, 숙소 이미지, 숙소 가격, 숙소 상세정보)
+    숙소번호 number(6) primary key, -- 시퀀스
+    숙소이름 VARCHAR2(30),  -- 떙떙호텔, 떙땡모텔 등등
+    방이름 VARCHAR2(30),  -- 스탠다드, 스위트, 트윈
+    숙소주소 VARCHAR2(30),   -- 방콕시 군자동
+    숙소전화번호 VARCHAR2(30),  -- 010-6636-9308
+    숙소상세정보 varchar2(30),  -- 줠라 좋은 호텔이에요
+    숙소사진 varchar2(30) -- 숙소 사진
+);
+
+(SELECT 완료체크인 FROM 숙소예약,숙소 WHERE 숙소예약.숙소번호 = 숙소.숙소번호 AND 숙소이름='하얏트호텔') BETWEEN '2022-07-20' AND '2022-07-25'; 
+
+SELECT * FROM 숙소예약,숙소 WHERE 완료체크인 BETWEEN '2022-07-24' AND '2022-07-25'
+    OR 완료체크아웃 BETWEEN '2022-07-24' AND '2022-07-25'
+        AND 숙소예약.숙소번호 = 숙소.숙소번호
+            AND 숙소이름 = '하얏트호텔';  -- 나오는애들은 예약안됌
+    
+    --  출력되는애들의 숙소번호 가져와서 얘네 예약안된다고 띄워주면 됌
+SELECT * FROM 숙소예약,숙소 WHERE 완료체크인 >= '2022-07-23' OR 완료체크인 < '2022-07-25' OR 완료체크인 = '2022-07-23' OR 완료체크인 > '2022-07-23' OR 완료체크인 < '2022-07-25'
+    OR 완료체크아웃 > '2022-07-23' OR 완료체크아웃 = '2022-07-25' OR 완료체크아웃 > '2022-07-25'
+        AND 숙소예약.숙소번호 = 숙소.숙소번호
+            AND 숙소이름 = '하얏트호텔';  
+            
+        
+select * from 숙소예약, 숙소 where (('2022-07-28' BETWEEN 완료체크인 AND 완료체크아웃)
+    OR ('2022-07-30' BETWEEN 완료체크인 AND 완료체크아웃))
+        AND 숙소예약.숙소번호 = 숙소.숙소번호
+            AND 숙소이름 = '하얏트호텔';
+            
+         -- 마지막 예약확인 쿼리----------------------------
+select * from 숙소예약, 숙소 where (('2022-07-23' >= 완료체크인 AND '2022-07-23' < 완료체크아웃)
+    OR ('2022-07-30' BETWEEN 완료체크인 AND 완료체크아웃))
+        AND 숙소예약.숙소번호 = 숙소.숙소번호
+            AND 숙소이름 = '하얏트호텔';
+            -----------------------------------------
+            
+select * from 숙소 where 숙소이름 = '하얏트호텔';  
+
+SELECT * FROM HOTEL_RS WHERE 1=1
+AND ((CHECKIN >= '2022-01-01')AND (CHECKIN <= '2022-01-05'))
+OR  ((CHECKOUT >= '2022-01-05') AND (CHECKOUT <= '2022-01-08'))
+OR  ((CHECKIN <='2022-01-01') AND (CHECKOUT >= '2022-01-05'))
+OR  ((CHECKIN >='2022-01-05') AND (CHECKOUT <= '2022-01-08'));            
+          
+          COMMIT;  
+            
+SELECT * FROM 숙소예약, 숙소 WHERE 숙소예약.숙소번호 = 숙소.숙소번호
+    AND 숙소이름 = '하얏트호텔';
+    
+SELECT * FROM 숙소예약;
+SELECT * FROM 숙소;
+    
+    
+-- 2022-07-23 
+SELECT * FROM 숙소예약 WHERE 완료체크인 >= '2022-07-20' AND 완료체크인 <= '2022-07-25'
+    OR 완료체크아웃 <= '2022-07-20' AND 완료체크아웃 >= '2022-07-25';  
+
+SELECT * FROM 숙소예약 WHERE 완료체크인 != '2022-07-23' AND 완료체크인 <= '2022-07-25' AND 완료체크아웃 <= '2022-07-23';
+SELECT * FROM 숙소예약 WHERE 완료체크인 != '2022-07-20' AND 완료체크인 <= '2022-07-22' AND 완료체크아웃 <= '2022-07-20';
+SELECT * FROM 숙소예약 WHERE 완료체크인 != '2022-07-28' AND 완료체크인 <= '2022-07-30' AND 완료체크아웃 <= '2022-07-28';
+SELECT * FROM 숙소예약 WHERE 완료체크인 != '2022-07-15' AND 완료체크인 <= '2022-07-23' AND 완료체크아웃 <= '2022-07-15';
+SELECT * FROM 숙소예약 WHERE 완료체크인 != '2022-07-23' AND 완료체크인 <= '2022-07-25' AND 완료체크아웃 >= '2022-07-23';
+
+SELECT * FROM 숙소예약,숙소 WHERE 숙소예약.숙소번호 = 숙소.숙소번호 AND 숙소이름='하얏트호텔' 
+    AND (SELECT 완료체크인 FROM 숙소예약,숙소 WHERE 숙소예약.숙소번호 = 숙소.숙소번호 AND 숙소이름='하얏트호텔') BETWEEN '2022-07-20' AND '2022-07-25' 
+        OR (SELECT 완료체크아웃 FROM 숙소예약, 숙소 WHERE 숙소예약.숙소번호 = 숙소.숙소번호 AND 숙소이름='하얏트호텔') BETWEEN '2022-07-20' AND '2022-07-25';
+
+
+SELECT * FROM 숙소예약;
+SELECT 방이름 FROM 숙소 WHERE 숙소이름='하얏트호텔';  -- 하얏트 호텔을 클릭했을시
+SELECT * FROM 숙소;
+
+SELECT * FROM (SELECT * FROM 숙소
+    WHERE (SELECT 완료체크인 FROM 숙소예약 WHERE 숙소이름='하얏트호텔') BETWEEN '2022-07-23' AND '2022-07-26' ) A,
+    (SELECT * FROM 숙소 WHERE (SELECT 완료체크아웃 FROM 숙소예약 WHERE 숙소이름='하얏트호텔') BETWEEN '2022-07-23' AND '2022-07-26') B; -- 체크인 ~ 체크아웃  예약된 숙소있냐?
+INSERT INTO 숙소예약 VALUES (2,'오동준','2022-07-23','2022-07-28',2);
+INSERT INTO 숙소예약 VALUES (1,'오동준','2022-07-23','2022-07-28',3);
+
+INSERT INTO 숙소 VALUES(1,'하얏트호텔','스탠다드','방콕','010','좋음','사진');
+INSERT INTO 숙소 VALUES(2,'하얏트호텔','스위트','방콕','010','좋음','사진');
+INSERT INTO 숙소 VALUES(3,'하얏트호텔','트윈','방콕','010','좋음','사진');
+
+INSERT INTO 숙소예약 VALUES (1, '오동준', '2022-07-25','2022-07-27','온돌방');
+
+
+
+
+SELECT COUNT(*) FROM (SELECT * FROM 숙소
+    WHERE (SELECT 완료체크인 FROM 숙소예약 WHERE 방ID='온돌방') BETWEEN '2022-07-23' AND '2022-07-26'
+        AND 방ID= '온돌방') A, (SELECT * FROM 숙소
+    WHERE (SELECT 완료체크아웃 FROM 숙소예약 WHERE 방ID='온돌방') BETWEEN '2022-07-23' AND '2022-07-26'
+        AND 방ID = '온돌방') B;
+
+
+
+
+(SELECT * FROM 숙소
+    WHERE (SELECT 체크인 FROM 숙소예약 WHERE 방ID='온돌방') BETWEEN '2022-07-23' AND '2022-07-26'
+        AND 방ID= '온돌방');
+
+(SELECT * FROM 숙소
+    WHERE (SELECT 체크아웃 FROM 숙소예약 WHERE 방ID='온돌방') BETWEEN '2022-07-23' AND '2022-07-26'
+        AND 방ID = '온돌방');
+        
+        
+        
+DROP TABLE 비행기;
+
+CREATE TABLE 비행기(
+    비행기ID VARCHAR2(100) PRIMARY KEY,
+    출발도시 VARCHAR2(100),
+    올때출발도시 VARCHAR2(100),
+    가는날출발시간 VARCHAR2(100),
+    오는날출발시간 VARCHAR2(100)
+);
+
+INSERT INTO 비행기 VALUES ('대한항공1번','인천','오사카','10:00','10:00');
+INSERT INTO 비행기 VALUES ('대한항공2번','인천','오사카','12:00','10:00');
+INSERT INTO 비행기 VALUES ('대한항공3번','인천','오사카','14:00','10:00');
+
+
+INSERT INTO 비행기 VALUES ('아시아나1번','인천','오사카','10:00','10:00');
+INSERT INTO 비행기 VALUES ('아시아나2번','인천','오사카','12:00','10:00');
+INSERT INTO 비행기 VALUES ('아시아나3번','인천','오사카','14:00','10:00');
+
+INSERT INTO 비행기 VALUES ('진에어1번','인천','오사카','10:00','10:00');
+INSERT INTO 비행기 VALUES ('진에어2번','인천','오사카','12:00','10:00');
+INSERT INTO 비행기 VALUES ('진에어3번','인천','오사카','14:00','10:00');
+
+
+SELECT * FROM 비행기;
+
+
+
+
+
+DROP TABLE 비행기예약;
+
+CREATE TABLE 비행기예약(
+    비행기예약번호 NUMBER(10) PRIMARY KEY,
+    비행기ID REFERENCES 비행기(비행기ID),
+    가는날 DATE,
+    오는날 DATE,
+    좌석 VARCHAR2(100)
+);
+
+
+INSERT INTO 비행기예약 VALUES (1,'대한항공1번','2022-08-01','2022-08-05','A1');
+INSERT INTO 비행기예약 VALUES (2,'대한항공1번','2022-08-01','2022-08-05','A2');
+INSERT INTO 비행기예약 VALUES (3,'대한항공1번','2022-08-01','2022-08-05','A3');
+INSERT INTO 비행기예약 VALUES (4,'대한항공1번','2022-08-01','2022-08-05','A4');
+
+SELECT * FROM 비행기예약;
+
+
+-- 8월1일부터 8월5일까지 비행예약된 비행기가 있어?  있다, 없다 
+-- 있으면 좌석개수 확인해서 사용자가 원하는 좌석개수만큼 있어? 있으면 띄우고 없으면 띄우지마 
+
+-- 없으면 출발하는도시와  올때 출발하는 도시에 해당하는 비행기 모두 띄워 
+
+-- 근데 없을때        사용자가 원하는 출발날짜에
+SELECT * FROM 비행기예약 RS,비행기 B
+    WHERE 가는날 = '2022-08-01' AND 오는날 = '2022-08-05'   -- 희망하는 가는날 , 희망하는 오는날 , 희망하는 출발도시, 희망하는 올때출발도시 , 
+        AND 출발도시 ='인천' AND 올때출발도시 = '오사카'
+            AND RS.비행기ID = B.비행기ID
+                 AND 
+                
+                 (SELECT 비행기ID FROM (SELECT 비행기ID FROM 비행기예약 WHERE 20 > (SELECT COUNT(좌석) FROM 비행기예약
+                    WHERE ('2022-08-01' = 가는날 )
+                        AND ('2022-08-05' = 오는날 ))));   -- 예약된 비행기의 예약된 좌석 개수가 20개 이하인 비행기 
+                        
+      -- 예약된 비행기중에서 출발날짜와 올때출발날짜가 같으면서 예약된 좌석개수가 20개 이하인 비행기와 
+      -- 예약된 비행기가 있으면 출발날짜와 올때 출발날짜가 예약된비행기와 출발날짜와 올때출발날짜가 다른 비행기들
+      
+SELECT * FROM 비행기 WHERE
+    비행기ID IN (SELECT DISTINCT 비행기ID FROM 비행기예약 WHERE 
+              20 > (SELECT COUNT(좌석) FROM 비행기예약 WHERE ( 가는날 ='2022-08-01'  ) AND ( 오는날 = '2022-08-05'  )) ) 
+            OR 비행기ID IN (SELECT * FROM 비행기 WHERE 출발도시 ='인천' AND 올때출발도시='오사카'); 
+            
+SELECT * FROM 비행기; -- ID, 출발도시, 도착도시, 출발시간, 오는출발시간
+SELECT * FROM 비행기예약;   -- ID, 가는날짜, 오는날짜, 좌성
+-- 원하는 출발일과 도착일, 도시를 선택 후 예약가능한 비행기
+SELECT * FROM 비행기 AIR
+    WHERE 비행기ID IN (SELECT 비행기ID FROM 비행기 WHERE 출발도시 ='인천' AND 올때출발도시='오사카') AND
+        비행기ID NOT IN (SELECT DISTINCT 비행기ID FROM 비행기예약 WHERE 
+                            10 <= (SELECT COUNT(좌석) FROM 비행기예약 WHERE  (가는날 ='2022-08-01') AND 오는날 = ('2022-08-05') ) ) ;
+            
+SELECT COUNT(*) FROM 비행기예약 WHERE 비행기ID = '대한항공1번';
+SELECT COUNT(*) FROM 비행기예약 WHERE 비행기ID = '아시아나1번';
+SELECT * FROM 비행기;
+
+
+
+
+-- 
+SELECT DISTINCT A.ACODE, ADEPARTLOC, AARIVELOC, AGOTIME, ACOME_DEPARTTIME FROM ASCD A, AIR_RESERVE R WHERE A.ACODE=R.ACODE AND
+    (AGODATE='2022-01-01' AND ACOMEDATE='2022-01-05' AND ADEPARTLOC LIKE '%'||'한'||'%' AND AARIVELOC LIKE '%'||'일'||'%') AND
+    A.ACODE NOT IN (SELECT AR.ACODE
+    FROM AIR_RESERVE AR, ASCD A WHERE A.ACODE=AR.ACODE AND
+    (AGODATE='2022-01-01' AND ACOMEDATE='2022-01-05' AND ADEPARTLOC LIKE '%'||'한'||'%' AND AARIVELOC LIKE '%'||'일'||'%') GROUP BY AR.ACODE HAVING COUNT(SEATID) >= 10) OR
+    A.ACODE IN (SELECT DISTINCT ACODE FROM ASCD
+    WHERE (ACODE, AGOTIME, ACOME_DEPARTTIME) NOT IN 
+    (SELECT S.ACODE, S.AGOTIME, S.ACOME_DEPARTTIME FROM ASCD S, AIR_RESERVE R WHERE S.ACODE=R.ACODE
+    AND AGODATE='2022-01-01' AND ACOMEDATE='2022-01-05' AND ADEPARTLOC LIKE '%'||'한'||'%' AND AARIVELOC LIKE '%'||'일'||'%' )) ORDER BY A.ACODE;
+
+------------  아자아자 화이팅 해보자이
+------------------------------비행기테이블-------------------------------------
+--① DROP & CREATE TABLE 
+DROP SEQUENCE ASC_SEQ;
+DROP TABLE ASCD;
+
+CREATE SEQUENCE ASC_SEQ MAXVALUE 9999999999 NOCACHE NOCYCLE;
+CREATE TABLE ASCD(
+    ACODE            VARCHAR2(50) PRIMARY KEY, -- 비행기아이디
+    ADEPARTLOC       VARCHAR2(50) NOT NULL,  -- 출발도시
+    AARIVELOC        VARCHAR2(50) NOT NULL,  -- 도착도시
+    AGOTIME          VARCHAR2(50) NOT NULL,  -- 가는시간 
+    AGO_ARRIVETIME   VARCHAR2(50) NOT NULL,  -- 가는도착시간
+    ACOME_DEPARTTIME VARCHAR2(50) NOT NULL,  -- 오는시간
+    ACOME_ARRIVETIME VARCHAR2(50) NOT NULL,  -- 오는도착시간
+    APRICE           NUMBER(10) NOT NULL     -- 표가격
+);
+DROP SEQUENCE ARESERVE_SEQ;
+DROP TABLE AIR_RESERVE;
+
+
+CREATE SEQUENCE ARESERVE_SEQ MAXVALUE 9999999999 NOCACHE NOCYCLE; 
+CREATE TABLE AIR_RESERVE(
+    ASNO              NUMBER(10) PRIMARY KEY, -- 비행기아이디
+    ACODE            VARCHAR2(50) NOT NULL REFERENCES ASCD(ACODE), --항공아이디
+    MID         VARCHAR2(50) NOT NULL REFERENCES CUSTOMER(MID), --회원아이디
+    AGODATE     DATE NOT NULL, -- 가는 날짜
+    ACOMEDATE   DATE NOT NULL, -- 오는 날짜 
+    SEATID      VARCHAR2(50) NOT NULL, -- 좌석번호
+    ARDATE      DATE  DEFAULT SYSDATE NOT NULL -- 예약 완료 날짜
+);
+
+
+SELECT * FROM ASCD;
+SELECT * FROM AIR_RESERVE;
+INSERT INTO ASCD VALUES ('KO001','한국(인천)','일본(오사카)','10:00','12:00','12:00','14:00',200000);
+INSERT INTO ASCD VALUES ('KO002','한국(인천)','일본(오사카)','10:00','12:00','14:00','16:00',230000);
+INSERT INTO ASCD VALUES ('KO003','한국(인천)','일본(오사카)','10:00','12:00','18:00','20:00',250000);
+INSERT INTO ASCD VALUES ('KO004','한국(인천)','일본(오사카)','12:00','14:00','12:00','14:00',300000);
+INSERT INTO ASCD VALUES ('KO005','한국(인천)','일본(오사카)','12:00','14:00','14:00','16:00',250000);
+INSERT INTO ASCD VALUES ('KO006','한국(인천)','일본(오사카)','12:00','14:00','18:00','20:00',220000);
+INSERT INTO ASCD VALUES ('KO007','한국(인천)','일본(오사카)','16:00','18:00','12:00','14:00',320000);
+INSERT INTO ASCD VALUES ('KO008','한국(인천)','일본(오사카)','16:00','18:00','14:00','16:00',120000);
+INSERT INTO ASCD VALUES ('KO009','한국(인천)','일본(오사카)','16:00','18:00','18:00','20:00',150000);
+
+-- 한사람이 같은 날짜 같은 비행기에 두자리를 예약함 KO001 스케쥴 좌석 
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'aaa', '20220101','20220105', 'A2',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'aaa', '20220101','20220105', 'A1',SYSDATE);
+
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'bbb', '20220101','20220105', 'A3',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'bbb', '20220101','20220105', 'A4',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'bbb', '20220101','20220105', 'A5',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'bbb', '20220101','20220105', 'A6',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'ccc', '20220101','20220105', 'A7',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'ccc', '20220101','20220105', 'A8',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'ccc', '20220101','20220105', 'A9',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO001', 'ddd', '20220101','20220105', 'A10',SYSDATE);
+
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO002', 'eee', '20220101','20220105', 'A1',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO002', 'eee', '20220101','20220105', 'A2',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO002', 'eee', '20220801','20220805', 'A1',SYSDATE);
+INSERT INTO AIR_RESERVE VALUES(ARESERVE_SEQ.NEXTVAL ,'KO002', 'eee', '20220801','20220805', 'A2',SYSDATE);
+
+SELECT * FROM ASCD;
+SELECT DISTINCT A.ACODE, ADEPARTLOC, AARIVELOC, AGOTIME, ACOME_DEPARTTIME FROM ASCD A, AIR_RESERVE R WHERE A.ACODE=R.ACODE AND
+    (AGODATE='2022-01-05' AND ACOMEDATE='2022-01-08' AND ADEPARTLOC LIKE '%'||'한'||'%' AND AARIVELOC LIKE '%'||'일'||'%') AND
+    A.ACODE NOT IN (SELECT AR.ACODE
+    FROM AIR_RESERVE AR, ASCD A WHERE A.ACODE=AR.ACODE AND
+    (AGODATE='2022-01-05' AND ACOMEDATE='2022-01-08' AND ADEPARTLOC LIKE '%'||'한'||'%' AND AARIVELOC LIKE '%'||'일'||'%') GROUP BY AR.ACODE HAVING COUNT(SEATID) >= 10) OR
+    A.ACODE IN (SELECT DISTINCT ACODE FROM ASCD
+    WHERE (ACODE, AGOTIME, ACOME_DEPARTTIME) NOT IN 
+    (SELECT S.ACODE, S.AGOTIME, S.ACOME_DEPARTTIME FROM ASCD S, AIR_RESERVE R WHERE S.ACODE=R.ACODE
+    AND AGODATE='2022-01-05' AND ACOMEDATE='2022-01-08' AND ADEPARTLOC LIKE '%'||'한'||'%' AND AARIVELOC LIKE '%'||'일'||'%' )) ORDER BY A.ACODE;
+
+
+-- 좌석조회요
+SELECT * FROM AIR_RESERVE WHERE ACODE='KO002' AND AGODATE='2022-08-01' AND ACOMEDATE = '2022-08-05';
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- 아자아자 화이팅
+-- 멀쩡 쿼리
+SELECT * FROM 비행기 AIR
+    WHERE 비행기ID IN (SELECT 비행기ID FROM 비행기 WHERE 출발도시 ='인천' AND 올때출발도시='오사카') AND
+        비행기ID NOT IN (SELECT DISTINCT 비행기ID  FROM 비행기예약 WHERE 
+              10 <= (SELECT COUNT(좌석) FROM 비행기예약 WHERE ( 가는날 ='2022-08-01'  ) AND ( 오는날 = '2022-08-05'  ))) ;
+              -- 멀쩡 쿼리
+INSERT INTO 비행기예약 VALUES (5,'대한항공1번','2022-08-01','2022-08-05','A5');
+INSERT INTO 비행기예약 VALUES (6,'대한항공1번','2022-08-01','2022-08-05','A6');
+INSERT INTO 비행기예약 VALUES (7,'대한항공1번','2022-08-01','2022-08-05','A7');
+INSERT INTO 비행기예약 VALUES (8,'대한항공1번','2022-08-01','2022-08-05','A8');
+INSERT INTO 비행기예약 VALUES (9,'대한항공1번','2022-08-01','2022-08-05','A9');
+INSERT INTO 비행기예약 VALUES (10,'대한항공1번','2022-08-01','2022-08-05','A10');
+INSERT INTO 비행기예약 VALUES (11, '아시아나1번','2022-08-01','2022-08-05','A2');
+INSERT INTO 비행기예약 VALUES (12, '아시아나1번','2022-08-15','2022-08-18','A2');
+
+INSERT INTO 비행기예약 VALUES (13, '아시아나3번','2022-08-08','2022-08-14','A2');
+
+SELECT * FROM 비행기예약 ORDER BY 비행기예약번호;
+
+COMMIT;
+
+SELECT * FROM 비행기
+    WHERE  20 > (SELECT COUNT(좌석) FROM 비행기예약
+                    WHERE ('2022-08-01' = 가는날 )
+                        AND ('2022-08-05' = 오는날 ));
+ 
+ 
+ 
+                   
+                         

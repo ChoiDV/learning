@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <title>Insert title here</title>
+ <style>
+ 
+ </style>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+ 	$(document).ready(function(){
+ 		var array = [{name:'가메출판사',link:'http://www.kame.co.kr'},
+ 					 {name:'네이버',link:'http://www.naver.com'},
+ 					 {name:'다음',link:'http://www.daum.net'},
+ 					 {name:'구글',link:'http://www.google.com'},
+ 					];
+ 		var out = '';
+ 		$.each(array, function(idx,item){ // 첫번째 매개변수에는 배열, 두번째 매개변수에는 어떻게 처리할지 콜백함수
+ 			// function의 idx에는 array의 인덱스를 , item에는 array의 값을
+ 			// $('body').html('<h1>TEST</h1>');	 // 이렇게 하면 한번 나오고 사라지고 나오고 사라지고 결국 1번만 나옴 
+ 			// $('body').html($('body').html() + '<h1>'+item.name+'</h1>'); // 그래서 이렇게 body html에 + 해주면 TEST가 4번출력  ( 선생님 방식 )
+ 			// 책 :
+ 				out += '<h1><a href="'+item.link+'">'+item.name+'</a></h1>';   // 을 하고 
+ 		}); 
+ 		// for문 밖에서
+ 		$('body').html(out);
+ 	});
+ </script>
+</head>
+ <body>
+	
+ </body>
+</html>

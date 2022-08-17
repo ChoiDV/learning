@@ -1,0 +1,7 @@
+#Tomcat publish data
+#Fri Aug 05 16:27:52 KST 2022
+org.eclipse.jst.jee.server\:ch17_mybatisBoard=C\:\\choijinyoung\\IDE\\sts-tomcat\\wtpwebapps\\ch17_mybatisBoard
+org.eclipse.jst.jee.server\:ch11_mvcboard=C\:\\choijinyoung\\IDE\\sts-tomcat\\wtpwebapps\\ch11_mvcboard
+org.eclipse.jst.jee.server\:ch14_mybatis1=C\:\\choijinyoung\\IDE\\sts-tomcat\\wtpwebapps\\ch14_mybatis1
+org.eclipse.jst.jee.server\:ch12_jdbcTemplate=C\:\\choijinyoung\\IDE\\sts-tomcat\\wtpwebapps\\ch12_jdbcTemplate
+org.eclipse.jst.jee.server\:ch19_memberBookUp=C\:\\choijinyoung\\IDE\\sts-tomcat\\wtpwebapps\\ch19_memberBookUp

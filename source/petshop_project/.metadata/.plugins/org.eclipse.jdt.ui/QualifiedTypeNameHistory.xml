@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.DbreedDto"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="com.lec.petshop.service.FreeBoardDeleteService"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.FreeBoardDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.FreeBoardDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.DogDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.CbreedDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.service.CatAllService"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.CatDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.AdminDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.Cat_ReplyDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.Cat_ReplyDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.Dog_ReplyDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.Dog_ReplyDto"/>
+<fullyQualifiedTypeName name="javax.naming.Context"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
+<fullyQualifiedTypeName name="java.sql.Date"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.ZimDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.CatZimDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.CatDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.service.DogBreedService"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.DogDto"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.MemberDto"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.MemberDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.ZimDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.CatZimDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.AdminDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dao.ReviewDao"/>
+<fullyQualifiedTypeName name="com.lec.petshop.dto.ReviewDto"/>
+</qualifiedTypeNameHistroy>

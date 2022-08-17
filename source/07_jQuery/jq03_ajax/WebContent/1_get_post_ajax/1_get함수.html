@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <title>Insert title here</title>
+ <style>
+ 
+ </style>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+ 	$(document).ready(function(){
+ 		$('button').click(function(){  // idConfirm.html?mId=aaa
+ 			var mId = $('#mId').val();
+ 			/*
+ 				$.get(요청 경로, callback(data,status)){
+					data : 요청경로의 수행 결과 수천년 지나 마침내 선택받은 그 이름은 진영 초이!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					status : success / fail 
+ 				}
+ 			*/
+ 			$.get('idConfirm.jsp?mId='+mId,function(data,status){  // .get(요청 uri, 콜백함수 )
+ 				if(status == 'success'){
+ 					$('#result').html(data);
+ 				}
+ 			}); 
+ 		}); // 버튼의 click 이벤트
+ 		$('#mId').keyup(function(){
+ 			var mId = $('#mId').val();
+ 			if(mId.length < 2 ){
+ 				$('#result').html('id는 2글자 이상입니다.');
+ 			} else {
+ 				$.get('idConfirm.jsp?mId='+mId,function(data,status){  // .get(요청 uri, 콜백함수 )  // data = 받아오는 data, status = 성공여부
+ 	 				if(status == 'success'){
+ 	 					$('#result').html(data);
+ 	 				}
+ 	 			}); 
+ 			}
+ 		});
+ 	});
+ </script>
+</head>
+ <body>
+	<p>
+		아이디<input type="text" name="mId" id="mId">
+		<button>중복체크</button>
+	</p>
+	<span id="result"></span>
+ </body>
+</html>

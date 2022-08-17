@@ -42,6 +42,18 @@ Valid 어노테이션
 		    <version>2.0.5</version>
 		</dependency>
 
+<<<<<<< HEAD
+=======
+--------------- 메일 발송 dependency ----------
+
+<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
+
+>>>>>>> 8b899f645dd23b9c1f554bc624addbcfb7e953fd
 
 
 

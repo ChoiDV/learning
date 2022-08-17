@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="vh" class="com.lec.ch02.ex4_vehicle.Bicycle"/> <!--  vh 의 타입이 Bicycle일수도 있고, Vehicle 일수도있다. 왜? Bicycle은 Vehicle인터페이스를 implement 하기때문에 -->
+	<bean id="car" class="com.lec.ch02.ex4_vehicle.Car"/>
+	<bean id="air" class="com.lec.ch02.ex4_vehicle.Airplane"/>
+	
+	<bean id="people" class="com.lec.ch02.ex4_vehicle.VehicleImpl">
+		<property name="vehicle" value="제트기"/>
+		<property name="speed" value="10000"/>
+	</bean>
+</beans>

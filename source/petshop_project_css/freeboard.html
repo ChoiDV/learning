@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            list-style:none;
+            text-decoration:none;
+            color:black;
+        }
+        #allform {
+            background-color: #ffd1dc;
+            width: 1200px;
+            margin: 150px auto;
+            border-radius: 0 0 15px 15px;
+        }
+        #allform table  {
+            border:1px solid white;
+            width:1100px;
+            margin:0 auto;
+            padding:5px;
+            background-color:white;
+            border-radius:15px;
+        }
+        #allform div:first-child {
+            width:1200px;
+            margin-bottom:20px;
+            font-size:2.5em;
+            font-weight:bold;
+            box-sizing:border-box;
+            border:5px double white;
+            padding:10px;
+            text-align:center;
+            text-shadow:+4px 0 white;
+        }
+        #allform .write_board {
+            text-align:right;
+            padding-right:50px;
+            height:50px;
+            text-decoration:underline;
+            text-shadow:-1px 0 #000;
+        }
+        #allform td:nth-child(1)  {
+            text-align:center;
+            width:100px;
+            
+        }
+         #allform td:nth-child(2){
+             text-align:center;
+             width:100px;
+         }
+          #allform td:nth-child(3){
+              text-align:left;
+              width:300px;
+              padding-left:10px;
+          }
+          #allform td:nth-child(4){
+              text-align:center;
+              width:200px;
+          }
+          #allform td:nth-child(5) {
+              text-align:center;
+              width:100px;
+          }
+          #allform td{
+             border:1px solid white;
+             height:50px;
+             line-height:50px;
+             font-weight:bold;
+             background-color:#ffd1dc;
+             border-radius:15px;
+             
+          }
+          #allform th {
+              padding:10px;
+          }
+
+            #allform .paging  {
+                text-align:center;
+                width:500px;
+                margin:30px auto;
+                padding-bottom:20px;        
+            }
+
+    
+
+
+    </style>
+</head>
+<body>
+    <div id="allform">
+        <div>Communication</div>
+        <div class="write_board"><a href="${conPath }/freeBoardWriteView.do">글 쓰기</a></div>
+
+
+
+        <table>
+            <tr>
+                <th>글 번호</th>
+                <th>작성자</th>
+                <th class="left">&nbsp; &nbsp;제목</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+            <tr>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td class="left">
+                  dfasdf
+                    <b> *hit* </b>
+                </td>
+                <td>2022-02-02</td>
+                <td>${list.fhit }</td>
+            </tr>
+            <tr>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td class="left">
+                    &nbsp; &nbsp; &nbsp;└─dfasdf
+                    <b> *hit* </b>
+                </td>
+                <td>2022-02-02</td>
+                <td>${list.fhit }</td>
+            </tr>
+            <tr>
+                <td>asdf</td>
+                <td>asdf</td>
+                <td class="left">
+                    &nbsp; &nbsp; &nbsp;└─dfasdf
+                    <b> *hit* </b>
+                </td>
+                <td>2022-02-02</td>
+                <td>${list.fhit }</td>
+            </tr>
+
+        </table>
+        <div class="paging">
+            <c:if test="${startPage > BLOCKSIZE}">
+                <a href="${conPath }/freeBoardListView.do?pageNum=1">&lt;&lt;</a>
+                <a href="${conPath }/freeBoardListView.do?pageNum=${startPage-1 }">&lt;</a>
+            </c:if>
+            <c:forEach var="i" begin="${startPage }" end="${endPage }">
+                <c:if test="${i eq pageNum }">
+                    [ <b> ${i } </b> ]
+                </c:if>
+                <c:if test="${i != pageNum }">
+                    [ <a href="${conPath }/freeBoardListView.do?pageNum=${i }">${i }</a> ]
+                </c:if>
+            </c:forEach>
+            <c:if test="${endPage < pageCnt }">
+                [ <a href="${conPath }/freeBoardListView.do?pageNum=${endPage+1 }">&gt;</a> ]
+                [ <a href="${conPath }/freeBoardListView.do?pageNum=${pageCnt}">&gt;&gt;</a> ]
+            </c:if>
+        </div>
+    </div>
+</body>
+</html>

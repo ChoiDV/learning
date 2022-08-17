@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Emp">
+	<resultMap type="Emp" id="EmpResult">  <!-- 여기의 type은 dto를 의미 --> <!-- resultMap은 내가 새로운 타입을 만든다고 생각하면 됌 -->
+		<result property="empno" column="empno" />
+		<result property="ename" column="ename" />
+		<result property="job" column="job" />
+		<result property="mgr" column="mgr" />
+		<result property="hiredate" column="hiredate" />
+		<result property="sal" column="sal" />
+		<result property="comm" column="comm" />
+		<result property="deptno" column="deptno" />
+		<result property="dname" column="dname" />
+		<result property="loc" column="loc" />
+	</resultMap>
+	<select id="empList" parameterType="Emp" resultMap="EmpResult">  <!--  dto타입 리스트 리턴 -->
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM EMP ORDER BY EMPNO) A)
+			WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="empDeptList" parameterType="Emp" resultMap="EmpResult">
+		SELECT * FROM (SELECT ROWNUM RN, A.* FROM (SELECT E.*, DNAME, LOC FROM EMP E, DEPT D
+															WHERE E.DEPTNO = D.DEPTNO ORDER BY EMPNO) A)
+				WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="totCnt" resultType="int">
+		SELECT COUNT(*) FROM EMP
+	</select>
+	<select id="detail" parameterType="int" resultType="Emp"> <!--  dto 리턴 -->
+		SELECT * FROM EMP WHERE EMPNO=#{empno}
+	</select>
+	<select id="managerList" resultMap="EmpResult">
+		SELECT * FROM EMP WHERE EMPNO IN (SELECT MGR FROM EMP)
+	</select>
+	<insert id="insert" parameterType="Emp"><!-- 얘는 resultType이 필요없음 알아서 1 or 0 리턴해줌 --> <!-- insert 문은 insert태그 -->
+		INSERT INTO EMP VALUES (#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+	<update id="update" parameterType="Emp"><!-- 얘도 마찬가지로 resultType 필요없음  -->
+		UPDATE EMP SET ENAME=#{ename},
+                            JOB=#{job},
+                                MGR=#{mgr},
+                                    HIREDATE=#{hiredate},
+                                        SAL = #{sal},
+                                            COMM = #{comm},
+                                                DEPTNO=#{deptno}
+                                WHERE EMPNO=#{empno}
+	</update>
+	<delete id="delete" parameterType="int"><!--  파라미터 타입 emp로 해도되지만 효율적이게? -->
+		DELETE FROM EMP WHERE EMPNO=#{empno}
+	</delete>
+	<!--  아이디 중복 안됌 -->
+</mapper>
+	

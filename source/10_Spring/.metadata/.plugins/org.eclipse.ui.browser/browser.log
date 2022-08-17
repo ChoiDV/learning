@@ -1,0 +1,5 @@
+
+7월 20, 2022 08:53:17.601 NEW SESSION
+7월 20, 2022 08:53:17.601 [4808:13696:0720/085317.595:ERROR:device_event_log_impl.cc(214)] [08:53:17.595] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 20, 2022 08:53:17.604 [4808:13696:0720/085317.604:ERROR:device_event_log_impl.cc(214)] [08:53:17.604] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 20, 2022 08:53:17.605 [4808:13696:0720/085317.605:ERROR:device_event_log_impl.cc(214)] [08:53:17.605] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)

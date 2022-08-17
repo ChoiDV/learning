@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<context:annotation-config/>  <!--  빈을 만들때 어노테이션이 있으면 확인하고 그것을 수행하라 -->
+								  <!--  즉, @Autowired, student객체를 만들고 studentinfo 객체에 달라붙게 해라 -->
+	<bean id="student" class="com.lec.ch03.ex1.Student">
+		<constructor-arg value="최진영"/>
+		<constructor-arg value="24"/>
+		<constructor-arg>
+			<list>
+				<value>코딩</value>
+				<value>개발</value>
+				<value>공부</value>
+			</list>
+		</constructor-arg>
+		<property name="height" value="180"/>
+		<property name="weight" value="78"/>
+	</bean>
+	
+	<bean id="studentInfo" class="com.lec.ch03.ex1.StudentInfo">
+<!-- 		<property name="student" ref="student"/> -->
+	</bean>
+</beans>

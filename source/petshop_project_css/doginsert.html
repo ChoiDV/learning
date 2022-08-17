@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+*{
+    margin:0;
+    padding:0;
+   
+}
+#form {
+    border-radius:30px;
+    width:1000px;
+    height:800px;
+    margin:150px auto;
+    background-color:#ffd1dc;
+    padding:10px;
+}
+#form #input_form {
+
+    width:1000px;
+    height:650px;
+    margin:20px auto;
+     
+}
+
+#form #input_form th {
+    width:300px;
+    font-size:1.3em;
+}
+#form #input_form td {
+    width:700px;
+    font-size:1.3em;
+    
+} 
+.btn {
+    width:150px;
+    height:40px;
+    border:none;
+    background-color:white;
+    cursor:pointer;
+    color:black;
+    border-radius:10px;
+}
+
+#submit {
+    text-align:center;   
+}
+
+
+#form #input_form input:not([type="file"]) {
+    margin:10px; 
+    border-radius:10px;
+    border:none;
+}
+#form #input_form input[type="text"], input[type="number"] {
+    margin:10px; 
+    font-size:1.3em;
+}
+caption {
+		font-weight: bold;
+		font-size: 3em;
+		color: white;
+		margin-bottom: 30px;
+   		text-shadow:-1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+	}
+
+
+
+    </style>
+</head>
+<body>
+    <div id="form">
+        <form action="${conPath }/DogInsert.do" method="post" enctype="multipart/form-data">
+            <table id="input_form">
+                <caption>Dog Register</caption>
+                <tr>
+                    <th>강아지 이름</th>
+                    <td>
+                        <input type="text" name="dname" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th>강아지 성별</th>
+                    <td>
+                        <input type="radio" name="dgender" value="M">수컷
+                        <input type="radio" name="dgender" value="F">암컷
+                    </td>
+                </tr>
+                <tr>
+                    <th>강아지 생년월일</th>
+                    <td>
+                        <input type="text" name="dbirth" id="datepicker" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th>견종</th>
+                    <td>
+                        <input type="text" name="dbreedno" list="dbreedname" required="required">
+                        <datalist id="dbreedname">
+                            <c:forEach var="list" items="${breedlist }">
+                                <option value="${list.dbreedno }">${list.dbreedname }</option>
+                            </c:forEach>
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <th>분양가</th>
+                    <td>
+                        <input type="number" name="dprice" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th>본문</th>
+                    <td>
+                        <textarea rows="13" cols="100"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>대표사진</th>
+                    <td>
+                        <input type="file" name="dimage1" required="required">
+                    </td>
+                </tr>
+                <tr>
+                    <th>추가사진</th>
+                    <td>
+                        <input type="file" name="dimage2">
+                        <input type="file" name="dimage3">
+                        <input type="file" name="dimage4">
+                        <input type="file" name="dimage5">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" id="submit">
+                        <input type="submit" value="등록" class="btn">
+                        <input type="button" value="뒤로가기" class="btn" onclick="location='history.back()'">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

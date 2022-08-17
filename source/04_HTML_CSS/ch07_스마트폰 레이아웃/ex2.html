@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" 
+          name="viewport" content="width=device=width, initial-scale=1.0, maximum-scale=2.0 ">
+    <title></title>
+    <style>
+        /* 페이지 초기화 */
+        /* background-image 랑 font url() 사용 */
+        * {
+            margin:0;
+            padding:0;  
+        }
+        li {
+            list-style:none;
+        }
+        a {
+            text-decoration:none;
+        }
+        /* header */
+        header {
+            background-color:#ea8f00;
+            height:100px;
+        }
+
+        /* header #logo_wrap */
+        header #logo_wrap {
+            height:50px;
+            line-height:50px;
+            text-align:center;
+            position:relative;
+        }
+        header #logo_wrap img.menu {
+            position:absolute;
+            top:0;
+            left:10px;
+        }
+        header #logo_wrap img.myinfo {
+            position:absolute;
+            top:0;
+            right:10px;
+        }
+        header #logo_wrap a.logo {
+            color:#FFFFFF;  /* white */
+        }
+        /* header #search */
+        header #search {
+            height:50px;
+            position:relative;  /* 돋보기 이미지를 #search 안에 넣기위해 */
+        }
+        header #search input[type='text'] {
+            width:100%;
+            height:50px;
+            border: 3px solid #ea8f00;
+            box-sizing:border-box;
+            padding: 5px 55px 5px 5px;
+            font-size:1.3em;
+            outline:none;
+        }
+        header #search input[type='submit']{  /* submit에 따옴표 꼭 사용하기 */
+            width:50px;
+            height:50px;
+            background-image: url('imgEx2/search.png');
+            position:absolute;
+            top:0;
+            right:0;
+            border:0;
+            outline:0;
+            cursor:pointer;          
+        } 
+
+        /* #lnb */
+        #lnb ul {
+            overflow: hidden; 
+            margin:5px 0;  /* 위아래 여백만 5px */
+        }
+        #lnb ul li {
+            float:left;
+            width:16.666666%;
+            text-align:center;
+            border-right: 2px solid #ea8f00;
+            box-sizing:border-box;
+            font-size:1.3em;
+        }
+        #lnb ul li:last-child {
+            border-right:0;
+        }
+        #lnb ul li a {
+            color:dodgerblue;
+            font-weight:bold;
+        }
+
+        /*  section1  */
+        #section1 .row1, #section1 .row2, #section1 .row3 {
+            overflow:hidden;
+        }
+        #section1 .row1 div, #section1 .row2 div, #section1 .row3 div {
+            float:left;
+            width:50%;
+            height:135px;
+            border:2px solid white;
+            box-sizing:border-box;
+        }
+        #section1 img {
+            width: 100%;    /* section1 밑에 있는 img들은 부모의 width를 100퍼센트 써라 */
+            height: 100%;    /*부모의 height를 그대로 상속받음 100%와 동일 */ /* section1 밑에 있는 img들은 부모의 height를 100퍼센트 써라 */
+        }
+        #section2 {
+            margin:5px;
+        }
+        #section2 ul li {
+            border:1px solid lightgray;
+            padding:5px;
+            /* 말줄임 태그 */
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+        }
+
+        /* sectiion3 */
+        #section3 ul li{
+            border:1px solid lightgray;
+            margin:5px;
+            padding:5px;
+            height:120px;
+            position:relative;
+        }
+        #section3 ul li p.img{
+            position:absolute;
+            top:15px;
+            left:15px;
+        }
+        #section3 ul li p.txt{
+            width:100%-100px;
+            padding:5px 5px 5px 120px;
+        }
+        #section3 ul li p.txt span:first-child {
+            display:block;
+            /* 말줄임 태그 */
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+            font-size:1.2em;
+            font-weight:bold;
+            color:darkblue;
+        }
+
+        /* footer */
+        footer {
+            background-color:#ea8f00;
+            text-align:center;
+        }
+        footer p:last-child {
+            font-size:0.8em;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo_wrap">
+            <img src="imgEx2/menu.png" class="menu" alt="메뉴 아이콘" />
+            <a href="ex2.html" class="logo"><h3>mobile logo</h3></a>
+            <img src="imgEx2/myinfo.png" class="myinfo" alt="내정보 아이콘"/>
+        </div>
+        <div id="search">
+            <form action="#">
+                <input type="text" name="query_world" />
+                <input type="submit" value="" />
+            </form>
+        </div>
+    </header>
+    <div id="lnb">
+        <ul>
+            <li><a href="#">lnb1</a></li>
+            <li><a href="#">lnb2</a></li>
+            <li><a href="#">lnb3</a></li>
+            <li><a href="#">lnb4</a></li>
+            <li><a href="#">lnb5</a></li>
+            <li><a href="#">lnb6</a></li>
+        </ul>
+    </div>
+    <div id="section">
+        <div id="section1">
+            <div class="row1">
+                <div>
+                    <a href="https://sports.news.naver.com/news?oid=411&aid=0000009356">
+                        <img src="https://imgnews.pstatic.net/image/411/2022/05/10/0000009356_001_20220510095601627.jpg?type=w647" alt="1행1열 기사" />
+                    </a>
+                </div>
+            <div>
+                 <a href="https://sports.news.naver.com/news?oid=311&aid=0001446334">
+                        <img src="https://imgnews.pstatic.net/image/311/2022/05/10/0001446334_001_20220510094801475.jpg?type=w647" alt="1행1열 기사" />
+                    </a>
+            </div>
+            </div>
+
+            <div class="row2">
+                <div>
+                     <a href="https://sports.news.naver.com/news?oid=119&aid=0002602296">
+                    <img src="https://imgnews.pstatic.net/image/119/2022/05/10/0002602296_001_20220510100102612.jpeg?type=w647" alt="1행2열 기사" />
+                     </a>
+                </div>
+                <div>
+                     <a href="https://sports.news.naver.com/news?oid=117&aid=0003602374">
+                    <img src=https://imgnews.pstatic.net/image/117/2022/05/10/202205100935495276_1_20220510093703587.jpg?type=w647" alt="1행2열 기사" />
+                     </a>
+                </div>           
+            </div>
+            <div class="row3">
+                <div>
+                    <a href="https://sports.news.naver.com/news?oid=477&aid=0000358239">
+                        <img src="https://imgnews.pstatic.net/image/477/2022/05/10/0000358239_001_20220510083102304.jpg?type=w647" alt="1행3열 기사" />
+                    </a>
+                </div>
+                <div>
+                    <a href="https://sports.news.naver.com/news?oid=139&aid=0002166834">
+                        <img src="https://imgnews.pstatic.net/image/139/2022/05/10/0002166834_001_20220510090401353.jpg?type=w647" alt="1행3열 기사" />
+                    </a>
+                </div>
+
+            </div>
+        </div>   <!-- #section1 영역 3행2열 기사 이미지와 alink -->
+        <div id="section2">
+            <ul>
+                <li>
+                    <a href="https://sports.news.naver.com/news?oid=477&aid=0000358236">'HERE WE GO' 맨시티, 홀란드 영입…2027년까지 계약 확정'HERE WE GO' 맨시티, 홀란드 영입…2027년까지 계약 확정</a>
+                </li>
+                <li>
+                    <a href="https://sports.news.naver.com/news?oid=108&aid=0003052158">무리뉴가 부른다... 리버풀 '세계 최고 풀백'에 가려진, 비운의 수비수</a>
+                </li>
+                <li>
+                    <a href="https://sports.news.naver.com/news?oid=216&aid=0000121448">'충격' 바이에른 뮌헨, 마네 영입 추진…에이전트와 만났다 [속보]</a>
+                </li>
+                <li>
+                    <a href="https://sports.news.naver.com/news?oid=413&aid=0000139084">손흥민, 살라 제치고 누적 파워랭킹 1위 등극...남은 건 '득점왕'</a>
+                </li>
+            </ul>
+        </div>  <!-- #section2 영역 : 기사 헤드라인 list와 alink -->
+        <div id="section3">
+            <ul>
+                <li>
+                    <p class="img">
+                        <img src="https://via.placeholder.com/100x100" />
+                    </p>
+                    <p class="txt">
+                        <span>첫번째 span부분은 말줄임 할 예정. 길면 말줄임 태그 효과가 보이고 짧으면 효과가 안 보임</span>
+                        <span>두번째 span부분은 다 나와. 그래서 2줄이상이 되기도 하죠.</span>
+                    </p>
+                    
+                </li>
+                <li>
+                    <p class="img">
+                        <img src="https://via.placeholder.com/100x100" />
+                    </p>
+                    <p class="txt">
+                        <span>첫번째 span부분은 말줄임 할 예정.</span>
+                        <span>두번째 span부분은 다 나와. 그래서 2줄이상이 되기도 하죠.</span>
+                    </p>                
+                </li>
+
+            </ul>
+
+        </div>  <!-- #section3 영역 : 100x100 이미지와 가변길이 텍스트 -->
+    </div>
+    <footer>
+        <p>
+            <img src="imgEx2/logo.png" />
+        </p>
+        <p>
+            서울시 강남구 역삼동 좋은빌딩 402호
+        </p>
+
+    </footer>  <!-- footer -->
+</body>
+</html>
